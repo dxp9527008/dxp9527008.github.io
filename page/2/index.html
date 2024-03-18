@@ -190,250 +190,6 @@
 
 </article>
     
-    <article id="post-CSS渐变" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="../../2024/03/18/CSS%E6%B8%90%E5%8F%98/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS里面的渐变指的是背景的渐变，它主要存在两种形式，一种是线性渐变，一种是径向渐变</p>
-<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><h4 id="基本线性渐变"><a href="#基本线性渐变" class="headerlink" title="基本线性渐变"></a>基本线性渐变</h4><hr>
-<blockquote>
-<p>沿着某一条直线进行颜色的改变，使用的CSS属性为<code>linear-gradient</code></p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="comment">/*标准定法*/</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to 方向,颜色一,颜色二.......);</span><br><span class="line">    <span class="comment">/*兼容写法*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,颜色二,颜色一);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在兼容语法里面，有两点需要注意</p>
-<ol>
-<li>添加各种浏览器特定的前缀-webkit-,-moz-等</li>
-<li>在方向前面去掉<code>to</code>关键字，颜色反着来</li>
-</ol>
-</blockquote>
-<p>在线性渐变里面，它的第一个参数代表的是方向，这个方向可以指一个方向，也可以指两个关键的组合</p>
-<p>如左上角to left top,右上角 to right top,左下角 to left bottom,右下角  to right bottom</p>
-<p>后面接的是颜色值</p>
-<h4 id="设置渐变色的尺寸"><a href="#设置渐变色的尺寸" class="headerlink" title="设置渐变色的尺寸"></a>设置渐变色的尺寸</h4><p>当我们在设置渐变的时候，可以在某一个特殊颜色上面设置它的间距，这个间距叫渐变色的颜色尺寸</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div5</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    在下面的代码里面，我们可以看到蓝色会呈现50%的效果</span></span><br><span class="line"><span class="comment">    50%到70%为黄色</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,blue <span class="number">50%</span>,yellow <span class="number">70%</span>,red,orange <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/ff6b6315c0a5c0e28147298a5548c438" alt="1563343435308.png"></p>
-<blockquote>
-<p><strong>注意事项：</strong> </p>
-<p>在这里，它的尺寸最终不能大于100%，每个颜色使用逗号来进行隔开，然后颜色的后面可以跟百分比的值</p>
-</blockquote>
-<p>我们的线性渐变除了使用某一个方向做为颜色的改变方向，还可以使用角度来进行</p>
-<h3 id="角度线性线变"><a href="#角度线性线变" class="headerlink" title="角度线性线变"></a>角度线性线变</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div6</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    在第一个参数上面，我们已经不再写具体的方法了，转而可以使用一个角度来替代</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">0deg</span>,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>0deg代表上面</p>
-<p>90deg代表右边 </p>
-<p>180deg代表下边 </p>
-<p>270deg代表左边  </p>
-<p>角度线性渐变就弥补我们之前在基本的线性渐变方向单一的问题，它可以通过角度直接指定某一个方向</p>
-<h3 id="渐变与图片结合使用"><a href="#渐变与图片结合使用" class="headerlink" title="渐变与图片结合使用"></a>渐变与图片结合使用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">1200px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*background-image: url(img/1.jpg);*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right bottom,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.1</span>)), <span class="built_in">url</span>(<span class="string">img/1.jpg</span>);</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上面的效果的<strong>核心思路</strong>其实就是把之前的多个背景图片设置，它产先从右向左加载，先加载了背景图片，再加载了渐变色，效果图如下</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/61bce9382fd3edf254c7526c78eb41c4" alt="1563344605888.png"></p>
-<h3 id="重复线性渐变"><a href="#重复线性渐变" class="headerlink" title="重复线性渐变"></a>重复线性渐变</h3><p>当设置某一个区域渐变颜色的时候，我们可以重复的这些渐变色填充</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(to right,blue <span class="number">10%</span>,red <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/6d183663bbfd8e20dfff3590a64bffa0" alt="1563344926021.png"></p>
-<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>径向渐变指提的是由内向外的一种扩散渐变方式，使用的属性名是<code>radial-gradient</code></p>
-<p>径向渐变的语法格式是</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*径向渐变第一个参数是存在的，但是一般可以省略</span></span><br><span class="line"><span class="comment">      它的第一个参数是ellipse椭圆或circle圆</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(可选参数,颜色一,颜色二.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当我们在设置径向渐变的时候，如果这个元素它不是正方形，那么径向渐变默认会成为一个椭圆，如果这个时候还想设置成圆，那么，我们就添加第一个参数为<code>circle</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>案例</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red,blue);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/b1277ffa421133960c6596b1835949fa" alt="1563345223395.png"></p>
-<p>径向渐变与线性渐变很相似，它也可以设置百分比的值，也可以设置多个颜色值</p>
-<h3 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h3><p>与之前讲过的重复的线性渐变相似</p>
-<p><code>repeating-radial-gradient</code>是重复径向渐变的属性名，设置方式与重复线性渐变一样</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(red <span class="number">10%</span>,blue <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>题外话</strong></p>
-<p>虽然渐变是一个颜色，但是我们不能通过<code>background-color</code>来设置，背景色的渐变其关把它当成了一个图片，所以，我们要使用background-image这个属性或background属性</p>
-<p>在之前的时候，我们讲过背景background-image可以设置多个图片，所以下面的代码它是成立的</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*下面是两个渐变叠加在了一起*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>)),<span class="built_in">radial-gradient</span>(deeppink,white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>之前，我们讲过背景颜色<code>background-color</code>,背景图片<code>background-image</code>等与背景相关的属性，现在，我们可以统一简写成<code>background</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="comment">/*background:red;*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">imgb/logo.png</span>) no-repeat right bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>url代表设置backround-image属性,no-repeat代表设置background-repeat,right bottom代表设置background-position属性</p>
-</blockquote>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-CSS过渡" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="../../2024/03/18/CSS%E8%BF%87%E6%B8%A1/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
-<p>过渡由以下几个属性来构成</p>
-<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
-<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
-</li>
-<li><p>transition-duration指的是过渡持续的时间</p>
-</li>
-<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
-<ul>
-<li><p>linear这个代表匀速直线</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
-</li>
-<li><p>ease属性值</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
-</li>
-<li><p>ease-in属性值</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
-</li>
-<li><p>ease-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
-</li>
-<li><p>ease-in-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
-</li>
-</ul>
-<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
-</li>
-<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
-</li>
-</ol>
-<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
-<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
-<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
-<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
-<ol>
-<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
-<p>还包含国内360，qq，搜狗,世界之窗</p>
-<p>更包含android平台内置的浏览器</p>
-</li>
-<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
-</li>
-<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
-</li>
-<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
-<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
-</li>
-<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
-</li>
-</ol>
-<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
-<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
-<ol>
-<li>display:block/none的过渡</li>
-<li>z-index不能执行过渡</li>
-<li>float不能执行过渡</li>
-<li>visibility 不能执行过渡</li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
     <article id="post-CSS基础" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1238,6 +994,250 @@
 </li>
 </ol>
 <p>​    </p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-CSS过渡" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="../../2024/03/18/CSS%E8%BF%87%E6%B8%A1/" class="article-date">
+  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
+<p>过渡由以下几个属性来构成</p>
+<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
+<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
+</li>
+<li><p>transition-duration指的是过渡持续的时间</p>
+</li>
+<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
+<ul>
+<li><p>linear这个代表匀速直线</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
+</li>
+<li><p>ease属性值</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
+</li>
+<li><p>ease-in属性值</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
+</li>
+<li><p>ease-out属性值</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
+</li>
+<li><p>ease-in-out属性值</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
+</li>
+</ul>
+<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
+</li>
+<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
+</li>
+</ol>
+<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
+<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
+<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
+<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
+<ol>
+<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
+<p>还包含国内360，qq，搜狗,世界之窗</p>
+<p>更包含android平台内置的浏览器</p>
+</li>
+<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
+</li>
+<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
+</li>
+<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
+<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
+</li>
+<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
+</li>
+</ol>
+<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
+<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
+<ol>
+<li>display:block/none的过渡</li>
+<li>z-index不能执行过渡</li>
+<li>float不能执行过渡</li>
+<li>visibility 不能执行过渡</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-CSS渐变" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="../../2024/03/18/CSS%E6%B8%90%E5%8F%98/" class="article-date">
+  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS里面的渐变指的是背景的渐变，它主要存在两种形式，一种是线性渐变，一种是径向渐变</p>
+<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><h4 id="基本线性渐变"><a href="#基本线性渐变" class="headerlink" title="基本线性渐变"></a>基本线性渐变</h4><hr>
+<blockquote>
+<p>沿着某一条直线进行颜色的改变，使用的CSS属性为<code>linear-gradient</code></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="comment">/*标准定法*/</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to 方向,颜色一,颜色二.......);</span><br><span class="line">    <span class="comment">/*兼容写法*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,颜色二,颜色一);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在兼容语法里面，有两点需要注意</p>
+<ol>
+<li>添加各种浏览器特定的前缀-webkit-,-moz-等</li>
+<li>在方向前面去掉<code>to</code>关键字，颜色反着来</li>
+</ol>
+</blockquote>
+<p>在线性渐变里面，它的第一个参数代表的是方向，这个方向可以指一个方向，也可以指两个关键的组合</p>
+<p>如左上角to left top,右上角 to right top,左下角 to left bottom,右下角  to right bottom</p>
+<p>后面接的是颜色值</p>
+<h4 id="设置渐变色的尺寸"><a href="#设置渐变色的尺寸" class="headerlink" title="设置渐变色的尺寸"></a>设置渐变色的尺寸</h4><p>当我们在设置渐变的时候，可以在某一个特殊颜色上面设置它的间距，这个间距叫渐变色的颜色尺寸</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div5</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    在下面的代码里面，我们可以看到蓝色会呈现50%的效果</span></span><br><span class="line"><span class="comment">    50%到70%为黄色</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,blue <span class="number">50%</span>,yellow <span class="number">70%</span>,red,orange <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/ff6b6315c0a5c0e28147298a5548c438" alt="1563343435308.png"></p>
+<blockquote>
+<p><strong>注意事项：</strong> </p>
+<p>在这里，它的尺寸最终不能大于100%，每个颜色使用逗号来进行隔开，然后颜色的后面可以跟百分比的值</p>
+</blockquote>
+<p>我们的线性渐变除了使用某一个方向做为颜色的改变方向，还可以使用角度来进行</p>
+<h3 id="角度线性线变"><a href="#角度线性线变" class="headerlink" title="角度线性线变"></a>角度线性线变</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div6</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    在第一个参数上面，我们已经不再写具体的方法了，转而可以使用一个角度来替代</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">0deg</span>,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>0deg代表上面</p>
+<p>90deg代表右边 </p>
+<p>180deg代表下边 </p>
+<p>270deg代表左边  </p>
+<p>角度线性渐变就弥补我们之前在基本的线性渐变方向单一的问题，它可以通过角度直接指定某一个方向</p>
+<h3 id="渐变与图片结合使用"><a href="#渐变与图片结合使用" class="headerlink" title="渐变与图片结合使用"></a>渐变与图片结合使用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">1200px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*background-image: url(img/1.jpg);*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right bottom,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.1</span>)), <span class="built_in">url</span>(<span class="string">img/1.jpg</span>);</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的效果的<strong>核心思路</strong>其实就是把之前的多个背景图片设置，它产先从右向左加载，先加载了背景图片，再加载了渐变色，效果图如下</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/61bce9382fd3edf254c7526c78eb41c4" alt="1563344605888.png"></p>
+<h3 id="重复线性渐变"><a href="#重复线性渐变" class="headerlink" title="重复线性渐变"></a>重复线性渐变</h3><p>当设置某一个区域渐变颜色的时候，我们可以重复的这些渐变色填充</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(to right,blue <span class="number">10%</span>,red <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/6d183663bbfd8e20dfff3590a64bffa0" alt="1563344926021.png"></p>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>径向渐变指提的是由内向外的一种扩散渐变方式，使用的属性名是<code>radial-gradient</code></p>
+<p>径向渐变的语法格式是</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*径向渐变第一个参数是存在的，但是一般可以省略</span></span><br><span class="line"><span class="comment">      它的第一个参数是ellipse椭圆或circle圆</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(可选参数,颜色一,颜色二.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们在设置径向渐变的时候，如果这个元素它不是正方形，那么径向渐变默认会成为一个椭圆，如果这个时候还想设置成圆，那么，我们就添加第一个参数为<code>circle</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red,blue);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/b1277ffa421133960c6596b1835949fa" alt="1563345223395.png"></p>
+<p>径向渐变与线性渐变很相似，它也可以设置百分比的值，也可以设置多个颜色值</p>
+<h3 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h3><p>与之前讲过的重复的线性渐变相似</p>
+<p><code>repeating-radial-gradient</code>是重复径向渐变的属性名，设置方式与重复线性渐变一样</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(red <span class="number">10%</span>,blue <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>题外话</strong></p>
+<p>虽然渐变是一个颜色，但是我们不能通过<code>background-color</code>来设置，背景色的渐变其关把它当成了一个图片，所以，我们要使用background-image这个属性或background属性</p>
+<p>在之前的时候，我们讲过背景background-image可以设置多个图片，所以下面的代码它是成立的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*下面是两个渐变叠加在了一起*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>)),<span class="built_in">radial-gradient</span>(deeppink,white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>之前，我们讲过背景颜色<code>background-color</code>,背景图片<code>background-image</code>等与背景相关的属性，现在，我们可以统一简写成<code>background</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="comment">/*background:red;*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">imgb/logo.png</span>) no-repeat right bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>url代表设置backround-image属性,no-repeat代表设置background-repeat,right bottom代表设置background-position属性</p>
+</blockquote>
 
       
       <!-- reward -->
