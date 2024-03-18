@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Flutter面试 |  Mr Deng的个人博客
+     Mr Deng的个人博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -21,14 +21,14 @@
 <link rel="stylesheet" href="../../../../dist/main.css">
 
   
-<link rel="stylesheet" href="../../../../https:/cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
 
   
 <link rel="stylesheet" href="../../../../css/custom.css">
 
   
   
-<script src="../../../../https:/cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
   
   
@@ -47,15 +47,6 @@
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Flutter面试
-</h1>
- 
-
-    </header>
     
 
     
@@ -109,19 +100,19 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dart 里面默认是公开的，私有变量使用下划线开头</span><br></pre></td></tr></table></figure>
 
 <p>2.dart是不是单线程？如何运行的？</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(1)dart是单线程</span><br><span class="line">(2)dart在单线程中是以消息循环机制来运行的，其中包括两个任务队列，</span><br><span class="line">一个是“微任务队列”microtask queue, 另一个叫做“事件队列”event queue</span><br><span class="line"></span><br><span class="line">入口函数 mian()函数运行后，消息循环机制便启动了，首先会按照先进先出的</span><br><span class="line">顺序逐个执行微任务队列中的任务，当所有微任务队列中的任务执行完之后便开</span><br><span class="line">始执行事件队列的任务，事件队列中的任务执行完之后再去执行微任务队列中的</span><br><span class="line">任务，如此循环往复，生生不息。</span><br><span class="line">在Dart中，所有的外部事件任务都在事件队列中，如IO、计时器、点击、以及绘</span><br><span class="line">制事件等，而微任务通常来源于Dart内部，并且微任务非常少，之所以如此，是</span><br><span class="line">因为微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任</span><br><span class="line">务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡，所以必须得保证</span><br><span class="line">微任务队列不会太长。值得注意的是，我们可以通过Future.microtask(…)方法</span><br><span class="line">向微任务队列插入一个任务。</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart是单线程</span><br><span class="line">(<span class="number">2</span>)dart在单线程中是以消息循环机制来运行的，其中包括两个任务队列，</span><br><span class="line">一个是“微任务队列”microtask queue, 另一个叫做“事件队列”event queue</span><br><span class="line"></span><br><span class="line">入口函数 <span class="built_in">mian</span>()函数运行后，消息循环机制便启动了，首先会按照先进先出的</span><br><span class="line">顺序逐个执行微任务队列中的任务，当所有微任务队列中的任务执行完之后便开</span><br><span class="line">始执行事件队列的任务，事件队列中的任务执行完之后再去执行微任务队列中的</span><br><span class="line">任务，如此循环往复，生生不息。</span><br><span class="line">在Dart中，所有的外部事件任务都在事件队列中，如IO、计时器、点击、以及绘</span><br><span class="line">制事件等，而微任务通常来源于Dart内部，并且微任务非常少，之所以如此，是</span><br><span class="line">因为微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任</span><br><span class="line">务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡，所以必须得保证</span><br><span class="line">微任务队列不会太长。值得注意的是，我们可以通过Future<span class="selector-class">.microtask</span>(…)方法</span><br><span class="line">向微任务队列插入一个任务。</span><br></pre></td></tr></table></figure>
 
 <p>3.dart 多任务是如何并行的?他们之间是如何交互的？</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart不存在多线程，dart 提供另一个类似新线程，但是不共享内存独立运行</span><br><span class="line">的worker-isolate</span><br><span class="line">(<span class="number">2</span>)两个isolate之间通过SendPort相互发送消息，通过ReceiveProt接受消息</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart不存在多线程，dart 提供另一个类似新线程，但是不共享内存独立运行</span><br><span class="line">的worker-<span class="built_in">isolate</span></span><br><span class="line">(<span class="number">2</span>)两个<span class="built_in">isolate</span>之间通过SendPort相互发送消息，通过ReceiveProt接受消息</span><br></pre></td></tr></table></figure>
 
 <p>4.说一下dart异步编程中Future关键字</p>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在dart中通常使用<span class="keyword">Future</span>来执行异步或者延时操作</span><br></pre></td></tr></table></figure>
 
 <p>5.说一下Dart异步编程中的 Stream数据流？ </p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">dart</span>中<span class="keyword">Stream </span>和Future 都是解决异步的工具， 不同是<span class="keyword">Stream可以接受多个异步</span></span><br><span class="line"><span class="keyword">的结果，而Future只能接受一个异步结果。0</span></span><br><span class="line"><span class="keyword">Stream </span>的创建可以使用 <span class="keyword">Stream.fromFuture，也可以使用 </span><span class="keyword">StreamController </span></span><br><span class="line">来创建和控制。还有一个注意点是：普通的 <span class="keyword">Stream </span>只可以有一个订阅者，如果想</span><br><span class="line">要多订阅的话，要使用 asBroadcastStream()。</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dart中<span class="built_in">Stream</span> 和Future 都是解决异步的工具， 不同是<span class="built_in">Stream</span>可以接受多个异步</span><br><span class="line">的结果，而Future只能接受一个异步结果。<span class="number">0</span></span><br><span class="line"><span class="built_in">Stream</span> 的创建可以使用 <span class="built_in">Stream</span>.fromFuture，也可以使用 StreamController </span><br><span class="line">来创建和控制。还有一个注意点是：普通的 <span class="built_in">Stream</span> 只可以有一个订阅者，如果想</span><br><span class="line">要多订阅的话，要使用 <span class="built_in">asBroadcastStream</span>()。</span><br></pre></td></tr></table></figure>
 
 <p>6.Stream 有哪两种订阅模式？分别是怎么调用的？</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Stream </span>有两种订阅模式：单订阅(single) 和 多订阅（<span class="keyword">broadcast）。单订阅就</span></span><br><span class="line"><span class="keyword">是只能有一个订阅者，而广播是可以有多个订阅者。这就有点类似于消息服务（Message</span></span><br><span class="line"><span class="keyword">Service）的处理模式。单订阅类似于点对点，在订阅者出现之前会持有数据，在</span></span><br><span class="line"><span class="keyword">订阅者出现之后就才转交给它。而广播类似于发布订阅模式，可以同时有多个订阅者，</span></span><br><span class="line"><span class="keyword">当有数据时就会传递给所有的订阅者，而不管当前是否已有订阅者存在。</span></span><br><span class="line"><span class="keyword">Stream </span>默认处于单订阅模式，所以同一个 <span class="keyword">stream </span>上的 listen 和其它大多数方法</span><br><span class="line">只能调用一次，调用第二次就会报错。但 <span class="keyword">Stream </span>可以通过 transform() 方法（返回</span><br><span class="line">另一个 <span class="keyword">Stream）进行连续调用。通过 </span><span class="keyword">Stream.asBroadcastStream() </span>可以将一个单</span><br><span class="line">订阅模式的 <span class="keyword">Stream </span>转换成一个多订阅模式的 <span class="keyword">Stream，isBroadcast </span>属性可以判断</span><br><span class="line">当前 <span class="keyword">Stream </span>所处的模式。</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stream</span> 有两种订阅模式：单订阅(single) 和 多订阅（broadcast）。单订阅就</span><br><span class="line">是只能有一个订阅者，而广播是可以有多个订阅者。这就有点类似于消息服务（Message</span><br><span class="line">Service）的处理模式。单订阅类似于点对点，在订阅者出现之前会持有数据，在</span><br><span class="line">订阅者出现之后就才转交给它。而广播类似于发布订阅模式，可以同时有多个订阅者，</span><br><span class="line">当有数据时就会传递给所有的订阅者，而不管当前是否已有订阅者存在。</span><br><span class="line"><span class="built_in">Stream</span> 默认处于单订阅模式，所以同一个 stream 上的 listen 和其它大多数方法</span><br><span class="line">只能调用一次，调用第二次就会报错。但 <span class="built_in">Stream</span> 可以通过 <span class="built_in">transform</span>() 方法（返回</span><br><span class="line">另一个 <span class="built_in">Stream</span>）进行连续调用。通过 <span class="built_in">Stream</span>.<span class="built_in">asBroadcastStream</span>() 可以将一个单</span><br><span class="line">订阅模式的 <span class="built_in">Stream</span> 转换成一个多订阅模式的 <span class="built_in">Stream</span>，isBroadcast 属性可以判断</span><br><span class="line">当前 <span class="built_in">Stream</span> 所处的模式。</span><br></pre></td></tr></table></figure>
 
 <p>7.说一下mixin机制？</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mixin</span> 是Dart <span class="number">2.1</span> 加入的特性，以前版本通常使用<span class="keyword">abstract</span> <span class="keyword">class</span>代替。简单来说，</span><br><span class="line"><span class="symbol">mixin</span>是为了解决继承方面的问题而引入的机制，<span class="symbol">Dart</span>为了支持多重继承，引入了<span class="symbol">mixin</span></span><br><span class="line">关键字，它最大的特殊处在于：<span class="symbol">mixin</span>定义的类不能有构造方法，这样可以避免继承多个</span><br><span class="line">类而产生的父类构造方法冲突。</span><br><span class="line"><span class="symbol">mixins</span>的对象是类，<span class="symbol">mixins</span>绝不是继承，也不是接口，而是一种全新的特性，可以<span class="symbol">mixins</span></span><br><span class="line">多个类，<span class="symbol">mixins</span>的使用需要满足一定条件。</span><br></pre></td></tr></table></figure>
@@ -198,7 +189,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2024/03/18/Flutter%E9%9D%A2%E8%AF%95/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/18/Flutter%E9%9D%A2%E8%AF%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -214,11 +205,11 @@
   
   <nav class="article-nav">
     
-      <a href="../CSS%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+      <a href="../Flutter%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            CSS基础
+            (no title)
           
         </div>
       </a>
@@ -226,7 +217,7 @@
     
       <a href="../HTML%E5%9F%BA%E7%A1%80/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">HTML基础</div>
+        <div class="article-nav-title"></div>
       </a>
     
   </nav>

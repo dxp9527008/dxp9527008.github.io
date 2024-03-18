@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    前端面试总结 |  Mr Deng的个人博客
+     Mr Deng的个人博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -21,14 +21,14 @@
 <link rel="stylesheet" href="../../../../dist/main.css">
 
   
-<link rel="stylesheet" href="../../../../https:/cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
 
   
 <link rel="stylesheet" href="../../../../css/custom.css">
 
   
   
-<script src="../../../../https:/cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
   
   
@@ -47,15 +47,6 @@
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  前端面试总结
-</h1>
- 
-
-    </header>
     
 
     
@@ -105,7 +96,7 @@
       
 
       
-      <h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a, c</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="built_in">console</span>.log(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="built_in">console</span>.log(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125; </span><br><span class="line">    <span class="built_in">console</span>.log(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">AO:&#123;	</span><br><span class="line">    a: <span class="literal">undefined</span>  <span class="number">1</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    c: <span class="literal">undefined</span>  <span class="number">2</span> <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    d: <span class="literal">undefined</span></span><br><span class="line">    b: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, c</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="attr">AO</span>:&#123;	</span><br><span class="line">    <span class="attr">a</span>: <span class="literal">undefined</span>  <span class="number">1</span> <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">c</span>: <span class="literal">undefined</span>  <span class="number">2</span> <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></span><br><span class="line">    <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>预编译</p>
 <p>js的变量对象 AO对象，提供js引擎自己去访问</p>
@@ -122,13 +113,13 @@
 <p>浏览器向服务器发送一条HTTP请求报文</p>
 <p>服务器向浏览器返回一条HTTP响应报文</p>
 <p>关闭连接 浏览器解析文档</p>
-<h2 id="3-异步编程的方法"><a href="#3-异步编程的方法" class="headerlink" title="3.异步编程的方法"></a>3.异步编程的方法</h2><h2 id="4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别"><a href="#4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别" class="headerlink" title="4.解释同步\异步、阻塞\非阻塞、并行\并发之间的区别"></a>4.<strong>解释同步\异步、阻塞\非阻塞、并行\并发之间的区别</strong></h2><h2 id="5-js实现数值千分位"><a href="#5-js实现数值千分位" class="headerlink" title="5. js实现数值千分位"></a>5. <strong>js实现数值千分位</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">number.toLocaleString()</span><br></pre></td></tr></table></figure>
+<h2 id="3-异步编程的方法"><a href="#3-异步编程的方法" class="headerlink" title="3.异步编程的方法"></a>3.异步编程的方法</h2><h2 id="4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别"><a href="#4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别" class="headerlink" title="4.解释同步\异步、阻塞\非阻塞、并行\并发之间的区别"></a>4.<strong>解释同步\异步、阻塞\非阻塞、并行\并发之间的区别</strong></h2><h2 id="5-js实现数值千分位"><a href="#5-js实现数值千分位" class="headerlink" title="5. js实现数值千分位"></a>5. <strong>js实现数值千分位</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">number.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure>
 
 <h2 id="6-为什么JavaScript是单线程的，与异步冲突吗"><a href="#6-为什么JavaScript是单线程的，与异步冲突吗" class="headerlink" title="6. 为什么JavaScript是单线程的，与异步冲突吗"></a>6. 为什么JavaScript是单线程的，与异步冲突吗</h2><p>补充：JS中其实是没有线程概念的，所谓的单线程也只是相对于多线程而言。JS的设计初衷就没有考虑这些，针对JS这种不具备并行任务处理的特性，我们称之为“单线程”。</p>
 <p>JS的单线程是指一个浏览器进程中只有一个JS的执行线程，同一时刻内只会有一段代码在执行。</p>
 <p>举个通俗例子，假设JS支持多线程操作的话，JS可以操作DOM，那么一个线程在删除DOM，另外一个线程就在获取DOM数据，这样子明显不合理，这算是证明之一。</p>
 <p>来看段代码👇</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span> &#123;</span></span><br><span class="line">    console.<span class="built_in">log</span>(<span class="string">"first"</span>);</span><br><span class="line">    setTimeout(( <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></span><br><span class="line">        console.<span class="built_in">log</span>( <span class="string">'second'</span> );</span><br><span class="line">    &#125;),<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; <span class="number">1000000</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">    setTimeout(( <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.<span class="built_in">log</span>( <span class="string">&#x27;second&#x27;</span> );</span><br><span class="line">    &#125;),<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
 <p>打印结果就是首先是很多个first,然后再是second。</p>
 <p>异步机制是浏览器的两个或以上常驻线程共同完成的，举个例子，比如异步请求由两个常驻线程，JS执行线程和事件触发线程共同完成的。</p>
@@ -275,7 +266,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2024/03/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,19 +282,19 @@
   
   <nav class="article-nav">
     
-      <a href="../Vue%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" class="article-nav-link">
+      <a href="../%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Vue项目优化
+            (no title)
           
         </div>
       </a>
     
     
-      <a href="../Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-nav-link">
+      <a href="../%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Vue面试题</div>
+        <div class="article-nav-title"></div>
       </a>
     
   </nav>

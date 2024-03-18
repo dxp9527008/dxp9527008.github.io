@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    CSS变幻 |  Mr Deng的个人博客
+     Mr Deng的个人博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -21,14 +21,14 @@
 <link rel="stylesheet" href="../../../../dist/main.css">
 
   
-<link rel="stylesheet" href="../../../../https:/cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
 
   
 <link rel="stylesheet" href="../../../../css/custom.css">
 
   
   
-<script src="../../../../https:/cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
   
   
@@ -48,15 +48,6 @@
 
   <div class="article-inner">
     
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  CSS变幻
-</h1>
- 
-
-    </header>
-    
 
     
     <div class="article-meta">
@@ -71,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">839</span>
+            <span class="post-count">841</span>
         </span>
     </span>
 
@@ -110,7 +101,7 @@
 <p>transform的属性使用起来非常简单，它复杂的地方在它的属性值上面</p>
 </blockquote>
 <p>变幻起点位置属性transform-origin，这个属性标注了变幻的起始位置</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span>:left top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span><span class="selector-pseudo">:left</span> <span class="attribute">top</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个属性不仅可以接收枚举值，还可以接收像素值</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span>:<span class="number">200px</span> <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -132,7 +123,7 @@
 <li>translateZ()沿着Z轴移动，但前提条件是开始3D转换效果</li>
 </ol>
 <p><strong>小技巧</strong>：如果在上面的三个方法里面输入百分比的单位 ，这个百分比是以当前元素的大小为百分比，X轴是以width为百分比，Y轴是以height为百分比</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.div1</span>&#123;</span></span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    border: 1px solid black;</span><br><span class="line">    background-color: red;</span><br><span class="line">    /*</span><br><span class="line">    我要让这个DIV沿着X向右移动 50px</span><br><span class="line">    向下移动100px</span><br><span class="line">    * */</span><br><span class="line"><span class="css">    <span class="comment">/*-webkit-transform: translate(50px,100px);*/</span></span></span><br><span class="line">    -webkit-transform: translateX(50px) translateY(50px);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    我要让这个DIV沿着X向右移动 50px</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    向下移动100px</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="comment">/*-webkit-transform: translate(50px,100px);*/</span></span></span><br><span class="line"><span class="language-css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">50px</span>) <span class="built_in">translateY</span>(<span class="number">50px</span>);</span></span><br><span class="line"><span class="language-css"> &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>与margin的区别</strong></p>
 <ol>
@@ -231,7 +222,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2024/03/18/CSS%E5%8F%98%E5%B9%BB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/18/CSS%E5%8F%98%E5%B9%BB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -251,15 +242,15 @@
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            CSS动画
+            (no title)
           
         </div>
       </a>
     
     
-      <a href="../CSS%E8%BF%87%E6%B8%A1/" class="article-nav-link">
+      <a href="../CSS%E6%B8%90%E5%8F%98/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">CSS过渡</div>
+        <div class="article-nav-title"></div>
       </a>
     
   </nav>

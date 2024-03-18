@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    弹性布局 |  Mr Deng的个人博客
+     Mr Deng的个人博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -21,14 +21,14 @@
 <link rel="stylesheet" href="../../../../dist/main.css">
 
   
-<link rel="stylesheet" href="../../../../https:/cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
 
   
 <link rel="stylesheet" href="../../../../css/custom.css">
 
   
   
-<script src="../../../../https:/cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
   
   
@@ -48,15 +48,6 @@
 
   <div class="article-inner">
     
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  弹性布局
-</h1>
- 
-
-    </header>
-    
 
     
     <div class="article-meta">
@@ -71,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">852</span>
+            <span class="post-count">860</span>
         </span>
     </span>
 
@@ -144,7 +135,7 @@
 </li>
 <li><p>baseline基准对对齐，当内部元素有padding的时候，就会看到效果</p>
 <p><img src="https://img03.sogoucdn.com/app/a/100520146/aa4749128f118cdef9f6671c48647f8b" alt="1563689240668.png"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span>&#123;</span></span><br><span class="line">        width: 400px;</span><br><span class="line">        height: 250px;</span><br><span class="line">        border: 1px solid red;</span><br><span class="line"><span class="css">        <span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;  <span class="comment">/*变成弹性盒子*/</span></span></span><br><span class="line"><span class="css">        <span class="selector-tag">flex-direction</span>: <span class="selector-tag">row</span>;  <span class="comment">/*row是主轴*/</span></span></span><br><span class="line"><span class="css">        <span class="comment">/*如果我现在想让里面的元素左右居中，那么，应该沿关row这根轴移动*/</span></span></span><br><span class="line"><span class="css">        <span class="comment">/*justify-content: space-around;*/</span></span></span><br><span class="line">        align-items: baseline;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: deeppink;</span><br><span class="line">        font-size: 38px;</span><br><span class="line">        color: white;</span><br><span class="line">        padding-top: 70px;</span><br><span class="line">        box-sizing: border-box;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line">        width: 100px;height: 100px;</span><br><span class="line">        background-color: blue;</span><br><span class="line">        font-size: 38px;</span><br><span class="line">        color: white;</span><br><span class="line">        padding-top: 30px;</span><br><span class="line">        box-sizing: border-box;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">display</span>: flex;  <span class="comment">/*变成弹性盒子*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">flex-direction</span>: row;  <span class="comment">/*row是主轴*/</span></span></span><br><span class="line"><span class="language-css">        <span class="comment">/*如果我现在想让里面的元素左右居中，那么，应该沿关row这根轴移动*/</span></span></span><br><span class="line"><span class="language-css">        <span class="comment">/*justify-content: space-around;*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">align-items</span>: baseline;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: deeppink;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">38px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding-top</span>: <span class="number">70px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">38px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding-top</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -243,7 +234,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2024/03/18/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/18/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -259,19 +250,19 @@
   
   <nav class="article-nav">
     
-      <a href="../Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-nav-link">
+      <a href="../%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Vue面试题
+            (no title)
           
         </div>
       </a>
     
     
-      <a href="../%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" class="article-nav-link">
+      <a href="../%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">前端浏览器知识梳理</div>
+        <div class="article-nav-title"></div>
       </a>
     
   </nav>
