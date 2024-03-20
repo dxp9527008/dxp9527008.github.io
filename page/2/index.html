@@ -83,6 +83,119 @@
     
     
     
+    <article id="post-CSS变幻" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="../../2024/03/18/CSS%E5%8F%98%E5%B9%BB/" class="article-date">
+  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="CSS变幻"><a href="#CSS变幻" class="headerlink" title="CSS变幻"></a>CSS变幻</h2><p>CSS变幻指的是页面上面的元素样式发生变幻，主要存在以下几种情况，变幻的属性使用transform</p>
+<blockquote>
+<p>transform的属性使用起来非常简单，它复杂的地方在它的属性值上面</p>
+</blockquote>
+<p>变幻起点位置属性transform-origin，这个属性标注了变幻的起始位置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span><span class="selector-pseudo">:left</span> <span class="attribute">top</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个属性不仅可以接收枚举值，还可以接收像素值</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span>:<span class="number">200px</span> <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果在变幻的时候，要想实现3D的效果，就要创建3D空间</p>
+<ul>
+<li><p><code>transform-style: preserve-3d;</code></p>
+</li>
+<li><p>如果想看到变幻的3d效果，添加3D视距离，<code>perspective</code>这值越大，3D效果越不明显，值越小3D效果越明显</p>
+<p>在我们平时去设置<code>perspective</code>值的时候，有一个小规律，如果我是X轴的旋转，我看宽度，如果是Y轴的旋转，我看高度</p>
+</li>
+</ul>
+<p>上面的两个属性都是加在父级的</p>
+<h3 id="位移变幻"><a href="#位移变幻" class="headerlink" title="位移变幻"></a>位移变幻</h3><p><strong>位移指的是元素在X轴或Y轴或Z轴进行位置的移动</strong></p>
+<ol>
+<li>translateX()  沿着X轴移动</li>
+<li>translateY()   沿着y轴移动</li>
+<li>translate(x轴移动,y轴移动)  可以同时沿着X与Y轴去移动</li>
+<li>translateZ()沿着Z轴移动，但前提条件是开始3D转换效果</li>
+</ol>
+<p><strong>小技巧</strong>：如果在上面的三个方法里面输入百分比的单位 ，这个百分比是以当前元素的大小为百分比，X轴是以width为百分比，Y轴是以height为百分比</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    我要让这个DIV沿着X向右移动 50px</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    向下移动100px</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="comment">/*-webkit-transform: translate(50px,100px);*/</span></span></span><br><span class="line"><span class="language-css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">50px</span>) <span class="built_in">translateY</span>(<span class="number">50px</span>);</span></span><br><span class="line"><span class="language-css"> &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>与margin的区别</strong></p>
+<ol>
+<li>margin会挤压其它的元素，而translate不会</li>
+<li>translate不占用新位置，保留原来的位置</li>
+</ol>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p>页面上面的某一些元素跟随某一根轴进行旋转</p>
+<ol>
+<li>rotateX(40deg)沿着X轴在旋转</li>
+<li>rotateY()沿着Y轴去旋转</li>
+<li>rotateZ()沿着Z轴去旋转</li>
+<li>rotate3d(0,0,1,45deg) ，前三个值都 是0或1，分别代表是否要旋转的轴，第一个值代表X轴，第二个值代表Y轴，第三个值代表Z轴，第四个值代表旋转的角度</li>
+</ol>
+<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>缩放的默认值是1，最小值是0</p>
+<ol>
+<li>scaleX() 沿着X轴去缩放</li>
+<li>scaleY()沿着Y轴去缩放</li>
+<li>scale()同时沿着X与Y轴两个方法去缩放</li>
+</ol>
+<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><ol>
+<li><code>skewX(25deg)</code>沿着X轴实现在个角度的变形</li>
+<li><code>skewX(25deg)</code>沿着Y轴去实现角度的变形</li>
+<li><code>skew(14deg,-16deg)</code>,同时沿着X与Y轴进行变形，第一个值代表X轴的角度 ，第二个值代表Y轴角度</li>
+</ol>
+<h3 id="多种变幻的结合"><a href="#多种变幻的结合" class="headerlink" title="多种变幻的结合"></a>多种变幻的结合</h3><p>在CSS里面，有时候我们需要将一个元素设置为多种情况下的变幻，如我既希望它放大，还希望它旋转，还希望它位移，当这些变幻同时进行的时候，我们的属性值怎么设置呢？</p>
+<p><strong>注意：</strong>如果在一个元素要设置多个变幻效果，不能同时设置多个<code>transform</code>属性</p>
+<p>正确的语法如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>:变幻<span class="number">1</span> 变幻<span class="number">2</span> 变幻<span class="number">3</span>.....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将多个变幻的属性用空格隔开，同时赋值给<code>transform</code>这个属性</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-CSS动画" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -169,119 +282,6 @@
 </blockquote>
 <h3 id="动画案例"><a href="#动画案例" class="headerlink" title="动画案例"></a>动画案例</h3><p><strong>轮播图案例</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>动画案例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">639px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">426px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">5px</span> solid blue;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.imgBox</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">426px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">3195px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">animation</span>: a1 <span class="number">10s</span> infinite;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.imgBox</span>&gt;<span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@keyframes</span> a1&#123;</span></span><br><span class="line"><span class="language-css">				<span class="number">0%</span>,<span class="number">15%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">20%</span>,<span class="number">35%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">639px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">40%</span>,<span class="number">55%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">1278px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">60%</span>,<span class="number">75%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">1917px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">80%</span>,<span class="number">100%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">2556px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&gt;<span class="selector-class">.imgBox</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">animation-play-state</span>: paused;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;imgBox clearfix&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item2.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item3.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item4.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-CSS变幻" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="../../2024/03/18/CSS%E5%8F%98%E5%B9%BB/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="CSS变幻"><a href="#CSS变幻" class="headerlink" title="CSS变幻"></a>CSS变幻</h2><p>CSS变幻指的是页面上面的元素样式发生变幻，主要存在以下几种情况，变幻的属性使用transform</p>
-<blockquote>
-<p>transform的属性使用起来非常简单，它复杂的地方在它的属性值上面</p>
-</blockquote>
-<p>变幻起点位置属性transform-origin，这个属性标注了变幻的起始位置</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span><span class="selector-pseudo">:left</span> <span class="attribute">top</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个属性不仅可以接收枚举值，还可以接收像素值</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform-origin</span>:<span class="number">200px</span> <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果在变幻的时候，要想实现3D的效果，就要创建3D空间</p>
-<ul>
-<li><p><code>transform-style: preserve-3d;</code></p>
-</li>
-<li><p>如果想看到变幻的3d效果，添加3D视距离，<code>perspective</code>这值越大，3D效果越不明显，值越小3D效果越明显</p>
-<p>在我们平时去设置<code>perspective</code>值的时候，有一个小规律，如果我是X轴的旋转，我看宽度，如果是Y轴的旋转，我看高度</p>
-</li>
-</ul>
-<p>上面的两个属性都是加在父级的</p>
-<h3 id="位移变幻"><a href="#位移变幻" class="headerlink" title="位移变幻"></a>位移变幻</h3><p><strong>位移指的是元素在X轴或Y轴或Z轴进行位置的移动</strong></p>
-<ol>
-<li>translateX()  沿着X轴移动</li>
-<li>translateY()   沿着y轴移动</li>
-<li>translate(x轴移动,y轴移动)  可以同时沿着X与Y轴去移动</li>
-<li>translateZ()沿着Z轴移动，但前提条件是开始3D转换效果</li>
-</ol>
-<p><strong>小技巧</strong>：如果在上面的三个方法里面输入百分比的单位 ，这个百分比是以当前元素的大小为百分比，X轴是以width为百分比，Y轴是以height为百分比</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    我要让这个DIV沿着X向右移动 50px</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    向下移动100px</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="comment">/*-webkit-transform: translate(50px,100px);*/</span></span></span><br><span class="line"><span class="language-css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">50px</span>) <span class="built_in">translateY</span>(<span class="number">50px</span>);</span></span><br><span class="line"><span class="language-css"> &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>与margin的区别</strong></p>
-<ol>
-<li>margin会挤压其它的元素，而translate不会</li>
-<li>translate不占用新位置，保留原来的位置</li>
-</ol>
-<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p>页面上面的某一些元素跟随某一根轴进行旋转</p>
-<ol>
-<li>rotateX(40deg)沿着X轴在旋转</li>
-<li>rotateY()沿着Y轴去旋转</li>
-<li>rotateZ()沿着Z轴去旋转</li>
-<li>rotate3d(0,0,1,45deg) ，前三个值都 是0或1，分别代表是否要旋转的轴，第一个值代表X轴，第二个值代表Y轴，第三个值代表Z轴，第四个值代表旋转的角度</li>
-</ol>
-<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>缩放的默认值是1，最小值是0</p>
-<ol>
-<li>scaleX() 沿着X轴去缩放</li>
-<li>scaleY()沿着Y轴去缩放</li>
-<li>scale()同时沿着X与Y轴两个方法去缩放</li>
-</ol>
-<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><ol>
-<li><code>skewX(25deg)</code>沿着X轴实现在个角度的变形</li>
-<li><code>skewX(25deg)</code>沿着Y轴去实现角度的变形</li>
-<li><code>skew(14deg,-16deg)</code>,同时沿着X与Y轴进行变形，第一个值代表X轴的角度 ，第二个值代表Y轴角度</li>
-</ol>
-<h3 id="多种变幻的结合"><a href="#多种变幻的结合" class="headerlink" title="多种变幻的结合"></a>多种变幻的结合</h3><p>在CSS里面，有时候我们需要将一个元素设置为多种情况下的变幻，如我既希望它放大，还希望它旋转，还希望它位移，当这些变幻同时进行的时候，我们的属性值怎么设置呢？</p>
-<p><strong>注意：</strong>如果在一个元素要设置多个变幻效果，不能同时设置多个<code>transform</code>属性</p>
-<p>正确的语法如下</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>:变幻<span class="number">1</span> 变幻<span class="number">2</span> 变幻<span class="number">3</span>.....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>将多个变幻的属性用空格隔开，同时赋值给<code>transform</code>这个属性</p>
 
       
       <!-- reward -->
@@ -1388,6 +1388,86 @@
 
 </article>
     
+    <article id="post-Flutter面试" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="../../2024/03/18/Flutter%E9%9D%A2%E8%AF%95/" class="article-date">
+  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="flutter-面试"><a href="#flutter-面试" class="headerlink" title="flutter 面试"></a>flutter 面试</h3><p>1.dart 的作用域</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dart 里面默认是公开的，私有变量使用下划线开头</span><br></pre></td></tr></table></figure>
+
+<p>2.dart是不是单线程？如何运行的？</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart是单线程</span><br><span class="line">(<span class="number">2</span>)dart在单线程中是以消息循环机制来运行的，其中包括两个任务队列，</span><br><span class="line">一个是“微任务队列”microtask queue, 另一个叫做“事件队列”event queue</span><br><span class="line"></span><br><span class="line">入口函数 <span class="built_in">mian</span>()函数运行后，消息循环机制便启动了，首先会按照先进先出的</span><br><span class="line">顺序逐个执行微任务队列中的任务，当所有微任务队列中的任务执行完之后便开</span><br><span class="line">始执行事件队列的任务，事件队列中的任务执行完之后再去执行微任务队列中的</span><br><span class="line">任务，如此循环往复，生生不息。</span><br><span class="line">在Dart中，所有的外部事件任务都在事件队列中，如IO、计时器、点击、以及绘</span><br><span class="line">制事件等，而微任务通常来源于Dart内部，并且微任务非常少，之所以如此，是</span><br><span class="line">因为微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任</span><br><span class="line">务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡，所以必须得保证</span><br><span class="line">微任务队列不会太长。值得注意的是，我们可以通过Future<span class="selector-class">.microtask</span>(…)方法</span><br><span class="line">向微任务队列插入一个任务。</span><br></pre></td></tr></table></figure>
+
+<p>3.dart 多任务是如何并行的?他们之间是如何交互的？</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart不存在多线程，dart 提供另一个类似新线程，但是不共享内存独立运行</span><br><span class="line">的worker-<span class="built_in">isolate</span></span><br><span class="line">(<span class="number">2</span>)两个<span class="built_in">isolate</span>之间通过SendPort相互发送消息，通过ReceiveProt接受消息</span><br></pre></td></tr></table></figure>
+
+<p>4.说一下dart异步编程中Future关键字</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在dart中通常使用<span class="keyword">Future</span>来执行异步或者延时操作</span><br></pre></td></tr></table></figure>
+
+<p>5.说一下Dart异步编程中的 Stream数据流？ </p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dart中<span class="built_in">Stream</span> 和Future 都是解决异步的工具， 不同是<span class="built_in">Stream</span>可以接受多个异步</span><br><span class="line">的结果，而Future只能接受一个异步结果。<span class="number">0</span></span><br><span class="line"><span class="built_in">Stream</span> 的创建可以使用 <span class="built_in">Stream</span>.fromFuture，也可以使用 StreamController </span><br><span class="line">来创建和控制。还有一个注意点是：普通的 <span class="built_in">Stream</span> 只可以有一个订阅者，如果想</span><br><span class="line">要多订阅的话，要使用 <span class="built_in">asBroadcastStream</span>()。</span><br></pre></td></tr></table></figure>
+
+<p>6.Stream 有哪两种订阅模式？分别是怎么调用的？</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stream</span> 有两种订阅模式：单订阅(single) 和 多订阅（broadcast）。单订阅就</span><br><span class="line">是只能有一个订阅者，而广播是可以有多个订阅者。这就有点类似于消息服务（Message</span><br><span class="line">Service）的处理模式。单订阅类似于点对点，在订阅者出现之前会持有数据，在</span><br><span class="line">订阅者出现之后就才转交给它。而广播类似于发布订阅模式，可以同时有多个订阅者，</span><br><span class="line">当有数据时就会传递给所有的订阅者，而不管当前是否已有订阅者存在。</span><br><span class="line"><span class="built_in">Stream</span> 默认处于单订阅模式，所以同一个 stream 上的 listen 和其它大多数方法</span><br><span class="line">只能调用一次，调用第二次就会报错。但 <span class="built_in">Stream</span> 可以通过 <span class="built_in">transform</span>() 方法（返回</span><br><span class="line">另一个 <span class="built_in">Stream</span>）进行连续调用。通过 <span class="built_in">Stream</span>.<span class="built_in">asBroadcastStream</span>() 可以将一个单</span><br><span class="line">订阅模式的 <span class="built_in">Stream</span> 转换成一个多订阅模式的 <span class="built_in">Stream</span>，isBroadcast 属性可以判断</span><br><span class="line">当前 <span class="built_in">Stream</span> 所处的模式。</span><br></pre></td></tr></table></figure>
+
+<p>7.说一下mixin机制？</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mixin</span> 是Dart <span class="number">2.1</span> 加入的特性，以前版本通常使用<span class="keyword">abstract</span> <span class="keyword">class</span>代替。简单来说，</span><br><span class="line"><span class="symbol">mixin</span>是为了解决继承方面的问题而引入的机制，<span class="symbol">Dart</span>为了支持多重继承，引入了<span class="symbol">mixin</span></span><br><span class="line">关键字，它最大的特殊处在于：<span class="symbol">mixin</span>定义的类不能有构造方法，这样可以避免继承多个</span><br><span class="line">类而产生的父类构造方法冲突。</span><br><span class="line"><span class="symbol">mixins</span>的对象是类，<span class="symbol">mixins</span>绝不是继承，也不是接口，而是一种全新的特性，可以<span class="symbol">mixins</span></span><br><span class="line">多个类，<span class="symbol">mixins</span>的使用需要满足一定条件。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-Flutter学习" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -2044,86 +2124,6 @@
 
 </article>
     
-    <article id="post-Flutter面试" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="../../2024/03/18/Flutter%E9%9D%A2%E8%AF%95/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="flutter-面试"><a href="#flutter-面试" class="headerlink" title="flutter 面试"></a>flutter 面试</h3><p>1.dart 的作用域</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dart 里面默认是公开的，私有变量使用下划线开头</span><br></pre></td></tr></table></figure>
-
-<p>2.dart是不是单线程？如何运行的？</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart是单线程</span><br><span class="line">(<span class="number">2</span>)dart在单线程中是以消息循环机制来运行的，其中包括两个任务队列，</span><br><span class="line">一个是“微任务队列”microtask queue, 另一个叫做“事件队列”event queue</span><br><span class="line"></span><br><span class="line">入口函数 <span class="built_in">mian</span>()函数运行后，消息循环机制便启动了，首先会按照先进先出的</span><br><span class="line">顺序逐个执行微任务队列中的任务，当所有微任务队列中的任务执行完之后便开</span><br><span class="line">始执行事件队列的任务，事件队列中的任务执行完之后再去执行微任务队列中的</span><br><span class="line">任务，如此循环往复，生生不息。</span><br><span class="line">在Dart中，所有的外部事件任务都在事件队列中，如IO、计时器、点击、以及绘</span><br><span class="line">制事件等，而微任务通常来源于Dart内部，并且微任务非常少，之所以如此，是</span><br><span class="line">因为微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任</span><br><span class="line">务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡，所以必须得保证</span><br><span class="line">微任务队列不会太长。值得注意的是，我们可以通过Future<span class="selector-class">.microtask</span>(…)方法</span><br><span class="line">向微任务队列插入一个任务。</span><br></pre></td></tr></table></figure>
-
-<p>3.dart 多任务是如何并行的?他们之间是如何交互的？</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)dart不存在多线程，dart 提供另一个类似新线程，但是不共享内存独立运行</span><br><span class="line">的worker-<span class="built_in">isolate</span></span><br><span class="line">(<span class="number">2</span>)两个<span class="built_in">isolate</span>之间通过SendPort相互发送消息，通过ReceiveProt接受消息</span><br></pre></td></tr></table></figure>
-
-<p>4.说一下dart异步编程中Future关键字</p>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在dart中通常使用<span class="keyword">Future</span>来执行异步或者延时操作</span><br></pre></td></tr></table></figure>
-
-<p>5.说一下Dart异步编程中的 Stream数据流？ </p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dart中<span class="built_in">Stream</span> 和Future 都是解决异步的工具， 不同是<span class="built_in">Stream</span>可以接受多个异步</span><br><span class="line">的结果，而Future只能接受一个异步结果。<span class="number">0</span></span><br><span class="line"><span class="built_in">Stream</span> 的创建可以使用 <span class="built_in">Stream</span>.fromFuture，也可以使用 StreamController </span><br><span class="line">来创建和控制。还有一个注意点是：普通的 <span class="built_in">Stream</span> 只可以有一个订阅者，如果想</span><br><span class="line">要多订阅的话，要使用 <span class="built_in">asBroadcastStream</span>()。</span><br></pre></td></tr></table></figure>
-
-<p>6.Stream 有哪两种订阅模式？分别是怎么调用的？</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stream</span> 有两种订阅模式：单订阅(single) 和 多订阅（broadcast）。单订阅就</span><br><span class="line">是只能有一个订阅者，而广播是可以有多个订阅者。这就有点类似于消息服务（Message</span><br><span class="line">Service）的处理模式。单订阅类似于点对点，在订阅者出现之前会持有数据，在</span><br><span class="line">订阅者出现之后就才转交给它。而广播类似于发布订阅模式，可以同时有多个订阅者，</span><br><span class="line">当有数据时就会传递给所有的订阅者，而不管当前是否已有订阅者存在。</span><br><span class="line"><span class="built_in">Stream</span> 默认处于单订阅模式，所以同一个 stream 上的 listen 和其它大多数方法</span><br><span class="line">只能调用一次，调用第二次就会报错。但 <span class="built_in">Stream</span> 可以通过 <span class="built_in">transform</span>() 方法（返回</span><br><span class="line">另一个 <span class="built_in">Stream</span>）进行连续调用。通过 <span class="built_in">Stream</span>.<span class="built_in">asBroadcastStream</span>() 可以将一个单</span><br><span class="line">订阅模式的 <span class="built_in">Stream</span> 转换成一个多订阅模式的 <span class="built_in">Stream</span>，isBroadcast 属性可以判断</span><br><span class="line">当前 <span class="built_in">Stream</span> 所处的模式。</span><br></pre></td></tr></table></figure>
-
-<p>7.说一下mixin机制？</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mixin</span> 是Dart <span class="number">2.1</span> 加入的特性，以前版本通常使用<span class="keyword">abstract</span> <span class="keyword">class</span>代替。简单来说，</span><br><span class="line"><span class="symbol">mixin</span>是为了解决继承方面的问题而引入的机制，<span class="symbol">Dart</span>为了支持多重继承，引入了<span class="symbol">mixin</span></span><br><span class="line">关键字，它最大的特殊处在于：<span class="symbol">mixin</span>定义的类不能有构造方法，这样可以避免继承多个</span><br><span class="line">类而产生的父类构造方法冲突。</span><br><span class="line"><span class="symbol">mixins</span>的对象是类，<span class="symbol">mixins</span>绝不是继承，也不是接口，而是一种全新的特性，可以<span class="symbol">mixins</span></span><br><span class="line">多个类，<span class="symbol">mixins</span>的使用需要满足一定条件。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
   </article>
   
 
@@ -2206,26 +2206,6 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="../../archives">归档目录</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="../../categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="../../tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="../../tags/%E6%97%85%E8%A1%8C/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="../../2019/about">关于我</a>
     </li>
     
   </ul>
