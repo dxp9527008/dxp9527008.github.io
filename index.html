@@ -77,6 +77,100 @@
     
     
     
+    <article id="post-浏览器事件循环-原理" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="2024/03/20/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-%E5%8E%9F%E7%90%86/" class="article-date">
+  <time datetime="2024-03-20T12:55:56.986Z" itemprop="datePublished">2024-03-20</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><pre><code>#### 浏览器的进程模型    </code></pre><h4 id="什么是进程？"><a href="#什么是进程？" class="headerlink" title="什么是进程？"></a>什么是进程？</h4><p>​    程序运行需要自己的专属的内存空间，可以把这个内存空间简单理解成进程。</p>
+<p>每个应用至少有一个进程，每个进程相互独立，即使要通信，也要双方同意。</p>
+<h4 id="什么是线程？"><a href="#什么是线程？" class="headerlink" title="什么是线程？"></a>什么是线程？</h4><p>有了进程之后，就可以运行程序的代码。</p>
+<p>运行代码的“人” 称之为 线程。</p>
+<p>一个进程至少有一个线程，所以进程开启后会自动创建一个线程来运行代码，该线程称为主线程。</p>
+<p>如果程序要同事执行多块代码，主线程就会启动更多的线程来执行代码，所以一个进程中可以包含多个线程。</p>
+<h4 id="浏览器有哪些进程和线程"><a href="#浏览器有哪些进程和线程" class="headerlink" title="浏览器有哪些进程和线程?"></a>浏览器有哪些进程和线程?</h4><pre><code>浏览器是一个多进程多线程的应用程序。</code></pre><p>​    为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。 </p>
+<p>最主要的进程有：</p>
+<p>​    1.<strong>浏览器进程</strong>：主要负责页面显示，用户交互，子进程管理（比如网络进程和渲染进程都是这个进程启动的）等。 浏览器进程内部会启动多个线程处理不同的任务。</p>
+<pre><code>2**.网络进程**：负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</code></pre><p>​    3.<strong>渲染进程</strong>（重点）：渲染进程启动后，会开启一个<strong>渲染主线程</strong>，负责执行HTML、CSS、JS代码。默认情况下浏览器会给<strong>每个标签页开启一个新的渲染进程</strong>，保证不同标签页之间不相互影响。将来可能改成一个站点一个进程。</p>
+<h4 id="渲染主线程是如何工作的？"><a href="#渲染主线程是如何工作的？" class="headerlink" title="渲染主线程是如何工作的？"></a>渲染主线程是如何工作的？</h4><pre><code>* 解析html
+* 解析css
+* 计算样式
+* 布局
+* 处理图层
+* 每秒把页面画 60 次
+* 执行全局 js 代码
+* 执行时间处理函数
+* 执行计时器的回调函数
+* ......</code></pre><ol>
+<li>在最开始 的时候，渲染主线程会进入一个无限循环。</li>
+<li>每一次循环都会检查消息队列中是否有任务存在，如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。</li>
+</ol>
+<p>​    3.其他所有线程（包括其他进程的线程）可以随时消息队列中添加任务。新任务会加到队列的末尾。</p>
+<p><strong>这整个过程被称为事件循环（消息循环）。</strong></p>
+<h4 id="何为异步？"><a href="#何为异步？" class="headerlink" title="何为异步？"></a>何为异步？</h4><p>​    代码在执行的过程中，会遇到一些无法立即处理的任务。比如：</p>
+<ul>
+<li>计时完成后需要执行的任务  –  <code>setTimeout</code> 、<code>setInterval</code></li>
+<li>网络通信完成后需要执行的任务 – <code>XHR</code>  、 <code>Fetch</code></li>
+<li>用户操作后需要执行的任务 – <code>addEventListentener</code></li>
+</ul>
+<blockquote>
+<p>面试题：如何理解JS的异步？</p>
+<p>答案： JS是一门单线程的语言，这是<strong>因为它运行在浏览器的渲染主线程中</strong>，而渲染主线程只有一个。 而渲染主线程有很多任务，渲染页面，执行JS都在其中。如果使用同步的方式，极有可能导致主线程阻塞，从而导致消息队列中有很多其他任务无法得到执行。所以浏览器采用异步的方式来避免。具体的做法是 当某些任务发生时，比如计时器，网络，事件监听，主线程会将任务交给其他线程去处理，自身则立即结束任务的执行，转而执行后续的代码。当其他线程完成时，<strong>会把事先传递的回调函数包装成任务</strong>，加入到消息队列中的末尾排队，等待主线程的调度执行。在这种模式下浏览器永不阻塞，从而最大保证了单线程的流畅运行。</p>
+</blockquote>
+<pre><code>#### JS为何会阻塞渲染？</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> h1 = doucument.<span class="title function_">querySelector</span>(<span class="string">&#x27;h1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 死循环指定时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">while</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration) &#123;&#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">		h1.<span class="property">textContent</span> = <span class="string">&#x27;你好&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">delay</span>(<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这段代码的现象： 点击按钮后，页面等待3秒才会更新渲染。</p>
+<p>原因：因为渲染和js的执行都在渲染主线程中，当代码执行 <code>h1.textContent = &#39;你好&#39;</code> 后会创建一个渲染任务进入消息队列等待执行。只有等主线程执行完，才会执行接下来的渲染任务。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-React的学习" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -904,163 +998,6 @@
 
 </article>
     
-    <article id="post-前端面试总结" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="2024/03/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.656Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, c</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="attr">AO</span>:&#123;	</span><br><span class="line">    <span class="attr">a</span>: <span class="literal">undefined</span>  <span class="number">1</span> <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">c</span>: <span class="literal">undefined</span>  <span class="number">2</span> <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></span><br><span class="line">    <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>预编译</p>
-<p>js的变量对象 AO对象，提供js引擎自己去访问</p>
-<p>四个步骤：</p>
-<p>1.创建AO对象</p>
-<p>2.找形参和变量声明作为AO对象的属性名，值为undefined</p>
-<p>3.实参和形参相统一</p>
-<p>4.找函数声明，会覆盖变量声明</p>
-<h2 id="2、浏览器渲染页面过程"><a href="#2、浏览器渲染页面过程" class="headerlink" title="2、浏览器渲染页面过程"></a>2、浏览器渲染页面过程</h2><p>用户输入URL地址</p>
-<p>浏览器解析URL解析出主机名</p>
-<p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
-<p>浏览器将端口号从URL中解析出来</p>
-<p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
-<p>浏览器向服务器发送一条HTTP请求报文</p>
-<p>服务器向浏览器返回一条HTTP响应报文</p>
-<p>关闭连接 浏览器解析文档</p>
-<h2 id="3-异步编程的方法"><a href="#3-异步编程的方法" class="headerlink" title="3.异步编程的方法"></a>3.异步编程的方法</h2><h2 id="4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别"><a href="#4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别" class="headerlink" title="4.解释同步\异步、阻塞\非阻塞、并行\并发之间的区别"></a>4.<strong>解释同步\异步、阻塞\非阻塞、并行\并发之间的区别</strong></h2><h2 id="5-js实现数值千分位"><a href="#5-js实现数值千分位" class="headerlink" title="5. js实现数值千分位"></a>5. <strong>js实现数值千分位</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">number.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-为什么JavaScript是单线程的，与异步冲突吗"><a href="#6-为什么JavaScript是单线程的，与异步冲突吗" class="headerlink" title="6. 为什么JavaScript是单线程的，与异步冲突吗"></a>6. 为什么JavaScript是单线程的，与异步冲突吗</h2><p>补充：JS中其实是没有线程概念的，所谓的单线程也只是相对于多线程而言。JS的设计初衷就没有考虑这些，针对JS这种不具备并行任务处理的特性，我们称之为“单线程”。</p>
-<p>JS的单线程是指一个浏览器进程中只有一个JS的执行线程，同一时刻内只会有一段代码在执行。</p>
-<p>举个通俗例子，假设JS支持多线程操作的话，JS可以操作DOM，那么一个线程在删除DOM，另外一个线程就在获取DOM数据，这样子明显不合理，这算是证明之一。</p>
-<p>来看段代码👇</p>
-<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">    setTimeout(( <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.<span class="built_in">log</span>( <span class="string">&#x27;second&#x27;</span> );</span><br><span class="line">    &#125;),<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>打印结果就是首先是很多个first,然后再是second。</p>
-<p>异步机制是浏览器的两个或以上常驻线程共同完成的，举个例子，比如异步请求由两个常驻线程，JS执行线程和事件触发线程共同完成的。</p>
-<ul>
-<li>JS执行线程发起异步请求（浏览器会开启一个HTTP请求线程来执行请求，这时JS的任务完成，继续执行线程队列中剩下任务）</li>
-<li>然后在未来的某一时刻事件触发线程监视到之前的发起的HTTP请求已完成，它就会把完成事件插入到JS执行队列的尾部等待JS处理</li>
-</ul>
-<p>再比如定时器触发(settimeout和setinterval) 是由<strong>「浏览器的定时器线程」</strong>执行的定时计数，然后在定时时间把定时处理函数的执行请求插入到JS执行队列的尾端（所以用这两个函数的时候，实际的执行时间是大于或等于指定时间的，不保证能准确定时的）。</p>
-<p>所以这么说，JS单线程与异步更多是浏览器行为，之间不冲突。</p>
-<h2 id="7-CSS加载会造成阻塞吗"><a href="#7-CSS加载会造成阻塞吗" class="headerlink" title="7. CSS加载会造成阻塞吗"></a>7. CSS加载会造成阻塞吗</h2><p>先给出结论</p>
-<ul>
-<li><code>CSS</code>不会阻塞<code>DOM</code>解析，但会阻塞<code>DOM</code>渲染。</li>
-<li><code>CSS</code>会阻塞JS执行，并不会阻塞JS文件下载</li>
-</ul>
-<p>先讲一讲CSSOM作用</p>
-<ul>
-<li>第一个是提供给 JavaScript 操作样式表的能力</li>
-<li>第二个是为布局树的合成提供基础的样式信息</li>
-<li>这个 CSSOM 体现在 DOM 中就是document.styleSheets。</li>
-</ul>
-<p>由之前讲过的浏览器渲染流程我们可以看出：</p>
-<p>DOM 和 CSSOM通常是并行构建的，所以<strong>「CSS 加载不会阻塞 DOM 的解析」</strong>。</p>
-<p>然而由于Render Tree 是依赖DOM Tree和 CSSOM Tree的，所以它必须等到两者都加载完毕后，完成相应的构建，才开始渲染，因此，<strong>「CSS加载会阻塞DOM渲染」</strong>。</p>
-<p>由于 JavaScript 是可操纵 DOM 和 css 样式 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
-<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
-<p>有个需要注意的点就是：</p>
-<p><strong>「有时候JS需要等到CSS的下载，这是为什么呢？」</strong></p>
-<p>仔细思考一下，其实这样做是有道理的，如果脚本的内容是获取元素的样式，宽高等<code>CSS</code>控制的属性，浏览器是需要计算的，也就是依赖于<code>CSS</code>。浏览器也无法感知脚本内容到底是什么，为避免样式获取，因而只好等前面所有的样式下载完后，再执行<code>JS</code>。</p>
-<p>JS文件下载和CSS文件下载是并行的，有时候CSS文件很大，所以JS需要等待。</p>
-<p>因此,样式表会在后面的 js 执行前先加载执行完毕,所以<strong>「css 会阻塞后面 js 的执行」</strong>。</p>
-<h2 id="8-为什么JS会阻塞页面加载"><a href="#8-为什么JS会阻塞页面加载" class="headerlink" title="8. 为什么JS会阻塞页面加载"></a>8. 为什么JS会阻塞页面加载</h2><p>先给出结论</p>
-<ul>
-<li><strong>「JS阻塞DOM解析」</strong>，也就会阻塞页面</li>
-</ul>
-<p>这也是为什么说JS文件放在最下面的原因，那为什么会阻塞DOM解析呢</p>
-<p>你可以这样子理解：</p>
-<blockquote>
-<p>由于 JavaScript 是可操纵 DOM 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
-<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
-<p>当 JavaScript 引擎执行时 GUI 线程会被挂起,GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
-<p>当浏览器在执行 JavaScript 程序的时候,GUI 渲染线程会被保存在一个队列中,直到 JS 程序执行完成,才会接着执行。</p>
-<p>因此如果 JS 执行的时间过长,这样就会造成页面的渲染不连贯,导致页面渲染加载阻塞的感觉。</p>
-</blockquote>
-<p>另外，如果 JavaScript 文件中没有操作 DOM 相关代码，就可以将该 JavaScript 脚本设置为异步加载，通过 async 或 defer 来标记代码</p>
-<h2 id="9-defer-和-async-的区别"><a href="#9-defer-和-async-的区别" class="headerlink" title="9. defer 和 async 的区别 ?"></a>9. defer 和 async 的区别 ?</h2><ul>
-<li>两者都是异步去加载外部JS文件，不会阻塞DOM解析</li>
-<li>Async是在外部JS加载完成后，浏览器空闲时，Load事件触发前执行，标记为async的脚本并不保证按照指定他们的先后顺序执行，该属性对于内联脚本无作用 (即没有<strong>「src」</strong>属性的脚本）。</li>
-<li>defer是在JS加载完成后，整个文档解析完成后，触发 <code>DOMContentLoaded</code> 事件前执行，如果缺少 <code>src</code> 属性（即内嵌脚本），该属性不应被使用，因为这种情况下它不起作用</li>
-</ul>
-<h2 id="10-DOMContentLoaded-与-load-的区别"><a href="#10-DOMContentLoaded-与-load-的区别" class="headerlink" title="10. DOMContentLoaded 与 load 的区别 ?"></a>10. DOMContentLoaded 与 load 的区别 ?</h2><ul>
-<li>DOMContentLoaded事件触发时：仅当DOM解析完成后，不包括样式表，图片等资源。</li>
-<li>onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。</li>
-</ul>
-<p>那么也就是先DOMContentLoaded -&gt; load,那么在Jquery中，使用<img src="https://juejin.cn/equation?tex=(document).read(callback)%E7%9B%91%E5%90%AC%E7%9A%84%E5%B0%B1%E6%98%AFDOMContentLoaded%E4%BA%8B%E4%BB%B6%EF%BC%8C" alt="img">)(document).load(callback)监听的就是load事件。</p>
-<p>那我们可以聊一聊它们与async和defer区别</p>
-<blockquote>
-<p>带async的脚本一定会在load事件之前执行，可能会在DOMContentLoaded之前或之后执行。</p>
-</blockquote>
-<ul>
-<li>情况1： HTML 还没有被解析完的时候，async脚本已经加载完了，那么 HTML 停止解析，去执行脚本，脚本执行完毕后触发DOMContentLoaded事件</li>
-<li>情况2： HTML 解析完了之后，async脚本才加载完，然后再执行脚本，那么在HTML解析完毕、async脚本还没加载完的时候就触发DOMContentLoaded事件</li>
-</ul>
-<blockquote>
-<p>如果 script 标签中包含 defer，那么这一块脚本将不会影响 HTML 文档的解析，而是等到HTML 解析完成后才会执行。而 DOMContentLoaded 只有在 defer 脚本执行结束后才会被触发。</p>
-</blockquote>
-<ul>
-<li>情况1：HTML还没解析完成时，defer脚本已经加载完毕，那么defer脚本将等待HTML解析完成后再执行。defer脚本执行完毕后触发DOMContentLoaded事件</li>
-<li>情况2：HTML解析完成时，defer脚本还没加载完毕，那么defer脚本继续加载，加载完成后直接执行，执行完毕后触发DOMContentLoaded事件</li>
-</ul>
-<h2 id="11-为什么CSS动画比JavaScript高效"><a href="#11-为什么CSS动画比JavaScript高效" class="headerlink" title="11. 为什么CSS动画比JavaScript高效"></a>11. 为什么CSS动画比JavaScript高效</h2><p>我觉得这个题目说法上可能就是行不通，不能这么说，如果了解的话，都知道will-change只是一个优化的手段，使用JS改变transform也可以享受这个属性带来的变化，所以这个说法上有点不妥。</p>
-<p>所以围绕这个问题展开话，更应该说建议推荐使用CSS动画，至于为什么呢，涉及的知识点大概就是重排重绘，合成，这方面的点，我在浏览器渲染流程中也提及了。</p>
-<p>尽可能的避免重排和重绘，具体是哪些操作呢，如果非要去操作JS实现动画的话，有哪些优化的手段呢？</p>
-<p>比如</p>
-<ul>
-<li>使用<code>createDocumentFragment</code>进行批量的 DOM 操作</li>
-<li>对于 resize、scroll 等进行防抖/节流处理。</li>
-<li>rAF优化等等</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
     <article id="post-前端浏览器知识梳理" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1282,6 +1219,163 @@
 <li>location.hash + iframe：a.html欲与c.html跨域相互通信，通过中间页b.html来实现。 三个页面，不同域之间利用iframe的location.hash传值，相同域之间直接js访问来通信。</li>
 <li>document.domain + iframe： 该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式，我们只需要给页面添加 document.domain =’test.com’ 表示二级域名都相同就可以实现跨域，两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</li>
 </ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-前端面试总结" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="2024/03/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2024-03-18T11:16:54.656Z" itemprop="datePublished">2024-03-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, c</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="attr">AO</span>:&#123;	</span><br><span class="line">    <span class="attr">a</span>: <span class="literal">undefined</span>  <span class="number">1</span> <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">c</span>: <span class="literal">undefined</span>  <span class="number">2</span> <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></span><br><span class="line">    <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>预编译</p>
+<p>js的变量对象 AO对象，提供js引擎自己去访问</p>
+<p>四个步骤：</p>
+<p>1.创建AO对象</p>
+<p>2.找形参和变量声明作为AO对象的属性名，值为undefined</p>
+<p>3.实参和形参相统一</p>
+<p>4.找函数声明，会覆盖变量声明</p>
+<h2 id="2、浏览器渲染页面过程"><a href="#2、浏览器渲染页面过程" class="headerlink" title="2、浏览器渲染页面过程"></a>2、浏览器渲染页面过程</h2><p>用户输入URL地址</p>
+<p>浏览器解析URL解析出主机名</p>
+<p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
+<p>浏览器将端口号从URL中解析出来</p>
+<p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
+<p>浏览器向服务器发送一条HTTP请求报文</p>
+<p>服务器向浏览器返回一条HTTP响应报文</p>
+<p>关闭连接 浏览器解析文档</p>
+<h2 id="3-异步编程的方法"><a href="#3-异步编程的方法" class="headerlink" title="3.异步编程的方法"></a>3.异步编程的方法</h2><h2 id="4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别"><a href="#4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别" class="headerlink" title="4.解释同步\异步、阻塞\非阻塞、并行\并发之间的区别"></a>4.<strong>解释同步\异步、阻塞\非阻塞、并行\并发之间的区别</strong></h2><h2 id="5-js实现数值千分位"><a href="#5-js实现数值千分位" class="headerlink" title="5. js实现数值千分位"></a>5. <strong>js实现数值千分位</strong></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">number.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-为什么JavaScript是单线程的，与异步冲突吗"><a href="#6-为什么JavaScript是单线程的，与异步冲突吗" class="headerlink" title="6. 为什么JavaScript是单线程的，与异步冲突吗"></a>6. 为什么JavaScript是单线程的，与异步冲突吗</h2><p>补充：JS中其实是没有线程概念的，所谓的单线程也只是相对于多线程而言。JS的设计初衷就没有考虑这些，针对JS这种不具备并行任务处理的特性，我们称之为“单线程”。</p>
+<p>JS的单线程是指一个浏览器进程中只有一个JS的执行线程，同一时刻内只会有一段代码在执行。</p>
+<p>举个通俗例子，假设JS支持多线程操作的话，JS可以操作DOM，那么一个线程在删除DOM，另外一个线程就在获取DOM数据，这样子明显不合理，这算是证明之一。</p>
+<p>来看段代码👇</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">    setTimeout(( <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.<span class="built_in">log</span>( <span class="string">&#x27;second&#x27;</span> );</span><br><span class="line">    &#125;),<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>打印结果就是首先是很多个first,然后再是second。</p>
+<p>异步机制是浏览器的两个或以上常驻线程共同完成的，举个例子，比如异步请求由两个常驻线程，JS执行线程和事件触发线程共同完成的。</p>
+<ul>
+<li>JS执行线程发起异步请求（浏览器会开启一个HTTP请求线程来执行请求，这时JS的任务完成，继续执行线程队列中剩下任务）</li>
+<li>然后在未来的某一时刻事件触发线程监视到之前的发起的HTTP请求已完成，它就会把完成事件插入到JS执行队列的尾部等待JS处理</li>
+</ul>
+<p>再比如定时器触发(settimeout和setinterval) 是由<strong>「浏览器的定时器线程」</strong>执行的定时计数，然后在定时时间把定时处理函数的执行请求插入到JS执行队列的尾端（所以用这两个函数的时候，实际的执行时间是大于或等于指定时间的，不保证能准确定时的）。</p>
+<p>所以这么说，JS单线程与异步更多是浏览器行为，之间不冲突。</p>
+<h2 id="7-CSS加载会造成阻塞吗"><a href="#7-CSS加载会造成阻塞吗" class="headerlink" title="7. CSS加载会造成阻塞吗"></a>7. CSS加载会造成阻塞吗</h2><p>先给出结论</p>
+<ul>
+<li><code>CSS</code>不会阻塞<code>DOM</code>解析，但会阻塞<code>DOM</code>渲染。</li>
+<li><code>CSS</code>会阻塞JS执行，并不会阻塞JS文件下载</li>
+</ul>
+<p>先讲一讲CSSOM作用</p>
+<ul>
+<li>第一个是提供给 JavaScript 操作样式表的能力</li>
+<li>第二个是为布局树的合成提供基础的样式信息</li>
+<li>这个 CSSOM 体现在 DOM 中就是document.styleSheets。</li>
+</ul>
+<p>由之前讲过的浏览器渲染流程我们可以看出：</p>
+<p>DOM 和 CSSOM通常是并行构建的，所以<strong>「CSS 加载不会阻塞 DOM 的解析」</strong>。</p>
+<p>然而由于Render Tree 是依赖DOM Tree和 CSSOM Tree的，所以它必须等到两者都加载完毕后，完成相应的构建，才开始渲染，因此，<strong>「CSS加载会阻塞DOM渲染」</strong>。</p>
+<p>由于 JavaScript 是可操纵 DOM 和 css 样式 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
+<p>有个需要注意的点就是：</p>
+<p><strong>「有时候JS需要等到CSS的下载，这是为什么呢？」</strong></p>
+<p>仔细思考一下，其实这样做是有道理的，如果脚本的内容是获取元素的样式，宽高等<code>CSS</code>控制的属性，浏览器是需要计算的，也就是依赖于<code>CSS</code>。浏览器也无法感知脚本内容到底是什么，为避免样式获取，因而只好等前面所有的样式下载完后，再执行<code>JS</code>。</p>
+<p>JS文件下载和CSS文件下载是并行的，有时候CSS文件很大，所以JS需要等待。</p>
+<p>因此,样式表会在后面的 js 执行前先加载执行完毕,所以<strong>「css 会阻塞后面 js 的执行」</strong>。</p>
+<h2 id="8-为什么JS会阻塞页面加载"><a href="#8-为什么JS会阻塞页面加载" class="headerlink" title="8. 为什么JS会阻塞页面加载"></a>8. 为什么JS会阻塞页面加载</h2><p>先给出结论</p>
+<ul>
+<li><strong>「JS阻塞DOM解析」</strong>，也就会阻塞页面</li>
+</ul>
+<p>这也是为什么说JS文件放在最下面的原因，那为什么会阻塞DOM解析呢</p>
+<p>你可以这样子理解：</p>
+<blockquote>
+<p>由于 JavaScript 是可操纵 DOM 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
+<p>当 JavaScript 引擎执行时 GUI 线程会被挂起,GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
+<p>当浏览器在执行 JavaScript 程序的时候,GUI 渲染线程会被保存在一个队列中,直到 JS 程序执行完成,才会接着执行。</p>
+<p>因此如果 JS 执行的时间过长,这样就会造成页面的渲染不连贯,导致页面渲染加载阻塞的感觉。</p>
+</blockquote>
+<p>另外，如果 JavaScript 文件中没有操作 DOM 相关代码，就可以将该 JavaScript 脚本设置为异步加载，通过 async 或 defer 来标记代码</p>
+<h2 id="9-defer-和-async-的区别"><a href="#9-defer-和-async-的区别" class="headerlink" title="9. defer 和 async 的区别 ?"></a>9. defer 和 async 的区别 ?</h2><ul>
+<li>两者都是异步去加载外部JS文件，不会阻塞DOM解析</li>
+<li>Async是在外部JS加载完成后，浏览器空闲时，Load事件触发前执行，标记为async的脚本并不保证按照指定他们的先后顺序执行，该属性对于内联脚本无作用 (即没有<strong>「src」</strong>属性的脚本）。</li>
+<li>defer是在JS加载完成后，整个文档解析完成后，触发 <code>DOMContentLoaded</code> 事件前执行，如果缺少 <code>src</code> 属性（即内嵌脚本），该属性不应被使用，因为这种情况下它不起作用</li>
+</ul>
+<h2 id="10-DOMContentLoaded-与-load-的区别"><a href="#10-DOMContentLoaded-与-load-的区别" class="headerlink" title="10. DOMContentLoaded 与 load 的区别 ?"></a>10. DOMContentLoaded 与 load 的区别 ?</h2><ul>
+<li>DOMContentLoaded事件触发时：仅当DOM解析完成后，不包括样式表，图片等资源。</li>
+<li>onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。</li>
+</ul>
+<p>那么也就是先DOMContentLoaded -&gt; load,那么在Jquery中，使用<img src="https://juejin.cn/equation?tex=(document).read(callback)%E7%9B%91%E5%90%AC%E7%9A%84%E5%B0%B1%E6%98%AFDOMContentLoaded%E4%BA%8B%E4%BB%B6%EF%BC%8C" alt="img">)(document).load(callback)监听的就是load事件。</p>
+<p>那我们可以聊一聊它们与async和defer区别</p>
+<blockquote>
+<p>带async的脚本一定会在load事件之前执行，可能会在DOMContentLoaded之前或之后执行。</p>
+</blockquote>
+<ul>
+<li>情况1： HTML 还没有被解析完的时候，async脚本已经加载完了，那么 HTML 停止解析，去执行脚本，脚本执行完毕后触发DOMContentLoaded事件</li>
+<li>情况2： HTML 解析完了之后，async脚本才加载完，然后再执行脚本，那么在HTML解析完毕、async脚本还没加载完的时候就触发DOMContentLoaded事件</li>
+</ul>
+<blockquote>
+<p>如果 script 标签中包含 defer，那么这一块脚本将不会影响 HTML 文档的解析，而是等到HTML 解析完成后才会执行。而 DOMContentLoaded 只有在 defer 脚本执行结束后才会被触发。</p>
+</blockquote>
+<ul>
+<li>情况1：HTML还没解析完成时，defer脚本已经加载完毕，那么defer脚本将等待HTML解析完成后再执行。defer脚本执行完毕后触发DOMContentLoaded事件</li>
+<li>情况2：HTML解析完成时，defer脚本还没加载完毕，那么defer脚本继续加载，加载完成后直接执行，执行完毕后触发DOMContentLoaded事件</li>
+</ul>
+<h2 id="11-为什么CSS动画比JavaScript高效"><a href="#11-为什么CSS动画比JavaScript高效" class="headerlink" title="11. 为什么CSS动画比JavaScript高效"></a>11. 为什么CSS动画比JavaScript高效</h2><p>我觉得这个题目说法上可能就是行不通，不能这么说，如果了解的话，都知道will-change只是一个优化的手段，使用JS改变transform也可以享受这个属性带来的变化，所以这个说法上有点不妥。</p>
+<p>所以围绕这个问题展开话，更应该说建议推荐使用CSS动画，至于为什么呢，涉及的知识点大概就是重排重绘，合成，这方面的点，我在浏览器渲染流程中也提及了。</p>
+<p>尽可能的避免重排和重绘，具体是哪些操作呢，如果非要去操作JS实现动画的话，有哪些优化的手段呢？</p>
+<p>比如</p>
+<ul>
+<li>使用<code>createDocumentFragment</code>进行批量的 DOM 操作</li>
+<li>对于 resize、scroll 等进行防抖/节流处理。</li>
+<li>rAF优化等等</li>
+</ul>
 
       
       <!-- reward -->
@@ -1631,121 +1725,6 @@
 <p><strong>说明</strong>：手机页面通常在第一次加载后会进行缓存，然后每次刷新会使用缓存而不是去重新向服务器发送请求。如果不希望使用缓存可以设置<code>no-cache</code>。 </p>
 </blockquote>
 <h3 id="禁用IOS文本输入框默认内阴影"><a href="#禁用IOS文本输入框默认内阴影" class="headerlink" title="禁用IOS文本输入框默认内阴影"></a>禁用IOS文本输入框默认内阴影</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-CSS动画" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="2024/03/18/CSS%E5%8A%A8%E7%94%BB/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.641Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>CSS当中的动画与之前所学习的过渡+变幻非常相像，但是仍然有一些不同点。首先过渡+变幻虽然可以实现某一个元素的动画效果，但是它仍然存在以下几个缺点</p>
-<ol>
-<li>过渡的效果必须要手动的去触发，不能自动执行</li>
-<li>过渡的效果一次触发只能执行一次过渡，不能够重复或多次的执行</li>
-</ol>
-<p>正因为存在上面的问题，所以就出现了动画这一种技术 ，它可以不需要手动触发而进行自动执行，可以重复的执行多次</p>
-<p>如果要使用一个动画效果，那么必须要先定义这一个动画</p>
-<h3 id="动画的定义"><a href="#动画的定义" class="headerlink" title="动画的定义"></a>动画的定义</h3><p>在CSS里面，动画的定义使用<code>@keyframes</code>来完成，具体语法格式如下</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画名&#123;</span><br><span class="line">    <span class="selector-tag">form</span>&#123;</span><br><span class="line">        <span class="comment">/*CSS代码 */</span></span><br><span class="line">        -webkit-<span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">0deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">to</span>&#123;</span><br><span class="line">        <span class="comment">/*CSS代码 */</span></span><br><span class="line">        -webkit-<span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">360deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>from代表动画开始的时候，to代表动画结束的时候</p>
-</blockquote>
-<p>动画在定义的时候除了通过from与to来表示动画的开始与结束状态以外，还可以通过百分比来表示动画进度</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画名&#123;</span><br><span class="line">    <span class="keyword">@keyframes</span> a&#123;</span><br><span class="line">        <span class="number">0%</span>&#123;</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">0deg</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="number">20%</span>&#123;</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">300deg</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="number">100%</span>&#123;</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">360deg</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>还可以像下面这种方式来进行</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> a&#123;</span><br><span class="line">    <span class="number">0%</span>,<span class="number">20%</span>&#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">0deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*20%&#123;</span></span><br><span class="line"><span class="comment">    transform: rotateZ(0deg);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="number">21%</span>,<span class="number">40%</span>&#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">45deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*40%&#123;</span></span><br><span class="line"><span class="comment">    transform: rotateZ(45deg);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="number">100%</span>&#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">360deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这就说明 动画在0%和20%的时候它的状态是一样的</p>
-</blockquote>
-<h3 id="动画的属性"><a href="#动画的属性" class="headerlink" title="动画的属性"></a>动画的属性</h3><p>一个动画定义好了以后就需要通过调用来实现动画效果，动画的调用主要是通过下面几个属性来完成的</p>
-<ol>
-<li><code>animation-name</code>代表动画的名称</li>
-<li><code>animation-duration</code>代表动画执行一次所需要的时间</li>
-<li><code>animation-iteration-count</code>动画重复的次数，后面接一个数字代表执行次数，如果需要运行一直执行则需要填写<code>infinite</code>这个值，这个值代表无穷大,默认执行一次<font color="red">【默认值】</font></li>
-<li><code>animation-timing-function</code>动画执行的效果，linear代表匀速，ease<font color="red">【默认值】</font></li>
-<li><code>animation-delay</code>动画的沿时执行时间！<font color="red">【默认值】</font>为0</li>
-<li><code>animation-play-state</code>动画的播放状态<ul>
-<li><code>running</code>代表运行状态<font color="red">【默认值】</font></li>
-<li><code>paused</code>代表暂停状态</li>
-</ul>
-</li>
-<li><code>animation-fill-mode</code>动画在结束的时候保留在什么状态<ul>
-<li><code>forwards</code>代表结束状态</li>
-<li><code>backwards</code> 指回到开始状态<font color="red">【默认值】</font></li>
-</ul>
-</li>
-<li><code>animation-direction</code> 规定动画播放的方向<ul>
-<li><code>reverse</code>反向运行</li>
-<li><code>normal</code>代表正常运行<font color="red">【默认值】</font></li>
-<li><code>alternate</code>正反方向交替运行</li>
-<li><code>alternate-reverse</code>反向与正向交替运行</li>
-</ul>
-</li>
-</ol>
-<p>上面的8个属性名还可以简写成一个属性名<code>animation</code>就可以了</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>:动画名 执行时间 【linear】 【等待时间】  【执行次数】 【播放状态】 【播放方向】 【结束状态】</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ol>
-<li>在上面的属性值里面，第一个时间代表执行时间，第二个时间值代表等待时间</li>
-<li>第一个属性值要设置成动画的名称</li>
-<li>后面的属性值需要就添加，不需要可以省略</li>
-<li>后面的属性值没有顺序限制，谁选谁后都可以（时间值除外）</li>
-</ol>
-</blockquote>
-<h3 id="动画案例"><a href="#动画案例" class="headerlink" title="动画案例"></a>动画案例</h3><p><strong>轮播图案例</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>动画案例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">639px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">426px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">5px</span> solid blue;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.imgBox</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">426px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">3195px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">animation</span>: a1 <span class="number">10s</span> infinite;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.imgBox</span>&gt;<span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@keyframes</span> a1&#123;</span></span><br><span class="line"><span class="language-css">				<span class="number">0%</span>,<span class="number">15%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">20%</span>,<span class="number">35%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">639px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">40%</span>,<span class="number">55%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">1278px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">60%</span>,<span class="number">75%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">1917px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">				<span class="number">80%</span>,<span class="number">100%</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">2556px</span>);</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&gt;<span class="selector-class">.imgBox</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">animation-play-state</span>: paused;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;imgBox clearfix&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item2.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item3.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item4.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
       
       <!-- reward -->
       
