@@ -178,6 +178,62 @@
 
 </article>
     
+    <article id="post-React的学习" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="2024/03/18/React%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2024-03-18T11:16:54.656Z" itemprop="datePublished">2024-03-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="React基础"><a href="#React基础" class="headerlink" title="React基础"></a>React基础</h2><p>学个鸡儿999</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-Vue的学习" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -233,7 +289,7 @@
 
 </article>
     
-    <article id="post-React的学习" class="article article-type-post" itemscope
+    <article id="post-前端浏览器知识梳理" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -241,7 +297,7 @@
 
     
     <div class="article-meta">
-      <a href="2024/03/18/React%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <a href="2024/03/18/%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" class="article-date">
   <time datetime="2024-03-18T11:16:54.656Z" itemprop="datePublished">2024-03-18</time>
 </a>
       
@@ -259,7 +315,201 @@
       
 
       
-      <h2 id="React基础"><a href="#React基础" class="headerlink" title="React基础"></a>React基础</h2><p>学个鸡儿999</p>
+      <h2 id="1-常见的浏览器内核有哪些"><a href="#1-常见的浏览器内核有哪些" class="headerlink" title="1. 常见的浏览器内核有哪些?"></a>1. 常见的浏览器内核有哪些?</h2><table>
+<thead>
+<tr>
+<th>浏览器 / RunTime</th>
+<th>内核（渲染引擎）</th>
+<th>JavaScript 引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>webkit-&gt;blink</td>
+<td>V8</td>
+</tr>
+<tr>
+<td>FireFox</td>
+<td>Gecko</td>
+<td>SpiderMonkey</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Webkit</td>
+<td>JavaScriptCore</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>EdgeHTML</td>
+<td>Chakra(for JavaScript)</td>
+</tr>
+<tr>
+<td>IE</td>
+<td>Trident</td>
+<td>JScript（IE3.0-IE8.0）</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Presto-&gt;blink</td>
+<td>Linear A（4.0-6.1）/ Linear B（7.0-9.2）/ Futhark（9.5-10.2）/ Carakan（10.5-）</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>-</td>
+<td>V8</td>
+</tr>
+</tbody></table>
+<h2 id="2-浏览器的主要组成部分是什么？"><a href="#2-浏览器的主要组成部分是什么？" class="headerlink" title="2. 浏览器的主要组成部分是什么？"></a>2. 浏览器的主要组成部分是什么？</h2><ol>
+<li><strong>「用户界面」</strong> - 包括地址栏、前进/后退按钮、书签菜单等。</li>
+<li><strong>「浏览器引擎」</strong> - 在用户界面和呈现引擎之间传送指令。</li>
+<li><strong>「呈现引擎」</strong> - 负责显示请求的内容。如果请求的内容是 HTML，它就负责解析 HTML 和 CSS 内容，并将解析后的内容显示在屏幕上。</li>
+<li><strong>「网络」</strong> - 用于网络调用，比如 HTTP 请求。</li>
+<li><strong>「用户界面后端」</strong> -用于绘制基本的窗口小部件，比如组合框和窗口。</li>
+<li><strong>「JavaScript 解释器」</strong>- 用于解析和执行 JavaScript 代码。</li>
+<li><strong>「数据存储」</strong> - 这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库。</li>
+</ol>
+<p>值得注意的是，和大多数浏览器不同，Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。</p>
+<h2 id="3-强缓存"><a href="#3-强缓存" class="headerlink" title="3. 强缓存"></a>3. 强缓存</h2><p>强缓存是当我们访问URL的时候，不会向服务器发送请求，直接从缓存中读取资源，但是会返回200的状态码。</p>
+<p><strong>如何设置强缓存？</strong></p>
+<p>我们第一次进入页面，请求服务器，然后服务器进行应答，浏览器会根据response Header来判断是否对资源进行缓存，如果响应头中expires、pragma或者cache-control字段，代表这是强缓存，浏览器就会把资源缓存在memory cache 或 disk cache中。</p>
+<p>第二次请求时，浏览器判断请求参数，如果符合强缓存条件就直接返回状态码200，从本地缓存中拿数据。否则把响应参数存在request header请求头中，看是否符合协商缓存，符合则返回状态码304，不符合则服务器会返回全新资源。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca00bff3081e4cfd993a8f252f4fa23a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h3 id="expires"><a href="#expires" class="headerlink" title="expires"></a>expires</h3><p>是HTTP1.0控制网页缓存的字段，值为一个时间戳，准确来讲是格林尼治时间，服务器返回该请求结果缓存的到期时间，意思是，再次发送请求时，如果未超过过期时间，直接使用该缓存，如果过期了则重新请求。</p>
+<p>有个缺点，就是它判断是否过期是用本地时间来判断的，本地时间是可以自己修改的。</p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>是HTTP1.1中控制网页缓存的字段，当Cache-Control都存在时，Cache-Control优先级更高，主要取值为：</p>
+<p>public：资源客户端和服务器都可以缓存。</p>
+<p>privite：资源只有客户端可以缓存。</p>
+<p>no-cache：客户端缓存资源，但是是否缓存需要经过协商缓存来验证。</p>
+<p>no-store：不使用缓存。</p>
+<p>max-age：缓存保质期。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f169e913e244d52a44ff1e4185cb9ce~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>Cache-Control使用了max-age相对时间，解决了expires的问题。</p>
+<h3 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a>pragma</h3><p>这个是HTTP1.0中禁用网页缓存的字段，其取值为no-cache，和Cache-Control的no-cache效果一样。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c82d0049c3f4f57bf66d8effcb25ed5~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h2 id="4-缓存位置"><a href="#4-缓存位置" class="headerlink" title="4. 缓存位置"></a>4. 缓存位置</h2><p>上面我们说，强缓存我们会把资源房放到memory cache 和 disk cache中，那什么资源放在memory cache，什么资源放在disk cache中？</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c6020dcbb114111a8e0a09f52d39ab7~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>存存储图像和网页等资源主要缓存在disk cache，操作系统缓存文件等资源大部分都会缓存在memory cache中。具体操作浏览器自动分配，看谁的资源利用率不高就分给谁。</p>
+<p>可以看到memory cache请求时间都是0ms，这个是不是太神奇了，这方面我来梳理下。</p>
+<p>查找浏览器缓存时会按顺序查找: Service Worker–&gt;Memory Cache–&gt;Disk Cache–&gt;Push Cache。</p>
+<h3 id="1-Service-Worker"><a href="#1-Service-Worker" class="headerlink" title="1. Service Worker"></a>1. Service Worker</h3><p>是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。</p>
+<h3 id="2-Memory-Cache"><a href="#2-Memory-Cache" class="headerlink" title="2. Memory Cache"></a>2. Memory Cache</h3><p>内存中的缓存，主要包含的是当前中页面中已经抓取到的资源，例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快，内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。</p>
+<h3 id="3-Disk-Cache"><a href="#3-Disk-Cache" class="headerlink" title="3. Disk Cache"></a>3. Disk Cache</h3><p>存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。</p>
+<p>在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache。</p>
+<p>memory cache 要比 disk cache 快的多。举个例子：从远程 web 服务器直接提取访问文件可能需要500毫秒(半秒)，那么磁盘访问可能需要10-20毫秒，而内存访问只需要100纳秒，更高级的还有 L1缓存访问(最快和最小的 CPU 缓存)只需要0.5纳秒。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6216b57ad4cb480884c2b69d0f0ffe26~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>很神奇的，我们又看到了一个prefetch cache，这个又是什么呢?</p>
+<p><strong>prefetch cache(预取缓存)</strong></p>
+<p>link标签上带了prefetch，再次加载会出现。</p>
+<p>prefetch是预加载的一种方式，被标记为prefetch的资源，将会被浏览器在空闲时间加载。</p>
+<h3 id="4-Push-Cache"><a href="#4-Push-Cache" class="headerlink" title="4. Push Cache"></a>4. Push Cache</h3><p>Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。</p>
+<h3 id="5-CPU、内存、硬盘"><a href="#5-CPU、内存、硬盘" class="headerlink" title="5. CPU、内存、硬盘"></a>5. CPU、内存、硬盘</h3><p>这里提到了硬盘，内存，可能有些小伙伴对硬盘，内存没什么直观的概念。</p>
+<p>CPU、内存、硬盘都是计算机的主要组成部分。</p>
+<p>CPU：中央处理单元(CntralPocessingUit)的缩写，也叫处理器，是计算机的运算核心和控制核心。电脑靠CPU来运算、控制。让电脑的各个部件顺利工作，起到协调和控制作用。</p>
+<p>硬盘：存储资料和软件等数据的设备，有容量大，断电数据不丢失的特点。</p>
+<p>内存：负责硬盘等硬件上的数据与CPU之间数据交换处理。特点是体积小，速度快，有电可存，无电清空，即电脑在开机状态时内存中可存储数据，关机后将自动清空其中的所有数据。</p>
+<h2 id="5-协商缓存"><a href="#5-协商缓存" class="headerlink" title="5. 协商缓存"></a>5. 协商缓存</h2><p>协商缓存就是强缓存失效后，浏览器携带缓存标识向服务器发送请求，由服务器根据缓存标识来决定是否使用缓存的过程。</p>
+<p>主要有以下两种情况：</p>
+<p>协商缓存生效，返回304</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f26ab979fcd4df6906a2e9d5e28f56a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>协商缓存失效，返回200和请求结果</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449a56554c1e4f0c949e139081a9db4c~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p><strong>如何设置协商缓存？</strong></p>
+<h5 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h5><p>Last-Modified是服务器响应请求时，返回该资源文件在服务器最后被修改的时间。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6c3aabbfd9a43ab81c97dd519da3b9f~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>If-Modified-Since则是客户端再次发起该请求时，携带上次请求返回的Last-Modified值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有If-Modified-Since字段，则会根据If-Modified-Since的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于If-Modified-Since的字段值，则重新返回资源，状态码为200；否则则返回304，代表资源无更新，可继续使用缓存文件。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa2eae3bc57d48e39a871c8e659bf97d~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h5 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag / If-None-Match"></a>Etag / If-None-Match</h5><p>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0da637ef7fa64aef8b1f932c3dd0297b~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>If-None-Match是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有If-None-Match，则会根据If-None-Match的字段值与该资源在服务器的Etag值做对比，一致则返回304，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为200。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9d32690cdf45b498e5dcabd4c12f71~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<blockquote>
+<p>Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效。</p>
+<h4 id="两者对比"><a href="#两者对比" class="headerlink" title="两者对比"></a>两者对比</h4><ul>
+<li><p>性能上，<code>Last-Modified</code>优于<code>ETag</code>，<code>Last-Modified</code>记录的是时间点，而<code>Etag</code>需要根据文件的MD5算法生成对应的hash值。</p>
+</li>
+<li><p>精度上，</p>
+</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
+
+<p>优于</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
+
+<p>。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
+
+<p>按照内容给资源带上标识，能准确感知资源变化，</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
+
+<p>在某些场景并不能准确感知变化，比如👇 </p>
+<ul>
+<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
+<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
+</ul>
+<p>最后，<strong>「如果两种方式都支持的话，服务器会优先考虑<code>ETag</code>」</strong>。</p>
+</blockquote>
+<p>目前的项目大多使用这种缓存方案的：</p>
+<ul>
+<li>HTML: 协商缓存；</li>
+<li>css、js、图片：强缓存，文件名带上hash。</li>
+</ul>
+<h2 id="7-强缓存与协商缓存的区别"><a href="#7-强缓存与协商缓存的区别" class="headerlink" title="7. 强缓存与协商缓存的区别"></a>7. 强缓存与协商缓存的区别</h2><ol>
+<li><p>强缓存不发请求到服务器，所以有时候资源更新了浏览器还不知道，但是协商缓存会发请求到服务器，所以资源是否更新，服务器肯定知道。</p>
+</li>
+<li><p>大部分web服务器都默认开启协商缓存。</p>
+</li>
+</ol>
+<h2 id="8-刷新对于强缓存和协商缓存的影响"><a href="#8-刷新对于强缓存和协商缓存的影响" class="headerlink" title="8. 刷新对于强缓存和协商缓存的影响"></a>8. 刷新对于强缓存和协商缓存的影响</h2><ol>
+<li><p>当ctrl+f5强制刷新网页时，直接从服务器加载，跳过强缓存和协商缓存。</p>
+</li>
+<li><p>当f5刷新网页时，跳过强缓存，但是会检查协商缓存。</p>
+</li>
+<li><p>浏览器地址栏中写入URL，回车 浏览器发现缓存中有这个文件了，不用继续请求了，直接去缓存拿。（最快）</p>
+</li>
+</ol>
+<h2 id="9-什么是浏览器同源策略？"><a href="#9-什么是浏览器同源策略？" class="headerlink" title="9.什么是浏览器同源策略？"></a>9.什么是浏览器同源策略？</h2><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
+<p>同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+<p>下表给出了相对<a target="_blank" rel="noopener" href="http://store.company.com/dir/page.html同源检测的示例">http://store.company.com/dir/page.html同源检测的示例</a>:</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123996dc1e~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-23-10-25-28"></p>
+<p>浏览器中的大部分内容都是受同源策略限制的，但是以下三个标签可以不受限制：</p>
+<ul>
+<li>img</li>
+<li>link</li>
+<li>script</li>
+</ul>
+<h2 id="10-如何实现跨域？"><a href="#10-如何实现跨域？" class="headerlink" title="10.如何实现跨域？"></a>10.如何实现跨域？</h2><h3 id="最经典的跨域方案jsonp"><a href="#最经典的跨域方案jsonp" class="headerlink" title="最经典的跨域方案jsonp"></a>最经典的跨域方案jsonp</h3><p>jsonp本质上是一个Hack，它利用``标签不受同源策略限制的特性进行跨域操作。</p>
+<p>jsonp优点：</p>
+<ul>
+<li>实现简单</li>
+<li>兼容性非常好</li>
+</ul>
+<p>jsonp的缺点：</p>
+<ul>
+<li>只支持get请求（因为``标签只能get）</li>
+<li>有安全性问题，容易遭受xss攻击</li>
+<li>需要服务端配合jsonp进行一定程度的改造</li>
+</ul>
+<p>jsonp的实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">JSONP</span>(<span class="params">&#123;  </span></span><br><span class="line"><span class="params">  url,</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">  callbackKey,</span></span><br><span class="line"><span class="params">  callback</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 在参数里制定 callback 的名字</span></span><br><span class="line">  params = params || &#123;&#125;</span><br><span class="line">  params[callbackKey] = <span class="string">&#x27;jsonpCallback&#x27;</span></span><br><span class="line">    <span class="comment">// 预留 callback</span></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = callback</span><br><span class="line">    <span class="comment">// 拼接参数字符串</span></span><br><span class="line">  <span class="keyword">const</span> paramKeys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(params)</span><br><span class="line">  <span class="keyword">const</span> paramString = paramKeys</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function"><span class="params">key</span> =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;params[key]&#125;</span>`</span>)</span><br><span class="line">    .<span class="title function_">join</span>(<span class="string">&#x27;&amp;&#x27;</span>)</span><br><span class="line">    <span class="comment">// 插入 DOM 元素</span></span><br><span class="line">  <span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">  script.<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;paramString&#125;</span>`</span>)</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">JSON</span>P(&#123;  </span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;http://s.weibo.com/ajax/jsonp/suggestion&#x27;</span>,</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">key</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">callbackKey</span>: <span class="string">&#x27;_cb&#x27;</span>,</span><br><span class="line">  <span class="title function_">callback</span>(<span class="params">result</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">data</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="最流行的跨域方案cors"><a href="#最流行的跨域方案cors" class="headerlink" title="最流行的跨域方案cors"></a>最流行的跨域方案cors</h3><p>cors是目前主流的跨域解决方案，跨域资源共享(CORS) 是一种机制，它使用额外的 HTTP 头来告诉浏览器  让运行在一个 origin (domain) 上的Web应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
+<p>如果你用express，可以这样在后端设置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CORS middleware</span></span><br><span class="line"><span class="keyword">var</span> allowCrossDomain = <span class="keyword">function</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;http://example.com&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;GET,PUT,POST,DELETE&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Content-Type&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">app.<span class="title function_">configure</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">bodyParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">cookieParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">session</span>(&#123; <span class="attr">secret</span>: <span class="string">&#x27;cool beans&#x27;</span> &#125;));</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">methodOverride</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(allowCrossDomain);</span><br><span class="line">    app.<span class="title function_">use</span>(app.<span class="property">router</span>);</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(__dirname + <span class="string">&#x27;/public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>在生产环境中建议用成熟的开源中间件解决问题。</p>
+<h3 id="最方便的跨域方案Nginx"><a href="#最方便的跨域方案Nginx" class="headerlink" title="最方便的跨域方案Nginx"></a>最方便的跨域方案Nginx</h3><p>nginx是一款极其强大的web服务器，其优点就是轻量级、启动快、高并发。</p>
+<p>现在的新项目中nginx几乎是首选，我们用node或者java开发的服务通常都需要经过nginx的反向代理。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123c354a18~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-24-10-19-34"></p>
+<p>反向代理的原理很简单，即所有客户端的请求都必须先经过nginx的处理，nginx作为代理服务器再讲请求转发给node或者java服务，这样就规避了同源策略。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#进程, 可更具cpu数量调整</span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    #连接数</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.<span class="property">types</span>;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接超时时间，服务器会在这个时间过后关闭连接。</span></span><br><span class="line">    keepalive_timeout  <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gizp压缩</span></span><br><span class="line">    gzip  on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 直接请求nginx也是会报跨域错误的这里设置允许跨域</span></span><br><span class="line">    <span class="comment">// 如果代理地址已经允许跨域则不需要这些, 否则报错(虽然这样nginx跨域就没意义了)</span></span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span> *;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Headers</span> X-<span class="title class_">Requested</span>-<span class="title class_">With</span>;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Methods</span> <span class="variable constant_">GET</span>,<span class="variable constant_">POST</span>,<span class="variable constant_">OPTIONS</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// srever模块配置是http模块中的一个子模块，用来定义一个虚拟访问主机</span></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 根路径指到index.html</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// localhost/api 的请求会被转发到192.168.0.103:8080</span></span><br><span class="line">        location /api &#123;</span><br><span class="line">            rewrite ^<span class="regexp">/b/</span>(.*)$ /$1 <span class="keyword">break</span>; <span class="comment">// 去除本地接口/api前缀, 否则会出现404</span></span><br><span class="line">            proxy_set_header <span class="title class_">Host</span> $host;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Real</span>-<span class="variable constant_">IP</span> $remote_addr;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Forwarded</span>-<span class="title class_">For</span> $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass <span class="attr">http</span>:<span class="comment">//192.168.0.103:8080; # 转发地址</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 重定向错误页面到/50x.html</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.<span class="property">html</span>;</span><br><span class="line">        location = /50x.<span class="property">html</span> &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="其它跨域方案"><a href="#其它跨域方案" class="headerlink" title="其它跨域方案"></a>其它跨域方案</h3><ol>
+<li>HTML5 XMLHttpRequest 有一个API，postMessage()方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。</li>
+<li>WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关了，因此可以跨域。</li>
+<li>window.name + iframe：window.name属性值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值，我们可以利用这个特点进行跨域。</li>
+<li>location.hash + iframe：a.html欲与c.html跨域相互通信，通过中间页b.html来实现。 三个页面，不同域之间利用iframe的location.hash传值，相同域之间直接js访问来通信。</li>
+<li>document.domain + iframe： 该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式，我们只需要给页面添加 document.domain =’test.com’ 表示二级域名都相同就可以实现跨域，两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</li>
+</ol>
 
       
       <!-- reward -->
@@ -976,256 +1226,6 @@
 <td>window.history.go(1)</td>
 </tr>
 </tbody></table>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-前端浏览器知识梳理" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-
-    
-    <div class="article-meta">
-      <a href="2024/03/18/%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/" class="article-date">
-  <time datetime="2024-03-18T11:16:54.656Z" itemprop="datePublished">2024-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="1-常见的浏览器内核有哪些"><a href="#1-常见的浏览器内核有哪些" class="headerlink" title="1. 常见的浏览器内核有哪些?"></a>1. 常见的浏览器内核有哪些?</h2><table>
-<thead>
-<tr>
-<th>浏览器 / RunTime</th>
-<th>内核（渲染引擎）</th>
-<th>JavaScript 引擎</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Chrome</td>
-<td>webkit-&gt;blink</td>
-<td>V8</td>
-</tr>
-<tr>
-<td>FireFox</td>
-<td>Gecko</td>
-<td>SpiderMonkey</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>Webkit</td>
-<td>JavaScriptCore</td>
-</tr>
-<tr>
-<td>Edge</td>
-<td>EdgeHTML</td>
-<td>Chakra(for JavaScript)</td>
-</tr>
-<tr>
-<td>IE</td>
-<td>Trident</td>
-<td>JScript（IE3.0-IE8.0）</td>
-</tr>
-<tr>
-<td>Opera</td>
-<td>Presto-&gt;blink</td>
-<td>Linear A（4.0-6.1）/ Linear B（7.0-9.2）/ Futhark（9.5-10.2）/ Carakan（10.5-）</td>
-</tr>
-<tr>
-<td>Node.js</td>
-<td>-</td>
-<td>V8</td>
-</tr>
-</tbody></table>
-<h2 id="2-浏览器的主要组成部分是什么？"><a href="#2-浏览器的主要组成部分是什么？" class="headerlink" title="2. 浏览器的主要组成部分是什么？"></a>2. 浏览器的主要组成部分是什么？</h2><ol>
-<li><strong>「用户界面」</strong> - 包括地址栏、前进/后退按钮、书签菜单等。</li>
-<li><strong>「浏览器引擎」</strong> - 在用户界面和呈现引擎之间传送指令。</li>
-<li><strong>「呈现引擎」</strong> - 负责显示请求的内容。如果请求的内容是 HTML，它就负责解析 HTML 和 CSS 内容，并将解析后的内容显示在屏幕上。</li>
-<li><strong>「网络」</strong> - 用于网络调用，比如 HTTP 请求。</li>
-<li><strong>「用户界面后端」</strong> -用于绘制基本的窗口小部件，比如组合框和窗口。</li>
-<li><strong>「JavaScript 解释器」</strong>- 用于解析和执行 JavaScript 代码。</li>
-<li><strong>「数据存储」</strong> - 这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库。</li>
-</ol>
-<p>值得注意的是，和大多数浏览器不同，Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。</p>
-<h2 id="3-强缓存"><a href="#3-强缓存" class="headerlink" title="3. 强缓存"></a>3. 强缓存</h2><p>强缓存是当我们访问URL的时候，不会向服务器发送请求，直接从缓存中读取资源，但是会返回200的状态码。</p>
-<p><strong>如何设置强缓存？</strong></p>
-<p>我们第一次进入页面，请求服务器，然后服务器进行应答，浏览器会根据response Header来判断是否对资源进行缓存，如果响应头中expires、pragma或者cache-control字段，代表这是强缓存，浏览器就会把资源缓存在memory cache 或 disk cache中。</p>
-<p>第二次请求时，浏览器判断请求参数，如果符合强缓存条件就直接返回状态码200，从本地缓存中拿数据。否则把响应参数存在request header请求头中，看是否符合协商缓存，符合则返回状态码304，不符合则服务器会返回全新资源。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca00bff3081e4cfd993a8f252f4fa23a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<h3 id="expires"><a href="#expires" class="headerlink" title="expires"></a>expires</h3><p>是HTTP1.0控制网页缓存的字段，值为一个时间戳，准确来讲是格林尼治时间，服务器返回该请求结果缓存的到期时间，意思是，再次发送请求时，如果未超过过期时间，直接使用该缓存，如果过期了则重新请求。</p>
-<p>有个缺点，就是它判断是否过期是用本地时间来判断的，本地时间是可以自己修改的。</p>
-<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>是HTTP1.1中控制网页缓存的字段，当Cache-Control都存在时，Cache-Control优先级更高，主要取值为：</p>
-<p>public：资源客户端和服务器都可以缓存。</p>
-<p>privite：资源只有客户端可以缓存。</p>
-<p>no-cache：客户端缓存资源，但是是否缓存需要经过协商缓存来验证。</p>
-<p>no-store：不使用缓存。</p>
-<p>max-age：缓存保质期。</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f169e913e244d52a44ff1e4185cb9ce~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>Cache-Control使用了max-age相对时间，解决了expires的问题。</p>
-<h3 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a>pragma</h3><p>这个是HTTP1.0中禁用网页缓存的字段，其取值为no-cache，和Cache-Control的no-cache效果一样。</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c82d0049c3f4f57bf66d8effcb25ed5~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<h2 id="4-缓存位置"><a href="#4-缓存位置" class="headerlink" title="4. 缓存位置"></a>4. 缓存位置</h2><p>上面我们说，强缓存我们会把资源房放到memory cache 和 disk cache中，那什么资源放在memory cache，什么资源放在disk cache中？</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c6020dcbb114111a8e0a09f52d39ab7~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>存存储图像和网页等资源主要缓存在disk cache，操作系统缓存文件等资源大部分都会缓存在memory cache中。具体操作浏览器自动分配，看谁的资源利用率不高就分给谁。</p>
-<p>可以看到memory cache请求时间都是0ms，这个是不是太神奇了，这方面我来梳理下。</p>
-<p>查找浏览器缓存时会按顺序查找: Service Worker–&gt;Memory Cache–&gt;Disk Cache–&gt;Push Cache。</p>
-<h3 id="1-Service-Worker"><a href="#1-Service-Worker" class="headerlink" title="1. Service Worker"></a>1. Service Worker</h3><p>是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。</p>
-<h3 id="2-Memory-Cache"><a href="#2-Memory-Cache" class="headerlink" title="2. Memory Cache"></a>2. Memory Cache</h3><p>内存中的缓存，主要包含的是当前中页面中已经抓取到的资源，例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快，内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。</p>
-<h3 id="3-Disk-Cache"><a href="#3-Disk-Cache" class="headerlink" title="3. Disk Cache"></a>3. Disk Cache</h3><p>存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。</p>
-<p>在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache。</p>
-<p>memory cache 要比 disk cache 快的多。举个例子：从远程 web 服务器直接提取访问文件可能需要500毫秒(半秒)，那么磁盘访问可能需要10-20毫秒，而内存访问只需要100纳秒，更高级的还有 L1缓存访问(最快和最小的 CPU 缓存)只需要0.5纳秒。</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6216b57ad4cb480884c2b69d0f0ffe26~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>很神奇的，我们又看到了一个prefetch cache，这个又是什么呢?</p>
-<p><strong>prefetch cache(预取缓存)</strong></p>
-<p>link标签上带了prefetch，再次加载会出现。</p>
-<p>prefetch是预加载的一种方式，被标记为prefetch的资源，将会被浏览器在空闲时间加载。</p>
-<h3 id="4-Push-Cache"><a href="#4-Push-Cache" class="headerlink" title="4. Push Cache"></a>4. Push Cache</h3><p>Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。</p>
-<h3 id="5-CPU、内存、硬盘"><a href="#5-CPU、内存、硬盘" class="headerlink" title="5. CPU、内存、硬盘"></a>5. CPU、内存、硬盘</h3><p>这里提到了硬盘，内存，可能有些小伙伴对硬盘，内存没什么直观的概念。</p>
-<p>CPU、内存、硬盘都是计算机的主要组成部分。</p>
-<p>CPU：中央处理单元(CntralPocessingUit)的缩写，也叫处理器，是计算机的运算核心和控制核心。电脑靠CPU来运算、控制。让电脑的各个部件顺利工作，起到协调和控制作用。</p>
-<p>硬盘：存储资料和软件等数据的设备，有容量大，断电数据不丢失的特点。</p>
-<p>内存：负责硬盘等硬件上的数据与CPU之间数据交换处理。特点是体积小，速度快，有电可存，无电清空，即电脑在开机状态时内存中可存储数据，关机后将自动清空其中的所有数据。</p>
-<h2 id="5-协商缓存"><a href="#5-协商缓存" class="headerlink" title="5. 协商缓存"></a>5. 协商缓存</h2><p>协商缓存就是强缓存失效后，浏览器携带缓存标识向服务器发送请求，由服务器根据缓存标识来决定是否使用缓存的过程。</p>
-<p>主要有以下两种情况：</p>
-<p>协商缓存生效，返回304</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f26ab979fcd4df6906a2e9d5e28f56a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>协商缓存失效，返回200和请求结果</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449a56554c1e4f0c949e139081a9db4c~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p><strong>如何设置协商缓存？</strong></p>
-<h5 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h5><p>Last-Modified是服务器响应请求时，返回该资源文件在服务器最后被修改的时间。</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6c3aabbfd9a43ab81c97dd519da3b9f~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>If-Modified-Since则是客户端再次发起该请求时，携带上次请求返回的Last-Modified值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有If-Modified-Since字段，则会根据If-Modified-Since的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于If-Modified-Since的字段值，则重新返回资源，状态码为200；否则则返回304，代表资源无更新，可继续使用缓存文件。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa2eae3bc57d48e39a871c8e659bf97d~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<h5 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag / If-None-Match"></a>Etag / If-None-Match</h5><p>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0da637ef7fa64aef8b1f932c3dd0297b~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>If-None-Match是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有If-None-Match，则会根据If-None-Match的字段值与该资源在服务器的Etag值做对比，一致则返回304，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为200。</p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9d32690cdf45b498e5dcabd4c12f71~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<blockquote>
-<p>Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效。</p>
-<h4 id="两者对比"><a href="#两者对比" class="headerlink" title="两者对比"></a>两者对比</h4><ul>
-<li><p>性能上，<code>Last-Modified</code>优于<code>ETag</code>，<code>Last-Modified</code>记录的是时间点，而<code>Etag</code>需要根据文件的MD5算法生成对应的hash值。</p>
-</li>
-<li><p>精度上，</p>
-</li>
-</ul>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
-
-<p>优于</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
-
-<p>。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
-
-<p>按照内容给资源带上标识，能准确感知资源变化，</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
-
-<p>在某些场景并不能准确感知变化，比如👇 </p>
-<ul>
-<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
-<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
-</ul>
-<p>最后，<strong>「如果两种方式都支持的话，服务器会优先考虑<code>ETag</code>」</strong>。</p>
-</blockquote>
-<p>目前的项目大多使用这种缓存方案的：</p>
-<ul>
-<li>HTML: 协商缓存；</li>
-<li>css、js、图片：强缓存，文件名带上hash。</li>
-</ul>
-<h2 id="7-强缓存与协商缓存的区别"><a href="#7-强缓存与协商缓存的区别" class="headerlink" title="7. 强缓存与协商缓存的区别"></a>7. 强缓存与协商缓存的区别</h2><ol>
-<li><p>强缓存不发请求到服务器，所以有时候资源更新了浏览器还不知道，但是协商缓存会发请求到服务器，所以资源是否更新，服务器肯定知道。</p>
-</li>
-<li><p>大部分web服务器都默认开启协商缓存。</p>
-</li>
-</ol>
-<h2 id="8-刷新对于强缓存和协商缓存的影响"><a href="#8-刷新对于强缓存和协商缓存的影响" class="headerlink" title="8. 刷新对于强缓存和协商缓存的影响"></a>8. 刷新对于强缓存和协商缓存的影响</h2><ol>
-<li><p>当ctrl+f5强制刷新网页时，直接从服务器加载，跳过强缓存和协商缓存。</p>
-</li>
-<li><p>当f5刷新网页时，跳过强缓存，但是会检查协商缓存。</p>
-</li>
-<li><p>浏览器地址栏中写入URL，回车 浏览器发现缓存中有这个文件了，不用继续请求了，直接去缓存拿。（最快）</p>
-</li>
-</ol>
-<h2 id="9-什么是浏览器同源策略？"><a href="#9-什么是浏览器同源策略？" class="headerlink" title="9.什么是浏览器同源策略？"></a>9.什么是浏览器同源策略？</h2><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
-<p>同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
-<p>下表给出了相对<a target="_blank" rel="noopener" href="http://store.company.com/dir/page.html同源检测的示例">http://store.company.com/dir/page.html同源检测的示例</a>:</p>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123996dc1e~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-23-10-25-28"></p>
-<p>浏览器中的大部分内容都是受同源策略限制的，但是以下三个标签可以不受限制：</p>
-<ul>
-<li>img</li>
-<li>link</li>
-<li>script</li>
-</ul>
-<h2 id="10-如何实现跨域？"><a href="#10-如何实现跨域？" class="headerlink" title="10.如何实现跨域？"></a>10.如何实现跨域？</h2><h3 id="最经典的跨域方案jsonp"><a href="#最经典的跨域方案jsonp" class="headerlink" title="最经典的跨域方案jsonp"></a>最经典的跨域方案jsonp</h3><p>jsonp本质上是一个Hack，它利用``标签不受同源策略限制的特性进行跨域操作。</p>
-<p>jsonp优点：</p>
-<ul>
-<li>实现简单</li>
-<li>兼容性非常好</li>
-</ul>
-<p>jsonp的缺点：</p>
-<ul>
-<li>只支持get请求（因为``标签只能get）</li>
-<li>有安全性问题，容易遭受xss攻击</li>
-<li>需要服务端配合jsonp进行一定程度的改造</li>
-</ul>
-<p>jsonp的实现：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">JSONP</span>(<span class="params">&#123;  </span></span><br><span class="line"><span class="params">  url,</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">  callbackKey,</span></span><br><span class="line"><span class="params">  callback</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 在参数里制定 callback 的名字</span></span><br><span class="line">  params = params || &#123;&#125;</span><br><span class="line">  params[callbackKey] = <span class="string">&#x27;jsonpCallback&#x27;</span></span><br><span class="line">    <span class="comment">// 预留 callback</span></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = callback</span><br><span class="line">    <span class="comment">// 拼接参数字符串</span></span><br><span class="line">  <span class="keyword">const</span> paramKeys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(params)</span><br><span class="line">  <span class="keyword">const</span> paramString = paramKeys</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function"><span class="params">key</span> =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;params[key]&#125;</span>`</span>)</span><br><span class="line">    .<span class="title function_">join</span>(<span class="string">&#x27;&amp;&#x27;</span>)</span><br><span class="line">    <span class="comment">// 插入 DOM 元素</span></span><br><span class="line">  <span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">  script.<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;paramString&#125;</span>`</span>)</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">JSON</span>P(&#123;  </span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;http://s.weibo.com/ajax/jsonp/suggestion&#x27;</span>,</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">key</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">callbackKey</span>: <span class="string">&#x27;_cb&#x27;</span>,</span><br><span class="line">  <span class="title function_">callback</span>(<span class="params">result</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">data</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="最流行的跨域方案cors"><a href="#最流行的跨域方案cors" class="headerlink" title="最流行的跨域方案cors"></a>最流行的跨域方案cors</h3><p>cors是目前主流的跨域解决方案，跨域资源共享(CORS) 是一种机制，它使用额外的 HTTP 头来告诉浏览器  让运行在一个 origin (domain) 上的Web应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
-<p>如果你用express，可以这样在后端设置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CORS middleware</span></span><br><span class="line"><span class="keyword">var</span> allowCrossDomain = <span class="keyword">function</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;http://example.com&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;GET,PUT,POST,DELETE&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Content-Type&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">app.<span class="title function_">configure</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">bodyParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">cookieParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">session</span>(&#123; <span class="attr">secret</span>: <span class="string">&#x27;cool beans&#x27;</span> &#125;));</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">methodOverride</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(allowCrossDomain);</span><br><span class="line">    app.<span class="title function_">use</span>(app.<span class="property">router</span>);</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(__dirname + <span class="string">&#x27;/public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>在生产环境中建议用成熟的开源中间件解决问题。</p>
-<h3 id="最方便的跨域方案Nginx"><a href="#最方便的跨域方案Nginx" class="headerlink" title="最方便的跨域方案Nginx"></a>最方便的跨域方案Nginx</h3><p>nginx是一款极其强大的web服务器，其优点就是轻量级、启动快、高并发。</p>
-<p>现在的新项目中nginx几乎是首选，我们用node或者java开发的服务通常都需要经过nginx的反向代理。</p>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123c354a18~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-24-10-19-34"></p>
-<p>反向代理的原理很简单，即所有客户端的请求都必须先经过nginx的处理，nginx作为代理服务器再讲请求转发给node或者java服务，这样就规避了同源策略。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#进程, 可更具cpu数量调整</span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    #连接数</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.<span class="property">types</span>;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接超时时间，服务器会在这个时间过后关闭连接。</span></span><br><span class="line">    keepalive_timeout  <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gizp压缩</span></span><br><span class="line">    gzip  on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 直接请求nginx也是会报跨域错误的这里设置允许跨域</span></span><br><span class="line">    <span class="comment">// 如果代理地址已经允许跨域则不需要这些, 否则报错(虽然这样nginx跨域就没意义了)</span></span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span> *;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Headers</span> X-<span class="title class_">Requested</span>-<span class="title class_">With</span>;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Methods</span> <span class="variable constant_">GET</span>,<span class="variable constant_">POST</span>,<span class="variable constant_">OPTIONS</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// srever模块配置是http模块中的一个子模块，用来定义一个虚拟访问主机</span></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 根路径指到index.html</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// localhost/api 的请求会被转发到192.168.0.103:8080</span></span><br><span class="line">        location /api &#123;</span><br><span class="line">            rewrite ^<span class="regexp">/b/</span>(.*)$ /$1 <span class="keyword">break</span>; <span class="comment">// 去除本地接口/api前缀, 否则会出现404</span></span><br><span class="line">            proxy_set_header <span class="title class_">Host</span> $host;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Real</span>-<span class="variable constant_">IP</span> $remote_addr;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Forwarded</span>-<span class="title class_">For</span> $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass <span class="attr">http</span>:<span class="comment">//192.168.0.103:8080; # 转发地址</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 重定向错误页面到/50x.html</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.<span class="property">html</span>;</span><br><span class="line">        location = /50x.<span class="property">html</span> &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="其它跨域方案"><a href="#其它跨域方案" class="headerlink" title="其它跨域方案"></a>其它跨域方案</h3><ol>
-<li>HTML5 XMLHttpRequest 有一个API，postMessage()方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。</li>
-<li>WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关了，因此可以跨域。</li>
-<li>window.name + iframe：window.name属性值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值，我们可以利用这个特点进行跨域。</li>
-<li>location.hash + iframe：a.html欲与c.html跨域相互通信，通过中间页b.html来实现。 三个页面，不同域之间利用iframe的location.hash传值，相同域之间直接js访问来通信。</li>
-<li>document.domain + iframe： 该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式，我们只需要给页面添加 document.domain =’test.com’ 表示二级域名都相同就可以实现跨域，两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</li>
-</ol>
 
       
       <!-- reward -->
