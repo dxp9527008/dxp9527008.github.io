@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">1.9k</span>
         </span>
     </span>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">6 分钟</span>
         </span>
     </span>
 </div>
@@ -141,10 +141,53 @@
 <p>面试题：如何理解JS的异步？</p>
 <p>答案： JS是一门单线程的语言，这是<strong>因为它运行在浏览器的渲染主线程中</strong>，而渲染主线程只有一个。 而渲染主线程有很多任务，渲染页面，执行JS都在其中。如果使用同步的方式，极有可能导致主线程阻塞，从而导致消息队列中有很多其他任务无法得到执行。所以浏览器采用异步的方式来避免。具体的做法是 当某些任务发生时，比如计时器，网络，事件监听，主线程会将任务交给其他线程去处理，自身则立即结束任务的执行，转而执行后续的代码。当其他线程完成时，<strong>会把事先传递的回调函数包装成任务</strong>，加入到消息队列中的末尾排队，等待主线程的调度执行。在这种模式下浏览器永不阻塞，从而最大保证了单线程的流畅运行。</p>
 </blockquote>
-<pre><code>#### JS为何会阻塞渲染？</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> h1 = doucument.<span class="title function_">querySelector</span>(<span class="string">&#x27;h1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 死循环指定时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">while</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration) &#123;&#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">		h1.<span class="property">textContent</span> = <span class="string">&#x27;你好&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">delay</span>(<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="JS为何会阻塞渲染？"><a href="#JS为何会阻塞渲染？" class="headerlink" title="JS为何会阻塞渲染？"></a>JS为何会阻塞渲染？</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> h1 = doucument.<span class="title function_">querySelector</span>(<span class="string">&#x27;h1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 死循环指定时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">while</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration) &#123;&#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">		h1.<span class="property">textContent</span> = <span class="string">&#x27;你好&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">delay</span>(<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>这段代码的现象： 点击按钮后，页面等待3秒才会更新渲染。</p>
 <p>原因：因为渲染和js的执行都在渲染主线程中，当代码执行 <code>h1.textContent = &#39;你好&#39;</code> 后会创建一个渲染任务进入消息队列等待执行。只有等主线程执行完，才会执行接下来的渲染任务。</p>
+<h4 id="任务有优先级吗？"><a href="#任务有优先级吗？" class="headerlink" title="任务有优先级吗？"></a>任务有优先级吗？</h4><p>任务没有优先级，在消息队列中先进先出。</p>
+<p><strong>但是消息队列是有优先级的</strong></p>
+<p>根据W3C的最新解释：</p>
+<ul>
+<li><p>每个任务都有一个任务类型，同一个类型的任务必须在一个队列， 不同的类型任务分属不同的队列。</p>
+</li>
+<li><p>浏览器必须准备好一个微队列，微队列中的任务优先所有其他的任务执行。</p>
+<blockquote>
+<p>随着浏览器的复杂度提升，w3c不再使用宏队列(宏任务)的说法。</p>
+</blockquote>
+</li>
+</ul>
+<p>在目前 Chrome 的实现中，至少包含下面的队列：</p>
+<ul>
+<li><p>延时队列：用于存放计时器的回调任务，优先级 【中】</p>
+</li>
+<li><p>交互队列：用于存放用户操作后产生的事件任务 ，优先级 【高】</p>
+</li>
+<li><p>微队列：用户存放需要最快执行的任务，优先级【最高】</p>
+<blockquote>
+<p>添加任务到微队列的主要方式主要使用 Promise、MutationObserver</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment">// 立即把一个函数添加到微队列</span></span><br><span class="line">&gt;<span class="title class_">Promise</span>.<span class="property">resolve</span>.<span class="title function_">then</span>(函数)</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+</li>
+</ul>
+<h4 id="JS的事件循环阐述"><a href="#JS的事件循环阐述" class="headerlink" title="JS的事件循环阐述"></a>JS的事件循环阐述</h4><blockquote>
+<p>事件循环又叫消息循环，是浏览器主线程的工作方式。</p>
+<p>在Chrome的源码中， 它开启了一个 不会结束的for循环，每次循环都会从消息队列中取出第一个任务执行，而其他线程只需要在合适的时候将任务加入到队列末尾即可。</p>
+<p>过去吧消息队列简单分为宏队列和微队列，这种说法目前无法满足复杂的浏览器环境，取而代之的是一个更加灵活多变的处理方式。</p>
+<p>根据w3c的官方解释，每个任务有不同的类型，同类的任务必须在同一个队列中，不同任务可以属于不同的队列。不同的任务队列有不同的优先级，在一次事件循环中，由浏览器自行决定取哪一个队列的任务。但浏览器必须有一个微队列，微队列的任务一定具有最高优先级，必须优先调度执行。</p>
+</blockquote>
+<h4 id="JS中计时器能做到精确计时吗？"><a href="#JS中计时器能做到精确计时吗？" class="headerlink" title="JS中计时器能做到精确计时吗？"></a>JS中计时器能做到精确计时吗？</h4><blockquote>
+<p>不能，因为：</p>
+<ul>
+<li>计算机硬件没有原子钟，无法做到精确计时。</li>
+<li>操作系统的计时函数本身就有少量偏差，由于js的计时函数最终调用的是操作系统的函数，也携带了这些偏差</li>
+<li>按照w3c的标准，浏览器实现计时器是，如果嵌套层级超过5层，则会带有4毫秒的最少时间，这样在计时时间少于4毫秒时，又带来了偏差。</li>
+<li>受事件循环的影响，计时器的回调函数只能在主线程空闲是运行，因此又带来的偏差。</li>
+</ul>
+</blockquote>
+<p><strong>总结： 单线程是异步产生的原因，事件循环是异步的实现方式。</strong></p>
 
       
       <!-- reward -->
