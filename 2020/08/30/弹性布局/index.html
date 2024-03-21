@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    事件循环 |  Mr Deng的个人博客
+    CSS变幻 |  Mr Deng的个人博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -43,7 +43,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-浏览器事件循环-原理" class="article article-type-post" itemscope
+  <article id="post-弹性布局" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -51,7 +51,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  事件循环
+  CSS变幻
 </h1>
  
 
@@ -61,7 +61,7 @@
     
     <div class="article-meta">
       <a href="" class="article-date">
-  <time datetime="2024-03-19T16:00:00.000Z" itemprop="datePublished">2024-03-20</time>
+  <time datetime="2020-08-29T16:00:00.000Z" itemprop="datePublished">2020-08-30</time>
 </a>
       
       
@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">860</span>
         </span>
     </span>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -105,46 +105,76 @@
       
 
       
-      <h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p> 浏览器的进程模型    </p>
-<h4 id="什么是进程？"><a href="#什么是进程？" class="headerlink" title="什么是进程？"></a>什么是进程？</h4><p>​    程序运行需要自己的专属的内存空间，可以把这个内存空间简单理解成进程。</p>
-<p>每个应用至少有一个进程，每个进程相互独立，即使要通信，也要双方同意。</p>
-<h4 id="什么是线程？"><a href="#什么是线程？" class="headerlink" title="什么是线程？"></a>什么是线程？</h4><p>有了进程之后，就可以运行程序的代码。</p>
-<p>运行代码的“人” 称之为 线程。</p>
-<p>一个进程至少有一个线程，所以进程开启后会自动创建一个线程来运行代码，该线程称为主线程。</p>
-<p>如果程序要同事执行多块代码，主线程就会启动更多的线程来执行代码，所以一个进程中可以包含多个线程。</p>
-<h4 id="浏览器有哪些进程和线程"><a href="#浏览器有哪些进程和线程" class="headerlink" title="浏览器有哪些进程和线程?"></a>浏览器有哪些进程和线程?</h4><pre><code>浏览器是一个多进程多线程的应用程序。</code></pre><p>​    为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。 </p>
-<p>最主要的进程有：</p>
-<p>​    1.<strong>浏览器进程</strong>：主要负责页面显示，用户交互，子进程管理（比如网络进程和渲染进程都是这个进程启动的）等。 浏览器进程内部会启动多个线程处理不同的任务。</p>
-<pre><code>2**.网络进程**：负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</code></pre><p>​    3.<strong>渲染进程</strong>（重点）：渲染进程启动后，会开启一个<strong>渲染主线程</strong>，负责执行HTML、CSS、JS代码。默认情况下浏览器会给<strong>每个标签页开启一个新的渲染进程</strong>，保证不同标签页之间不相互影响。将来可能改成一个站点一个进程。</p>
-<h4 id="渲染主线程是如何工作的？"><a href="#渲染主线程是如何工作的？" class="headerlink" title="渲染主线程是如何工作的？"></a>渲染主线程是如何工作的？</h4><pre><code>* 解析html
-* 解析css
-* 计算样式
-* 布局
-* 处理图层
-* 每秒把页面画 60 次
-* 执行全局 js 代码
-* 执行时间处理函数
-* 执行计时器的回调函数
-* ......</code></pre><ol>
-<li>在最开始 的时候，渲染主线程会进入一个无限循环。</li>
-<li>每一次循环都会检查消息队列中是否有任务存在，如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。</li>
-</ol>
-<p>​    3.其他所有线程（包括其他进程的线程）可以随时消息队列中添加任务。新任务会加到队列的末尾。</p>
-<p><strong>这整个过程被称为事件循环（消息循环）。</strong></p>
-<h4 id="何为异步？"><a href="#何为异步？" class="headerlink" title="何为异步？"></a>何为异步？</h4><p>​    代码在执行的过程中，会遇到一些无法立即处理的任务。比如：</p>
+      <h2 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h2><p>弹性布局是为了弥补流式布局下在移动端布局的不方便而产生的一种新的布局方式 ，它主要是通过<strong>弹性盒子</strong>这个特性来完成了</p>
+<h3 id="弹性盒子属性"><a href="#弹性盒子属性" class="headerlink" title="弹性盒子属性"></a>弹性盒子属性</h3><ol>
+<li><p><code>display:flex</code>这个属性将一个盒子转换成弹性盒子</p>
 <ul>
-<li>计时完成后需要执行的任务  –  <code>setTimeout</code> 、<code>setInterval</code></li>
-<li>网络通信完成后需要执行的任务 – <code>XHR</code>  、 <code>Fetch</code></li>
-<li>用户操作后需要执行的任务 – <code>addEventListentener</code></li>
+<li>当一个元素一旦变成弹性盒子以后，这个元素里面就全有两根轴，一个叫横轴row,一个叫纵轴column</li>
+<li>在刚刚产生的两根轴（row/column）里面，有一根是主轴(<strong>justify-content</strong>)与一根副轴(<strong>align-items</strong>)</li>
+<li><font color="red">默认情况下是以row为主轴</font>,<strong>里面的元素会沿着主轴的方向去排列</strong></li>
 </ul>
-<blockquote>
-<p>面试题：如何理解JS的异步？</p>
-<p>答案： JS是一门单线程的语言，这是<strong>因为它运行在浏览器的渲染主线程中</strong>，而渲染主线程只有一个。 而渲染主线程有很多任务，渲染页面，执行JS都在其中。如果使用同步的方式，极有可能导致主线程阻塞，从而导致消息队列中有很多其他任务无法得到执行。所以浏览器采用异步的方式来避免。具体的做法是 当某些任务发生时，比如计时器，网络，事件监听，主线程会将任务交给其他线程去处理，自身则立即结束任务的执行，转而执行后续的代码。当其他线程完成时，<strong>会把事先传递的回调函数包装成任务</strong>，加入到消息队列中的末尾排队，等待主线程的调度执行。在这种模式下浏览器永不阻塞，从而最大保证了单线程的流畅运行。</p>
-</blockquote>
-<pre><code>#### JS为何会阻塞渲染？</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> h1 = doucument.<span class="title function_">querySelector</span>(<span class="string">&#x27;h1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 死循环指定时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">while</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration) &#123;&#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">		h1.<span class="property">textContent</span> = <span class="string">&#x27;你好&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">delay</span>(<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这段代码的现象： 点击按钮后，页面等待3秒才会更新渲染。</p>
-<p>原因：因为渲染和js的执行都在渲染主线程中，当代码执行 <code>h1.textContent = &#39;你好&#39;</code> 后会创建一个渲染任务进入消息队列等待执行。只有等主线程执行完，才会执行接下来的渲染任务。</p>
+</li>
+<li><p><code>flex-direction</code>设置元素的主轴</p>
+<p>刚刚我们提过，元素一旦转换成弹性盒子以后，它默认就有两根轴row/column，同时row是它的默认主轴，我们可以通过<code>flex-direction</code>来改变盒子的主轴</p>
+<ul>
+<li><code>flex-direction:row</code>设置横向的为主轴</li>
+<li><code>flex-direction:column</code>设置纵向的为主轴</li>
+<li><code>flex-direction:row-reverse</code>设置反向的横轴为主轴</li>
+<li><code>flex-direction:column-reverse</code>设置反向纵轴的为主轴</li>
+</ul>
+</li>
+<li><p><code>justify-content</code>主轴布局排列</p>
+<ul>
+<li>center居中</li>
+<li>flex-start 弹性开始的地方</li>
+<li>flex-end弹性结束的地方</li>
+<li>space-between用空格撑开，撑到两边去</li>
+<li>space-around元素的左右两边用空格撑开</li>
+</ul>
+</li>
+<li><p><code>align-items</code>副轴布局排列</p>
+<ul>
+<li><p>center居中</p>
+</li>
+<li><p>flex-start弹性开始的地方</p>
+</li>
+<li><p>flex-end弹性结束的地方</p>
+</li>
+<li><p>stretch当弹性盒子里面的元素没有设置高度height的时候，就把它拉成100%</p>
+</li>
+<li><p>baseline基准对对齐，当内部元素有padding的时候，就会看到效果</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/aa4749128f118cdef9f6671c48647f8b" alt="1563689240668.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">display</span>: flex;  <span class="comment">/*变成弹性盒子*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">flex-direction</span>: row;  <span class="comment">/*row是主轴*/</span></span></span><br><span class="line"><span class="language-css">        <span class="comment">/*如果我现在想让里面的元素左右居中，那么，应该沿关row这根轴移动*/</span></span></span><br><span class="line"><span class="language-css">        <span class="comment">/*justify-content: space-around;*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">align-items</span>: baseline;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: deeppink;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">38px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding-top</span>: <span class="number">70px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">38px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding-top</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>flex-wrap</code>弹性盒子内部是否允许换行</p>
+</li>
+</ol>
+<ul>
+<li><p>warp:当弹性盒子内部放不下的时候，允许换行</p>
+</li>
+<li><p>nowrap:弹性盒子内部不换行，默认排在一行，宽度不够则挤压</p>
+</li>
+<li><p>wrap-reverse：弹性盒子内部可以换行，但是要反转</p>
+<p> 注意：当内部元素在主轴上面排列不下的时候，如果设置了换行，这个时候，就会出现多个主轴的情况，那么，现在就需要使用另一个属性(align-content)来设置了</p>
+<p> <img src="https://img02.sogoucdn.com/app/a/100520146/17d2db4b0ce7a3fc5d246b0d8c9b1f21" alt="1563689958610.png"></p>
+<p> 这三个div本来应该排列在一行的，现在排不下了，所以给一个<code>flex-wrap:wrap</code>以后，就会出现第二行</p>
+</li>
+</ul>
+<ol>
+<li><p>align-content，主轴出现折行以后在副轴上面的设置，如果主轴x，那么，该属性无效果</p>
+</li>
+<li><p>order调整弹性盒子内部的排列，该值默认为0，order从小到大沿着弹性的方向排列</p>
+</li>
+<li><p>flex属性</p>
+<p><del>flex:1代表占用剩下空间的100%</del></p>
+<p>占用当前的flex值/总的flex值</p>
+</li>
+<li><p>flex-flow：设置主轴并同时设置主轴是否允许折行</p>
+<p>本质是面是flex-direction与flex-wrap的合并</p>
+</li>
+</ol>
 
       
       <!-- reward -->
@@ -213,7 +243,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/20/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/08/30/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -229,10 +259,19 @@
   
   <nav class="article-nav">
     
+      <a href="../../../09/01/CSS%E5%8F%98%E5%B9%BB/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            CSS变幻
+          
+        </div>
+      </a>
     
-      <a href="../../../../2023/08/22/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="article-nav-link">
+    
+      <a href="../../29/CSS%E6%B8%90%E5%8F%98/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">前端面试总结</div>
+        <div class="article-nav-title">CSS基础</div>
       </a>
     
   </nav>

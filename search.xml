@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2024/03/18/CSS%E5%8A%A8%E7%94%BB/</url>
+    <title>CSS动画</title>
+    <url>/2020/09/02/CSS%E5%8A%A8%E7%94%BB/</url>
     <content><![CDATA[<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>CSS当中的动画与之前所学习的过渡+变幻非常相像，但是仍然有一些不同点。首先过渡+变幻虽然可以实现某一个元素的动画效果，但是它仍然存在以下几个缺点</p>
 <ol>
 <li>过渡的效果必须要手动的去触发，不能自动执行</li>
@@ -66,8 +66,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/CSS%E5%8F%98%E5%B9%BB/</url>
+    <title>CSS变幻</title>
+    <url>/2020/09/01/CSS%E5%8F%98%E5%B9%BB/</url>
     <content><![CDATA[<h2 id="CSS变幻"><a href="#CSS变幻" class="headerlink" title="CSS变幻"></a>CSS变幻</h2><p>CSS变幻指的是页面上面的元素样式发生变幻，主要存在以下几种情况，变幻的属性使用transform</p>
 <blockquote>
 <p>transform的属性使用起来非常简单，它复杂的地方在它的属性值上面</p>
@@ -129,8 +129,83 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/CSS%E5%9F%BA%E7%A1%80/</url>
+    <title>CSS基础</title>
+    <url>/2020/08/29/CSS%E6%B8%90%E5%8F%98/</url>
+    <content><![CDATA[<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS里面的渐变指的是背景的渐变，它主要存在两种形式，一种是线性渐变，一种是径向渐变</p>
+<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><h4 id="基本线性渐变"><a href="#基本线性渐变" class="headerlink" title="基本线性渐变"></a>基本线性渐变</h4><hr>
+<blockquote>
+<p>沿着某一条直线进行颜色的改变，使用的CSS属性为<code>linear-gradient</code></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="comment">/*标准定法*/</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to 方向,颜色一,颜色二.......);</span><br><span class="line">    <span class="comment">/*兼容写法*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,颜色二,颜色一);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在兼容语法里面，有两点需要注意</p>
+<ol>
+<li>添加各种浏览器特定的前缀-webkit-,-moz-等</li>
+<li>在方向前面去掉<code>to</code>关键字，颜色反着来</li>
+</ol>
+</blockquote>
+<p>在线性渐变里面，它的第一个参数代表的是方向，这个方向可以指一个方向，也可以指两个关键的组合</p>
+<p>如左上角to left top,右上角 to right top,左下角 to left bottom,右下角  to right bottom</p>
+<p>后面接的是颜色值</p>
+<h4 id="设置渐变色的尺寸"><a href="#设置渐变色的尺寸" class="headerlink" title="设置渐变色的尺寸"></a>设置渐变色的尺寸</h4><p>当我们在设置渐变的时候，可以在某一个特殊颜色上面设置它的间距，这个间距叫渐变色的颜色尺寸</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div5</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    在下面的代码里面，我们可以看到蓝色会呈现50%的效果</span></span><br><span class="line"><span class="comment">    50%到70%为黄色</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,blue <span class="number">50%</span>,yellow <span class="number">70%</span>,red,orange <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/ff6b6315c0a5c0e28147298a5548c438" alt="1563343435308.png"></p>
+<blockquote>
+<p><strong>注意事项：</strong> </p>
+<p>在这里，它的尺寸最终不能大于100%，每个颜色使用逗号来进行隔开，然后颜色的后面可以跟百分比的值</p>
+</blockquote>
+<p>我们的线性渐变除了使用某一个方向做为颜色的改变方向，还可以使用角度来进行</p>
+<h3 id="角度线性线变"><a href="#角度线性线变" class="headerlink" title="角度线性线变"></a>角度线性线变</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div6</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    在第一个参数上面，我们已经不再写具体的方法了，转而可以使用一个角度来替代</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">0deg</span>,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>0deg代表上面</p>
+<p>90deg代表右边 </p>
+<p>180deg代表下边 </p>
+<p>270deg代表左边  </p>
+<p>角度线性渐变就弥补我们之前在基本的线性渐变方向单一的问题，它可以通过角度直接指定某一个方向</p>
+<h3 id="渐变与图片结合使用"><a href="#渐变与图片结合使用" class="headerlink" title="渐变与图片结合使用"></a>渐变与图片结合使用</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">1200px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*background-image: url(img/1.jpg);*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right bottom,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.1</span>)), <span class="built_in">url</span>(<span class="string">img/1.jpg</span>);</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的效果的<strong>核心思路</strong>其实就是把之前的多个背景图片设置，它产先从右向左加载，先加载了背景图片，再加载了渐变色，效果图如下</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/61bce9382fd3edf254c7526c78eb41c4" alt="1563344605888.png"></p>
+<h3 id="重复线性渐变"><a href="#重复线性渐变" class="headerlink" title="重复线性渐变"></a>重复线性渐变</h3><p>当设置某一个区域渐变颜色的时候，我们可以重复的这些渐变色填充</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(to right,blue <span class="number">10%</span>,red <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/6d183663bbfd8e20dfff3590a64bffa0" alt="1563344926021.png"></p>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>径向渐变指提的是由内向外的一种扩散渐变方式，使用的属性名是<code>radial-gradient</code></p>
+<p>径向渐变的语法格式是</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*径向渐变第一个参数是存在的，但是一般可以省略</span></span><br><span class="line"><span class="comment">      它的第一个参数是ellipse椭圆或circle圆</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(可选参数,颜色一,颜色二.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们在设置径向渐变的时候，如果这个元素它不是正方形，那么径向渐变默认会成为一个椭圆，如果这个时候还想设置成圆，那么，我们就添加第一个参数为<code>circle</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red,blue);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/b1277ffa421133960c6596b1835949fa" alt="1563345223395.png"></p>
+<p>径向渐变与线性渐变很相似，它也可以设置百分比的值，也可以设置多个颜色值</p>
+<h3 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h3><p>与之前讲过的重复的线性渐变相似</p>
+<p><code>repeating-radial-gradient</code>是重复径向渐变的属性名，设置方式与重复线性渐变一样</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(red <span class="number">10%</span>,blue <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>题外话</strong></p>
+<p>虽然渐变是一个颜色，但是我们不能通过<code>background-color</code>来设置，背景色的渐变其关把它当成了一个图片，所以，我们要使用background-image这个属性或background属性</p>
+<p>在之前的时候，我们讲过背景background-image可以设置多个图片，所以下面的代码它是成立的</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*下面是两个渐变叠加在了一起*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>)),<span class="built_in">radial-gradient</span>(deeppink,white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>之前，我们讲过背景颜色<code>background-color</code>,背景图片<code>background-image</code>等与背景相关的属性，现在，我们可以统一简写成<code>background</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="comment">/*background:red;*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">imgb/logo.png</span>) no-repeat right bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>url代表设置backround-image属性,no-repeat代表设置background-repeat,right bottom代表设置background-position属性</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>CSS基础</title>
+    <url>/2020/08/26/CSS%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="CSS基础"><a href="#CSS基础" class="headerlink" title="CSS基础"></a>CSS基础</h2><h3 id="为什么需要CSS"><a href="#为什么需要CSS" class="headerlink" title="为什么需要CSS"></a>为什么需要CSS</h3><p>当我们在设计网页的时候，我们经常需要对网页当中的元素进行一些样式设置，通常在没有CSS的情况下，我们都是通过元素的属性来进行设置的，如下所示</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">text</span>=<span class="string">&quot;red&quot;</span> <span class="attr">bgcolor</span>=<span class="string">&quot;green&quot;</span>&gt;</span></span><br><span class="line">    我爱北京天安门，天安门上太阳升</span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>第一项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>第二项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>第三项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--font的bgcolor没有效果 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span> <span class="attr">bgcolor</span>=<span class="string">&quot;red&quot;</span>&gt;</span>床前明月光<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -912,83 +987,77 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/CSS%E6%B8%90%E5%8F%98/</url>
-    <content><![CDATA[<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS里面的渐变指的是背景的渐变，它主要存在两种形式，一种是线性渐变，一种是径向渐变</p>
-<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><h4 id="基本线性渐变"><a href="#基本线性渐变" class="headerlink" title="基本线性渐变"></a>基本线性渐变</h4><hr>
-<blockquote>
-<p>沿着某一条直线进行颜色的改变，使用的CSS属性为<code>linear-gradient</code></p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="comment">/*标准定法*/</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to 方向,颜色一,颜色二.......);</span><br><span class="line">    <span class="comment">/*兼容写法*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,颜色二,颜色一);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在兼容语法里面，有两点需要注意</p>
-<ol>
-<li>添加各种浏览器特定的前缀-webkit-,-moz-等</li>
-<li>在方向前面去掉<code>to</code>关键字，颜色反着来</li>
+    <title>CSS过渡</title>
+    <url>/2020/09/03/CSS%E8%BF%87%E6%B8%A1/</url>
+    <content><![CDATA[<h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
+<p>过渡由以下几个属性来构成</p>
+<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
+<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
+</li>
+<li><p>transition-duration指的是过渡持续的时间</p>
+</li>
+<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
+<ul>
+<li><p>linear这个代表匀速直线</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
+</li>
+<li><p>ease属性值</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
+</li>
+<li><p>ease-in属性值</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
+</li>
+<li><p>ease-out属性值</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
+</li>
+<li><p>ease-in-out属性值</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
+</li>
+</ul>
+<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
+</li>
+<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
+</li>
 </ol>
-</blockquote>
-<p>在线性渐变里面，它的第一个参数代表的是方向，这个方向可以指一个方向，也可以指两个关键的组合</p>
-<p>如左上角to left top,右上角 to right top,左下角 to left bottom,右下角  to right bottom</p>
-<p>后面接的是颜色值</p>
-<h4 id="设置渐变色的尺寸"><a href="#设置渐变色的尺寸" class="headerlink" title="设置渐变色的尺寸"></a>设置渐变色的尺寸</h4><p>当我们在设置渐变的时候，可以在某一个特殊颜色上面设置它的间距，这个间距叫渐变色的颜色尺寸</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div5</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    在下面的代码里面，我们可以看到蓝色会呈现50%的效果</span></span><br><span class="line"><span class="comment">    50%到70%为黄色</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,blue <span class="number">50%</span>,yellow <span class="number">70%</span>,red,orange <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/ff6b6315c0a5c0e28147298a5548c438" alt="1563343435308.png"></p>
-<blockquote>
-<p><strong>注意事项：</strong> </p>
-<p>在这里，它的尺寸最终不能大于100%，每个颜色使用逗号来进行隔开，然后颜色的后面可以跟百分比的值</p>
-</blockquote>
-<p>我们的线性渐变除了使用某一个方向做为颜色的改变方向，还可以使用角度来进行</p>
-<h3 id="角度线性线变"><a href="#角度线性线变" class="headerlink" title="角度线性线变"></a>角度线性线变</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div6</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    在第一个参数上面，我们已经不再写具体的方法了，转而可以使用一个角度来替代</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">0deg</span>,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>0deg代表上面</p>
-<p>90deg代表右边 </p>
-<p>180deg代表下边 </p>
-<p>270deg代表左边  </p>
-<p>角度线性渐变就弥补我们之前在基本的线性渐变方向单一的问题，它可以通过角度直接指定某一个方向</p>
-<h3 id="渐变与图片结合使用"><a href="#渐变与图片结合使用" class="headerlink" title="渐变与图片结合使用"></a>渐变与图片结合使用</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">1200px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*background-image: url(img/1.jpg);*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right bottom,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.1</span>)), <span class="built_in">url</span>(<span class="string">img/1.jpg</span>);</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>上面的效果的<strong>核心思路</strong>其实就是把之前的多个背景图片设置，它产先从右向左加载，先加载了背景图片，再加载了渐变色，效果图如下</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/61bce9382fd3edf254c7526c78eb41c4" alt="1563344605888.png"></p>
-<h3 id="重复线性渐变"><a href="#重复线性渐变" class="headerlink" title="重复线性渐变"></a>重复线性渐变</h3><p>当设置某一个区域渐变颜色的时候，我们可以重复的这些渐变色填充</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(to right,blue <span class="number">10%</span>,red <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/6d183663bbfd8e20dfff3590a64bffa0" alt="1563344926021.png"></p>
-<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>径向渐变指提的是由内向外的一种扩散渐变方式，使用的属性名是<code>radial-gradient</code></p>
-<p>径向渐变的语法格式是</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*径向渐变第一个参数是存在的，但是一般可以省略</span></span><br><span class="line"><span class="comment">      它的第一个参数是ellipse椭圆或circle圆</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(可选参数,颜色一,颜色二.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当我们在设置径向渐变的时候，如果这个元素它不是正方形，那么径向渐变默认会成为一个椭圆，如果这个时候还想设置成圆，那么，我们就添加第一个参数为<code>circle</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>案例</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red,blue);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/b1277ffa421133960c6596b1835949fa" alt="1563345223395.png"></p>
-<p>径向渐变与线性渐变很相似，它也可以设置百分比的值，也可以设置多个颜色值</p>
-<h3 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h3><p>与之前讲过的重复的线性渐变相似</p>
-<p><code>repeating-radial-gradient</code>是重复径向渐变的属性名，设置方式与重复线性渐变一样</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(red <span class="number">10%</span>,blue <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>题外话</strong></p>
-<p>虽然渐变是一个颜色，但是我们不能通过<code>background-color</code>来设置，背景色的渐变其关把它当成了一个图片，所以，我们要使用background-image这个属性或background属性</p>
-<p>在之前的时候，我们讲过背景background-image可以设置多个图片，所以下面的代码它是成立的</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*下面是两个渐变叠加在了一起*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>)),<span class="built_in">radial-gradient</span>(deeppink,white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>之前，我们讲过背景颜色<code>background-color</code>,背景图片<code>background-image</code>等与背景相关的属性，现在，我们可以统一简写成<code>background</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="comment">/*background:red;*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">imgb/logo.png</span>) no-repeat right bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>url代表设置backround-image属性,no-repeat代表设置background-repeat,right bottom代表设置background-position属性</p>
-</blockquote>
+<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
+<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
+<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
+<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
+<ol>
+<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
+<p>还包含国内360，qq，搜狗,世界之窗</p>
+<p>更包含android平台内置的浏览器</p>
+</li>
+<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
+</li>
+<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
+</li>
+<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
+<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
+</li>
+<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
+</li>
+</ol>
+<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
+<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
+<ol>
+<li>display:block/none的过渡</li>
+<li>z-index不能执行过渡</li>
+<li>float不能执行过渡</li>
+<li>visibility 不能执行过渡</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/Flutter%E5%AD%A6%E4%B9%A0/</url>
+    <title>flutter 学习</title>
+    <url>/2022/11/09/Flutter%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="Flutter学习"><a href="#Flutter学习" class="headerlink" title="Flutter学习"></a>Flutter学习</h2><h3 id="一、Flutter开发环境的搭建（Windows版）"><a href="#一、Flutter开发环境的搭建（Windows版）" class="headerlink" title="一、Flutter开发环境的搭建（Windows版）"></a>一、Flutter开发环境的搭建（Windows版）</h3><h4 id="1-系统要求"><a href="#1-系统要求" class="headerlink" title="1.系统要求"></a>1.系统要求</h4><ul>
 <li>操作系统必须在windows7以上的64位操作系统</li>
 <li>磁盘空间最好在3G以上</li>
@@ -1221,77 +1290,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/CSS%E8%BF%87%E6%B8%A1/</url>
-    <content><![CDATA[<h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
-<p>过渡由以下几个属性来构成</p>
-<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
-<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
-</li>
-<li><p>transition-duration指的是过渡持续的时间</p>
-</li>
-<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
-<ul>
-<li><p>linear这个代表匀速直线</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
-</li>
-<li><p>ease属性值</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
-</li>
-<li><p>ease-in属性值</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
-</li>
-<li><p>ease-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
-</li>
-<li><p>ease-in-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
-</li>
-</ul>
-<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
-</li>
-<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
-</li>
-</ol>
-<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
-<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
-<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
-<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
-<ol>
-<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
-<p>还包含国内360，qq，搜狗,世界之窗</p>
-<p>更包含android平台内置的浏览器</p>
-</li>
-<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
-</li>
-<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
-</li>
-<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
-<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
-</li>
-<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
-</li>
-</ol>
-<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
-<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
-<ol>
-<li>display:block/none的过渡</li>
-<li>z-index不能执行过渡</li>
-<li>float不能执行过渡</li>
-<li>visibility 不能执行过渡</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/Flutter%E9%9D%A2%E8%AF%95/</url>
+    <title>flutter 面试</title>
+    <url>/2022/11/29/Flutter%E9%9D%A2%E8%AF%95/</url>
     <content><![CDATA[<h3 id="flutter-面试"><a href="#flutter-面试" class="headerlink" title="flutter 面试"></a>flutter 面试</h3><p>1.dart 的作用域</p>
 <figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">dart 里面默认是公开的，私有变量使用下划线开头</span><br></pre></td></tr></table></figure>
 
@@ -1320,8 +1320,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/HTML%E5%9F%BA%E7%A1%80/</url>
+    <title>flutter 学习</title>
+    <url>/2019/10/09/HTML%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h2><hr>
 <h3 id="第一个网页的创建"><a href="#第一个网页的创建" class="headerlink" title="第一个网页的创建"></a>第一个网页的创建</h3><h3 id="网页文件的结构"><a href="#网页文件的结构" class="headerlink" title="网页文件的结构"></a>网页文件的结构</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -1642,179 +1642,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/React%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="React基础"><a href="#React基础" class="headerlink" title="React基础"></a>React基础</h2><p>学个鸡儿999</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h2>]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/Vue%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="一、代码层面的优化"><a href="#一、代码层面的优化" class="headerlink" title="一、代码层面的优化"></a>一、代码层面的优化</h2><h3 id="1-1、v-if-和-v-show-区分使用场景"><a href="#1-1、v-if-和-v-show-区分使用场景" class="headerlink" title="1.1、v-if 和 v-show 区分使用场景"></a>1.1、v-if 和 v-show 区分使用场景</h3><p><strong>v-if</strong> 是 <strong>真正</strong> 的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是<strong>惰性的</strong>：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
-<p><strong>v-show</strong> 就简单得多， 不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 display 属性进行切换。</p>
-<p>所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景。</p>
-<h3 id="1-2、computed-和-watch-区分使用场景"><a href="#1-2、computed-和-watch-区分使用场景" class="headerlink" title="1.2、computed 和 watch  区分使用场景"></a>1.2、computed 和 watch  区分使用场景</h3><p><strong>computed：</strong> 是计算属性，依赖其它属性值，并且 computed 的值有缓存，只有它依赖的属性值发生改变，下一次获取 computed 的值时才会重新计算 computed  的值；</p>
-<p><strong>watch：</strong> 更多的是「观察」的作用，类似于某些数据的监听回调 ，每当监听的数据变化时都会执行回调进行后续操作；</p>
-<p><strong>运用场景：</strong></p>
-<ul>
-<li>当我们需要进行数值计算，并且依赖于其它数据时，应该使用 computed，因为可以利用 computed 的缓存特性，避免每次获取值时，都要重新计算；</li>
-<li>当我们需要在数据变化时执行异步或开销较大的操作时，应该使用 watch，使用 watch 选项允许我们执行异步操作 ( 访问一个 API )，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</li>
-</ul>
-<h3 id="1-3、v-for-遍历必须为-item-添加-key，且避免同时使用-v-if"><a href="#1-3、v-for-遍历必须为-item-添加-key，且避免同时使用-v-if" class="headerlink" title="1.3、v-for 遍历必须为 item 添加 key，且避免同时使用 v-if"></a>1.3、v-for 遍历必须为 item 添加 key，且避免同时使用 v-if</h3><p><strong>（1）v-for 遍历必须为 item 添加 key</strong></p>
-<p>在列表数据进行遍历渲染时，需要为每一项 item 设置唯一 key 值，方便 Vue.js 内部机制精准找到该条列表数据。当 state 更新时，新的状态值和旧的状态值对比，较快地定位到 diff 。</p>
-<p><strong>（2）v-for 遍历避免同时使用 v-if</strong></p>
-<p>v-for 比 v-if 优先级高，如果每一次都需要遍历整个数组，将会影响速度，尤其是当之需要渲染很小一部分的时候，必要情况下应该替换成 computed 属性。</p>
-<p><strong>推荐：</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-for</span>=<span class="string">&quot;user in activeUsers&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:key</span>=<span class="string">&quot;user.id&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123; user.name &#125;&#125;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">  <span class="attr">activeUsers</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">users</span>.<span class="title function_">filter</span>(<span class="keyword">function</span> (<span class="params">user</span>) &#123;</span><br><span class="line">	 <span class="keyword">return</span> user.<span class="property">isActive</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p><strong>不推荐：</strong></p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-for</span>=<span class="string">&quot;user in users&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-if</span>=<span class="string">&quot;user.isActive&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:key</span>=<span class="string">&quot;user.id&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="template-variable">&#123;&#123; <span class="name">user.name</span> &#125;&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">复制代码</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4、长列表性能优化"><a href="#1-4、长列表性能优化" class="headerlink" title="1.4、长列表性能优化"></a>1.4、长列表性能优化</h3><p>Vue 会通过 Object.defineProperty 对数据进行劫持，来实现视图响应数据的变化，然而有些时候我们的组件就是纯粹的数据展示，不会有任何改变，我们就不需要 Vue 来劫持我们的数据，在大量数据展示的情况下，这能够很明显的减少组件初始化的时间，那如何禁止 Vue 劫持我们的数据呢？可以通过 Object.freeze 方法来冻结一个对象，一旦被冻结的对象就再也不能被修改了。</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  data: () =&gt; (&#123;</span><br><span class="line">    users: &#123;&#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  async created() &#123;</span><br><span class="line">    const users = await axios.<span class="keyword">get</span>(&quot;/api/users&quot;);</span><br><span class="line">    this.users = <span class="keyword">Object</span>.<span class="keyword">freeze</span>(users);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-5、事件的销毁"><a href="#1-5、事件的销毁" class="headerlink" title="1.5、事件的销毁"></a>1.5、事件的销毁</h3><p>Vue 组件销毁时，会自动清理它与其它实例的连接，解绑它的全部指令及事件监听器，但是仅限于组件本身的事件。 如果在 js 内使用 addEventListene 等方式是不会自动销毁的，我们需要在组件销毁时手动移除这些事件的监听，以免造成内存泄露，如：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">created</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="built_in">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, this<span class="selector-class">.click</span>, false)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">beforeDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="built_in">removeEventListener</span>(<span class="string">&#x27;click&#x27;</span>, this<span class="selector-class">.click</span>, false)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-6、图片资源懒加载"><a href="#1-6、图片资源懒加载" class="headerlink" title="1.6、图片资源懒加载"></a>1.6、图片资源懒加载</h3><p>对于图片过多的页面，为了加速页面加载速度，所以很多时候我们需要将页面内未出现在可视区域内的图片先不做加载， 等到滚动到可视区域后再去加载。这样对于页面加载性能上会有很大的提升，也提高了用户体验。我们在项目中使用 Vue 的 vue-lazyload 插件：</p>
-<p>（1）安装插件</p>
-<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">npm install vue-lazyload --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>（2）在入口文件 man.js 中引入并使用</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> VueLazyload <span class="keyword">from</span> <span class="string">&#x27;vue-lazyload&#x27;</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>然后再 vue 中直接使用</p>
-<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">Vue.<span class="keyword">use</span>(VueLazyload)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>或者添加自定义选项</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">Vue.use(VueLazyload, &#123;</span><br><span class="line">preLoad: 1.3,</span><br><span class="line"><span class="keyword">error: </span>&#x27;dist/error.png&#x27;,</span><br><span class="line">loading: &#x27;dist/loading.gif&#x27;,</span><br><span class="line">attempt: 1</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>（3）在 vue 文件中将 img 标签的 src 属性直接改为 v-lazy ，从而将图片显示方式更改为懒加载显示：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">v-lazy</span>=<span class="string">&quot;/static/img/1.png&quot;</span>&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>以上为 vue-lazyload 插件的简单使用，如果要看插件的更多参数选项，可以查看 vue-lazyload 的 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fhilongjw%2Fvue-lazyload">github 地址</a>。</p>
-<h3 id="1-7、路由懒加载"><a href="#1-7、路由懒加载" class="headerlink" title="1.7、路由懒加载"></a>1.7、路由懒加载</h3><p>Vue  是单页面应用，可能会有很多的路由引入 ，这样使用 webpcak 打包后的文件很大，当进入首页时，加载的资源过多，页面会出现白屏的情况，不利于用户体验。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应的组件，这样就更加高效了。这样会大大提高首屏显示的速度，但是可能其他的页面的速度就会降下来。</p>
-<p><strong>路由懒加载：</strong></p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const Foo = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./Foo.vue&#x27;</span>)</span><br><span class="line">const router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: <span class="string">&#x27;/foo&#x27;</span>, component: Foo &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-8、第三方插件的按需引入"><a href="#1-8、第三方插件的按需引入" class="headerlink" title="1.8、第三方插件的按需引入"></a>1.8、第三方插件的按需引入</h3><p>我们在项目中经常会需要引入第三方插件，如果我们直接引入整个插件，会导致项目的体积太大，我们可以借助 <code>babel-plugin-component</code> ，然后可以只引入需要的组件，以达到减小项目体积的目的。以下为项目中引入 element-ui 组件库为例：</p>
-<p>（1）首先，安装 <code>babel-plugin-component</code> ：</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install </span><span class="keyword">babel-plugin-component </span>-D</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>（2）然后，将 .babelrc 修改为：</p>
-<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;presets&quot;</span>: [[<span class="string">&quot;es2015&quot;</span>, &#123; <span class="string">&quot;modules&quot;</span>: false &#125;]],</span><br><span class="line">  <span class="string">&quot;plugins&quot;</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">&quot;component&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;libraryName&quot;</span>: <span class="string">&quot;element-ui&quot;</span>,</span><br><span class="line">        <span class="string">&quot;styleLibraryName&quot;</span>: <span class="string">&quot;theme-chalk&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>（3）在 main.js 中引入部分组件：</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Button, <span class="keyword">Select</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"></span><br><span class="line"> Vue.use(Button)</span><br><span class="line"> Vue.use(<span class="keyword">Select</span>)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-9、优化无限列表性能"><a href="#1-9、优化无限列表性能" class="headerlink" title="1.9、优化无限列表性能"></a>1.9、优化无限列表性能</h3><p>如果你的应用存在非常长或者无限滚动的列表，那么需要采用 窗口化 的技术来优化性能，只需要渲染少部分区域的内容，减少重新渲染组件和创建 dom 节点的时间。 你可以参考以下开源项目 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Ftangbc%2Fvue-virtual-scroll-list">vue-virtual-scroll-list</a> 和 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FAkryum%2Fvue-virtual-scroller">vue-virtual-scroller</a>  来优化这种无限列表的场景的。</p>
-<h3 id="1-10、服务端渲染-SSR-or-预渲染"><a href="#1-10、服务端渲染-SSR-or-预渲染" class="headerlink" title="1.10、服务端渲染 SSR or 预渲染"></a>1.10、服务端渲染 SSR or 预渲染</h3><p>服务端渲染是指 Vue 在客户端将标签渲染成的整个 html 片段的工作在服务端完成，服务端形成的 html 片段直接返回给客户端这个过程就叫做服务端渲染。</p>
-<p><strong>（1）服务端渲染的优点：</strong></p>
-<ul>
-<li>更好的 SEO： 因为 SPA 页面的内容是通过 Ajax 获取，而搜索引擎爬取工具并不会等待 Ajax 异步完成后再抓取页面内容，所以在 SPA 中是抓取不到页面通过 Ajax 获取到的内容；而 SSR 是直接由服务端返回已经渲染好的页面（数据已经包含在页面中），所以搜索引擎爬取工具可以抓取渲染好的页面；</li>
-<li>更快的内容到达时间（首屏加载更快）： SPA 会等待所有 Vue 编译后的 js 文件都下载完成后，才开始进行页面的渲染，文件下载等需要一定的时间等，所以首屏渲染需要一定的时间；SSR 直接由服务端渲染好页面直接返回显示，无需等待下载 js 文件及再去渲染等，所以 SSR 有更快的内容到达时间；</li>
-</ul>
-<p><strong>（2）服务端渲染的缺点：</strong></p>
-<ul>
-<li>更多的开发条件限制： 例如服务端渲染只支持 beforCreate 和 created 两个钩子函数，这会导致一些外部扩展库需要特殊处理，才能在服务端渲染应用程序中运行；并且与可以部署在任何静态文件服务器上的完全静态单页面应用程序 SPA 不同，服务端渲染应用程序，需要处于 Node.js server 运行环境；</li>
-<li>更多的服务器负载：在 Node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量占用CPU 资源，因此如果你预料在高流量环境下使用，请准备相应的服务器负载，并明智地采用缓存策略。</li>
-</ul>
-<p>如果你的项目的 SEO 和 首屏渲染是评价项目的关键指标，那么你的项目就需要服务端渲染来帮助你实现最佳的初始加载性能和 SEO，具体的 Vue SSR 如何实现，可以参考作者的另一篇文章《<a href="https://juejin.cn/post/6844903824956588040">Vue SSR 踩坑之旅</a>》。如果你的 Vue 项目只需改善少数营销页面（例如  <code>/， /about， /contac</code>t 等）的 SEO，那么你可能需要<strong>预渲染</strong>，在构建时 (build time) 简单地生成针对特定路由的静态 HTML 文件。优点是设置预渲染更简单，并可以将你的前端作为一个完全静态的站点，具体你可以使用 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fchrisvfritz%2Fprerender-spa-plugin">prerender-spa-plugin</a> 就可以轻松地添加预渲染 。</p>
-<h2 id="二、Webpack-层面的优化"><a href="#二、Webpack-层面的优化" class="headerlink" title="二、Webpack 层面的优化"></a>二、Webpack 层面的优化</h2><h3 id="2-1、Webpack-对图片进行压缩"><a href="#2-1、Webpack-对图片进行压缩" class="headerlink" title="2.1、Webpack 对图片进行压缩"></a>2.1、Webpack 对图片进行压缩</h3><p>在 vue 项目中除了可以在 <code>webpack.base.conf.js</code> 中 url-loader 中设置 limit 大小来对图片处理，对小于 limit 的图片转化为 base64 格式，其余的不做操作。所以对有些较大的图片资源，在请求资源的时候，加载会很慢，我们可以用 <code>image-webpack-loader</code>来压缩图片：</p>
-<p>（1）首先，安装 image-webpack-loader  ：</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install <span class="built_in">image</span>-webpack-loader --<span class="built_in">save</span>-dev</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>（2）然后，在 webpack.base.conf.js  中进行配置：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,</span><br><span class="line">  use:[</span><br><span class="line">    &#123;</span><br><span class="line">    loader: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">    options: &#123;</span><br><span class="line">      limit: <span class="number">10000</span>,</span><br><span class="line">      name: utils.<span class="built_in">assetsPath</span>(<span class="string">&#x27;img/[name].[hash:7].[ext]&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      loader: <span class="string">&#x27;image-webpack-loader&#x27;</span>,</span><br><span class="line">      options: &#123;</span><br><span class="line">        bypassOnDebug: true,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2、减少-ES6-转为-ES5-的冗余代码"><a href="#2-2、减少-ES6-转为-ES5-的冗余代码" class="headerlink" title="2.2、减少 ES6 转为 ES5 的冗余代码"></a>2.2、减少 ES6 转为 ES5 的冗余代码</h3><p>Babel 插件会在将 ES6 代码转换成 ES5 代码时会注入一些辅助函数，例如下面的 ES6 代码：</p>
-<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWebpack</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;...&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>这段代码再被转换成能正常运行的 ES5 代码时需要以下两个辅助函数：</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">babel-<span class="keyword">runtime</span><span class="regexp">/helpers/</span>createClass  <span class="comment">// 用于实现 class 语法</span></span><br><span class="line">babel-<span class="keyword">runtime</span><span class="regexp">/helpers/i</span>nherits  <span class="comment">// 用于实现 extends 语法    </span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>在默认情况下， Babel 会在每个输出文件中内嵌这些依赖的辅助函数代码，如果多个源代码文件都依赖这些辅助函数，那么这些辅助函数的代码将会出现很多次，造成代码冗余。为了不让这些辅助函数的代码重复出现，可以在依赖它们时通过 <code>require(&#39;babel-runtime/helpers/createClass&#39;)</code> 的方式导入，这样就能做到只让它们出现一次。<code>babel-plugin-transform-runtime</code> 插件就是用来实现这个作用的，将相关辅助函数进行替换成导入语句，从而减小 babel 编译出来的代码的文件大小。</p>
-<p>（1）首先，安装 <code>babel-plugin-transform-runtime</code> ：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">npm install babel-plugin-<span class="attribute">transform</span>-runtime <span class="attr">--save-dev</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>（2）然后，修改 .babelrc  配置文件为：</p>
-<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;plugins&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;transform-runtime&quot;</span></span><br><span class="line">]</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>如果要看插件的更多详细内容，可以查看babel-plugin-transform-runtime 的 <a href="https://link.juejin.cn?target=https%3A%2F%2Fbabeljs.io%2Fdocs%2Fen%2Fbabel-plugin-transform-runtime">详细介绍</a>。</p>
-<h3 id="2-3、提取公共代码"><a href="#2-3、提取公共代码" class="headerlink" title="2.3、提取公共代码"></a>2.3、提取公共代码</h3><p>如果项目中没有去将每个页面的第三方库和公共模块提取出来，则项目会存在以下问题：</p>
-<ul>
-<li>相同的资源被重复加载，浪费用户的流量和服务器的成本。</li>
-<li>每个页面需要加载的资源太大，导致网页首屏加载缓慢，影响用户体验。</li>
-</ul>
-<p>所以我们需要将多个页面的公共代码抽离成单独的文件，来优化以上问题 。Webpack 内置了专门用于提取多个Chunk 中的公共部分的插件 CommonsChunkPlugin，我们在项目中 CommonsChunkPlugin 的配置如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 所有在 package.json 里面依赖的包，都会被打包进 vendor.js 这个文件中。</span></span><br><span class="line"><span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">CommonsChunkPlugin</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;vendor&#x27;</span>,</span><br><span class="line">  <span class="attr">minChunks</span>: <span class="keyword">function</span>(<span class="params"><span class="variable language_">module</span>, count</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="variable language_">module</span>.<span class="property">resource</span> &amp;&amp;</span><br><span class="line">      <span class="regexp">/\.js$/</span>.<span class="title function_">test</span>(<span class="variable language_">module</span>.<span class="property">resource</span>) &amp;&amp;</span><br><span class="line">      <span class="variable language_">module</span>.<span class="property">resource</span>.<span class="title function_">indexOf</span>(</span><br><span class="line">        path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;../node_modules&#x27;</span>)</span><br><span class="line">      ) === <span class="number">0</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;),</span><br><span class="line"><span class="comment">// 抽取出代码模块的映射关系</span></span><br><span class="line"><span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">CommonsChunkPlugin</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;manifest&#x27;</span>,</span><br><span class="line">  <span class="attr">chunks</span>: [<span class="string">&#x27;vendor&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>如果要看插件的更多详细内容，可以查看 CommonsChunkPlugin 的 <a href="https://link.juejin.cn?target=https%3A%2F%2Fwebpack.docschina.org%2Fplugins%2Fcommons-chunk-plugin%2F">详细介绍</a>。</p>
-<h3 id="2-4、模板预编译"><a href="#2-4、模板预编译" class="headerlink" title="2.4、模板预编译"></a>2.4、模板预编译</h3><p>当使用 DOM 内模板或 JavaScript 内的字符串模板时，模板会在运行时被编译为渲染函数。通常情况下这个过程已经足够快了，但对性能敏感的应用还是最好避免这种用法。</p>
-<p>预编译模板最简单的方式就是使用<a href="https://link.juejin.cn?target=https%3A%2F%2Fcn.vuejs.org%2Fv2%2Fguide%2Fsingle-file-components.html">单文件组件</a>——相关的构建设置会自动把预编译处理好，所以构建好的代码已经包含了编译出来的渲染函数而不是原始的模板字符串。</p>
-<p>如果你使用 webpack，并且喜欢分离 JavaScript 和模板文件，你可以使用 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fktsn%2Fvue-template-loader">vue-template-loader</a>，它也可以在构建过程中把模板文件转换成为 JavaScript 渲染函数。</p>
-<h3 id="2-5、提取组件的-CSS"><a href="#2-5、提取组件的-CSS" class="headerlink" title="2.5、提取组件的 CSS"></a>2.5、提取组件的 CSS</h3><p>当使用单文件组件时，组件内的 CSS 会以 style 标签的方式通过 JavaScript 动态注入。这有一些小小的运行时开销，如果你使用服务端渲染，这会导致一段 “无样式内容闪烁 (fouc) ” 。将所有组件的 CSS 提取到同一个文件可以避免这个问题，也会让 CSS 更好地进行压缩和缓存。</p>
-<p>查阅这个构建工具各自的文档来了解更多：</p>
-<ul>
-<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fvue-loader.vuejs.org%2Fzh-cn%2Fconfigurations%2Fextract-css.html">webpack + vue-loader</a> ( vue-cli 的 webpack 模板已经预先配置好)</li>
-<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fvuejs%2Fvueify%23css-extraction">Browserify + vueify</a></li>
-<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fvuejs.github.io%2Frollup-plugin-vue%2F%23%2Fen%2F2.3%2F%3Fid%3Dcustom-handler">Rollup + rollup-plugin-vue</a></li>
-</ul>
-<h3 id="2-6、优化-SourceMap"><a href="#2-6、优化-SourceMap" class="headerlink" title="2.6、优化 SourceMap"></a>2.6、优化 SourceMap</h3><p>我们在项目进行打包后，会将开发中的多个文件代码打包到一个文件中，并且经过压缩、去掉多余的空格、babel编译化后，最终将编译得到的代码会用于线上环境，那么这样处理后的代码和源代码会有很大的差别，当有 bug的时候，我们只能定位到压缩处理后的代码位置，无法定位到开发环境中的代码，对于开发来说不好调式定位问题，因此 sourceMap 出现了，它就是为了解决不好调式代码问题的。</p>
-<p>SourceMap 的可选值如下（+ 号越多，代表速度越快，- 号越多，代表速度越慢, o 代表中等速度 ）</p>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653d8000ec~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
-<p><strong>开发环境推荐： cheap-module-eval-source-map</strong></p>
-<p><strong>生产环境推荐： cheap-module-source-map</strong></p>
-<p>原因如下：</p>
-<ul>
-<li><strong>cheap</strong>： 源代码中的列信息是没有任何作用，因此我们打包后的文件不希望包含列相关信息，只有行信息能建立打包前后的依赖关系。因此不管是开发环境或生产环境，我们都希望添加 cheap 的基本类型来忽略打包前后的列信息；</li>
-<li><strong>module</strong> ：不管是开发环境还是正式环境，我们都希望能定位到bug的源代码具体的位置，比如说某个 Vue 文件报错了，我们希望能定位到具体的 Vue 文件，因此我们也需要 module 配置；</li>
-<li><strong>soure-map</strong> ：source-map 会为每一个打包后的模块生成独立的 soucemap 文件 ，因此我们需要增加source-map 属性；</li>
-<li><strong>eval-source-map</strong>：eval 打包代码的速度非常快，因为它不生成 map 文件，但是可以对 eval 组合使用 eval-source-map 使用会将 map 文件以 DataURL 的形式存在打包后的 js 文件中。在正式环境中不要使用 eval-source-map, 因为它会增加文件的大小，但是在开发环境中，可以试用下，因为他们打包的速度很快。</li>
-</ul>
-<h3 id="2-7、构建结果输出分析"><a href="#2-7、构建结果输出分析" class="headerlink" title="2.7、构建结果输出分析"></a>2.7、构建结果输出分析</h3><p>Webpack 输出的代码可读性非常差而且文件非常大，让我们非常头疼。为了更简单、直观地分析输出结果，社区中出现了许多可视化分析工具。这些工具以图形的方式将结果更直观地展示出来，让我们快速了解问题所在。接下来讲解我们在 Vue 项目中用到的分析工具：<code>webpack-bundle-analyzer</code> 。</p>
-<p>我们在项目中 <code>webpack.prod.conf.js</code> 进行配置：</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">if (<span class="built_in">config</span>.<span class="keyword">build.bundleAnalyzerReport) </span>&#123;</span><br><span class="line">  var <span class="keyword">BundleAnalyzerPlugin </span>=   require(<span class="string">&#x27;webpack-bundle-analyzer&#x27;</span>).<span class="keyword">BundleAnalyzerPlugin;</span></span><br><span class="line"><span class="keyword"></span>  webpackConfig.plugins.push(new <span class="keyword">BundleAnalyzerPlugin());</span></span><br><span class="line"><span class="keyword"></span>&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>执行  <code>$ npm run build --report</code>  后生成分析报告如下：</p>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653df09147~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
-<h3 id="2-8、Vue-项目的编译优化"><a href="#2-8、Vue-项目的编译优化" class="headerlink" title="2.8、Vue 项目的编译优化"></a>2.8、Vue 项目的编译优化</h3><p>如果你的 Vue 项目使用 Webpack 编译，需要你喝一杯咖啡的时间，那么也许你需要对项目的 Webpack 配置进行优化，提高 Webpack 的构建效率。具体如何进行 Vue 项目的 Webpack 构建优化，可以参考作者的另一篇文章<a href="https://juejin.cn/post/6844903745810104328">《 Vue 项目 Webpack 优化实践》</a></p>
-<h2 id="三、基础的-Web-技术优化"><a href="#三、基础的-Web-技术优化" class="headerlink" title="三、基础的 Web 技术优化"></a>三、基础的 Web 技术优化</h2><h3 id="3-1、开启-gzip-压缩"><a href="#3-1、开启-gzip-压缩" class="headerlink" title="3.1、开启 gzip 压缩"></a>3.1、开启 gzip 压缩</h3><p>gzip 是 GNUzip 的缩写，最早用于 UNIX 系统的文件压缩。HTTP 协议上的 gzip 编码是一种用来改进 web 应用程序性能的技术，web 服务器和客户端（浏览器）必须共同支持 gzip。目前主流的浏览器，Chrome，firefox，IE等都支持该协议。常见的服务器如 Apache，Nginx，IIS 同样支持，gzip 压缩效率非常高，通常可以达到 70% 的压缩率，也就是说，如果你的网页有 30K，压缩之后就变成了 9K 左右</p>
-<p>以下我们以服务端使用我们熟悉的 express 为例，开启 gzip 非常简单，相关步骤如下：</p>
-<ul>
-<li>安装：</li>
-</ul>
-<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>添加代码逻辑：</li>
-</ul>
-<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">var</span> <span class="variable">compression</span> = <span class="function"><span class="title">require</span>(<span class="string">&#x27;compression&#x27;</span>);</span></span><br><span class="line"><span class="function"><span class="variable">var</span> <span class="variable">app</span> = <span class="title">express</span>();</span></span><br><span class="line"><span class="function"><span class="variable">app.use</span>(<span class="title">compression</span>())</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重启服务，观察网络面板里面的 response header，如果看到如下红圈里的字段则表明 gzip 开启成功 ：</li>
-</ul>
-<p>  <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653ef48d24~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
-<h3 id="3-2、浏览器缓存"><a href="#3-2、浏览器缓存" class="headerlink" title="3.2、浏览器缓存"></a>3.2、浏览器缓存</h3><p>为了提高用户加载页面的速度，对静态资源进行缓存是非常必要的，根据是否需要重新向服务器发起请求来分类，将 HTTP 缓存规则分为两大类（强制缓存，对比缓存），如果对缓存机制还不是了解很清楚的，可以参考作者写的关于 HTTP 缓存的文章<a href="https://juejin.cn/post/6844903801778864136">《深入理解HTTP缓存机制及原理》</a>，这里不再赘述。</p>
-<h3 id="3-3、CDN-的使用"><a href="#3-3、CDN-的使用" class="headerlink" title="3.3、CDN 的使用"></a>3.3、CDN 的使用</h3><p>浏览器从服务器上下载 CSS、js 和图片等文件时都要和服务器连接，而大部分服务器的带宽有限，如果超过限制，网页就半天反应不过来。而 CDN 可以通过不同的域名来加载文件，从而使下载文件的并发连接数大大增加，且CDN 具有更好的可用性，更低的网络延迟和丢包率 。</p>
-<h3 id="3-4、使用-Chrome-Performance-查找性能瓶颈"><a href="#3-4、使用-Chrome-Performance-查找性能瓶颈" class="headerlink" title="3.4、使用 Chrome Performance 查找性能瓶颈"></a>3.4、使用 Chrome Performance 查找性能瓶颈</h3><p>Chrome 的 Performance 面板可以录制一段时间内的 js 执行细节及时间。使用 Chrome 开发者工具分析页面性能的步骤如下。</p>
-<ol>
-<li>打开 Chrome 开发者工具，切换到 Performance 面板</li>
-<li>点击 Record 开始录制</li>
-<li>刷新页面或展开某个节点</li>
-<li>点击 Stop 停止录制</li>
-</ol>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653fbd6f8e~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <title>VUE面试</title>
+    <url>/2013/05/11/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<h2 id="1、说说你对-SPA-单页面的理解，它的优缺点分别是什么？"><a href="#1、说说你对-SPA-单页面的理解，它的优缺点分别是什么？" class="headerlink" title="1、说说你对 SPA 单页面的理解，它的优缺点分别是什么？"></a>1、说说你对 SPA 单页面的理解，它的优缺点分别是什么？</h2><p>SPA（ single-page application ）仅在 Web 页面初始化时加载相应的 HTML、JavaScript 和 CSS。一旦页面加载完成，SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内容的变换，UI 与用户的交互，避免页面的重新加载。</p>
 <p><strong>优点：</strong></p>
 <ul>
@@ -2269,115 +2098,168 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, c</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="attr">AO</span>:&#123;	</span><br><span class="line">    <span class="attr">a</span>: <span class="literal">undefined</span>  <span class="number">1</span> <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">c</span>: <span class="literal">undefined</span>  <span class="number">2</span> <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></span><br><span class="line">    <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>VUE项目优化</title>
+    <url>/2013/05/16/Vue%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="一、代码层面的优化"><a href="#一、代码层面的优化" class="headerlink" title="一、代码层面的优化"></a>一、代码层面的优化</h2><h3 id="1-1、v-if-和-v-show-区分使用场景"><a href="#1-1、v-if-和-v-show-区分使用场景" class="headerlink" title="1.1、v-if 和 v-show 区分使用场景"></a>1.1、v-if 和 v-show 区分使用场景</h3><p><strong>v-if</strong> 是 <strong>真正</strong> 的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是<strong>惰性的</strong>：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
+<p><strong>v-show</strong> 就简单得多， 不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 display 属性进行切换。</p>
+<p>所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景。</p>
+<h3 id="1-2、computed-和-watch-区分使用场景"><a href="#1-2、computed-和-watch-区分使用场景" class="headerlink" title="1.2、computed 和 watch  区分使用场景"></a>1.2、computed 和 watch  区分使用场景</h3><p><strong>computed：</strong> 是计算属性，依赖其它属性值，并且 computed 的值有缓存，只有它依赖的属性值发生改变，下一次获取 computed 的值时才会重新计算 computed  的值；</p>
+<p><strong>watch：</strong> 更多的是「观察」的作用，类似于某些数据的监听回调 ，每当监听的数据变化时都会执行回调进行后续操作；</p>
+<p><strong>运用场景：</strong></p>
+<ul>
+<li>当我们需要进行数值计算，并且依赖于其它数据时，应该使用 computed，因为可以利用 computed 的缓存特性，避免每次获取值时，都要重新计算；</li>
+<li>当我们需要在数据变化时执行异步或开销较大的操作时，应该使用 watch，使用 watch 选项允许我们执行异步操作 ( 访问一个 API )，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</li>
+</ul>
+<h3 id="1-3、v-for-遍历必须为-item-添加-key，且避免同时使用-v-if"><a href="#1-3、v-for-遍历必须为-item-添加-key，且避免同时使用-v-if" class="headerlink" title="1.3、v-for 遍历必须为 item 添加 key，且避免同时使用 v-if"></a>1.3、v-for 遍历必须为 item 添加 key，且避免同时使用 v-if</h3><p><strong>（1）v-for 遍历必须为 item 添加 key</strong></p>
+<p>在列表数据进行遍历渲染时，需要为每一项 item 设置唯一 key 值，方便 Vue.js 内部机制精准找到该条列表数据。当 state 更新时，新的状态值和旧的状态值对比，较快地定位到 diff 。</p>
+<p><strong>（2）v-for 遍历避免同时使用 v-if</strong></p>
+<p>v-for 比 v-if 优先级高，如果每一次都需要遍历整个数组，将会影响速度，尤其是当之需要渲染很小一部分的时候，必要情况下应该替换成 computed 属性。</p>
+<p><strong>推荐：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-for</span>=<span class="string">&quot;user in activeUsers&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:key</span>=<span class="string">&quot;user.id&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123; user.name &#125;&#125;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">  <span class="attr">activeUsers</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">users</span>.<span class="title function_">filter</span>(<span class="keyword">function</span> (<span class="params">user</span>) &#123;</span><br><span class="line">	 <span class="keyword">return</span> user.<span class="property">isActive</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<p>预编译</p>
-<p>js的变量对象 AO对象，提供js引擎自己去访问</p>
-<p>四个步骤：</p>
-<p>1.创建AO对象</p>
-<p>2.找形参和变量声明作为AO对象的属性名，值为undefined</p>
-<p>3.实参和形参相统一</p>
-<p>4.找函数声明，会覆盖变量声明</p>
-<h2 id="2、浏览器渲染页面过程"><a href="#2、浏览器渲染页面过程" class="headerlink" title="2、浏览器渲染页面过程"></a>2、浏览器渲染页面过程</h2><p>用户输入URL地址</p>
-<p>浏览器解析URL解析出主机名</p>
-<p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
-<p>浏览器将端口号从URL中解析出来</p>
-<p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
-<p>浏览器向服务器发送一条HTTP请求报文</p>
-<p>服务器向浏览器返回一条HTTP响应报文</p>
-<p>关闭连接 浏览器解析文档</p>
-<h2 id="3-异步编程的方法"><a href="#3-异步编程的方法" class="headerlink" title="3.异步编程的方法"></a>3.异步编程的方法</h2><h2 id="4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别"><a href="#4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别" class="headerlink" title="4.解释同步\异步、阻塞\非阻塞、并行\并发之间的区别"></a>4.<strong>解释同步\异步、阻塞\非阻塞、并行\并发之间的区别</strong></h2><h2 id="5-js实现数值千分位"><a href="#5-js实现数值千分位" class="headerlink" title="5. js实现数值千分位"></a>5. <strong>js实现数值千分位</strong></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">number.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure>
+<p><strong>不推荐：</strong></p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-for</span>=<span class="string">&quot;user in users&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-if</span>=<span class="string">&quot;user.isActive&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:key</span>=<span class="string">&quot;user.id&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="template-variable">&#123;&#123; <span class="name">user.name</span> &#125;&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">复制代码</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="6-为什么JavaScript是单线程的，与异步冲突吗"><a href="#6-为什么JavaScript是单线程的，与异步冲突吗" class="headerlink" title="6. 为什么JavaScript是单线程的，与异步冲突吗"></a>6. 为什么JavaScript是单线程的，与异步冲突吗</h2><p>补充：JS中其实是没有线程概念的，所谓的单线程也只是相对于多线程而言。JS的设计初衷就没有考虑这些，针对JS这种不具备并行任务处理的特性，我们称之为“单线程”。</p>
-<p>JS的单线程是指一个浏览器进程中只有一个JS的执行线程，同一时刻内只会有一段代码在执行。</p>
-<p>举个通俗例子，假设JS支持多线程操作的话，JS可以操作DOM，那么一个线程在删除DOM，另外一个线程就在获取DOM数据，这样子明显不合理，这算是证明之一。</p>
-<p>来看段代码👇</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">    setTimeout(( <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.<span class="built_in">log</span>( <span class="string">&#x27;second&#x27;</span> );</span><br><span class="line">    &#125;),<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<h3 id="1-4、长列表性能优化"><a href="#1-4、长列表性能优化" class="headerlink" title="1.4、长列表性能优化"></a>1.4、长列表性能优化</h3><p>Vue 会通过 Object.defineProperty 对数据进行劫持，来实现视图响应数据的变化，然而有些时候我们的组件就是纯粹的数据展示，不会有任何改变，我们就不需要 Vue 来劫持我们的数据，在大量数据展示的情况下，这能够很明显的减少组件初始化的时间，那如何禁止 Vue 劫持我们的数据呢？可以通过 Object.freeze 方法来冻结一个对象，一旦被冻结的对象就再也不能被修改了。</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  data: () =&gt; (&#123;</span><br><span class="line">    users: &#123;&#125;</span><br><span class="line">  &#125;),</span><br><span class="line">  async created() &#123;</span><br><span class="line">    const users = await axios.<span class="keyword">get</span>(&quot;/api/users&quot;);</span><br><span class="line">    this.users = <span class="keyword">Object</span>.<span class="keyword">freeze</span>(users);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 
-<p>打印结果就是首先是很多个first,然后再是second。</p>
-<p>异步机制是浏览器的两个或以上常驻线程共同完成的，举个例子，比如异步请求由两个常驻线程，JS执行线程和事件触发线程共同完成的。</p>
+<h3 id="1-5、事件的销毁"><a href="#1-5、事件的销毁" class="headerlink" title="1.5、事件的销毁"></a>1.5、事件的销毁</h3><p>Vue 组件销毁时，会自动清理它与其它实例的连接，解绑它的全部指令及事件监听器，但是仅限于组件本身的事件。 如果在 js 内使用 addEventListene 等方式是不会自动销毁的，我们需要在组件销毁时手动移除这些事件的监听，以免造成内存泄露，如：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">created</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="built_in">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, this<span class="selector-class">.click</span>, false)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">beforeDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="built_in">removeEventListener</span>(<span class="string">&#x27;click&#x27;</span>, this<span class="selector-class">.click</span>, false)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6、图片资源懒加载"><a href="#1-6、图片资源懒加载" class="headerlink" title="1.6、图片资源懒加载"></a>1.6、图片资源懒加载</h3><p>对于图片过多的页面，为了加速页面加载速度，所以很多时候我们需要将页面内未出现在可视区域内的图片先不做加载， 等到滚动到可视区域后再去加载。这样对于页面加载性能上会有很大的提升，也提高了用户体验。我们在项目中使用 Vue 的 vue-lazyload 插件：</p>
+<p>（1）安装插件</p>
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">npm install vue-lazyload --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>（2）在入口文件 man.js 中引入并使用</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> VueLazyload <span class="keyword">from</span> <span class="string">&#x27;vue-lazyload&#x27;</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>然后再 vue 中直接使用</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">Vue.<span class="keyword">use</span>(VueLazyload)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>或者添加自定义选项</p>
+<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">Vue.use(VueLazyload, &#123;</span><br><span class="line">preLoad: 1.3,</span><br><span class="line"><span class="keyword">error: </span>&#x27;dist/error.png&#x27;,</span><br><span class="line">loading: &#x27;dist/loading.gif&#x27;,</span><br><span class="line">attempt: 1</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>（3）在 vue 文件中将 img 标签的 src 属性直接改为 v-lazy ，从而将图片显示方式更改为懒加载显示：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;img <span class="attribute">v-lazy</span>=<span class="string">&quot;/static/img/1.png&quot;</span>&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>以上为 vue-lazyload 插件的简单使用，如果要看插件的更多参数选项，可以查看 vue-lazyload 的 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fhilongjw%2Fvue-lazyload">github 地址</a>。</p>
+<h3 id="1-7、路由懒加载"><a href="#1-7、路由懒加载" class="headerlink" title="1.7、路由懒加载"></a>1.7、路由懒加载</h3><p>Vue  是单页面应用，可能会有很多的路由引入 ，这样使用 webpcak 打包后的文件很大，当进入首页时，加载的资源过多，页面会出现白屏的情况，不利于用户体验。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应的组件，这样就更加高效了。这样会大大提高首屏显示的速度，但是可能其他的页面的速度就会降下来。</p>
+<p><strong>路由懒加载：</strong></p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">const Foo = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./Foo.vue&#x27;</span>)</span><br><span class="line">const router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: <span class="string">&#x27;/foo&#x27;</span>, component: Foo &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-8、第三方插件的按需引入"><a href="#1-8、第三方插件的按需引入" class="headerlink" title="1.8、第三方插件的按需引入"></a>1.8、第三方插件的按需引入</h3><p>我们在项目中经常会需要引入第三方插件，如果我们直接引入整个插件，会导致项目的体积太大，我们可以借助 <code>babel-plugin-component</code> ，然后可以只引入需要的组件，以达到减小项目体积的目的。以下为项目中引入 element-ui 组件库为例：</p>
+<p>（1）首先，安装 <code>babel-plugin-component</code> ：</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install </span><span class="keyword">babel-plugin-component </span>-D</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>（2）然后，将 .babelrc 修改为：</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;presets&quot;</span>: [[<span class="string">&quot;es2015&quot;</span>, &#123; <span class="string">&quot;modules&quot;</span>: false &#125;]],</span><br><span class="line">  <span class="string">&quot;plugins&quot;</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">&quot;component&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;libraryName&quot;</span>: <span class="string">&quot;element-ui&quot;</span>,</span><br><span class="line">        <span class="string">&quot;styleLibraryName&quot;</span>: <span class="string">&quot;theme-chalk&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>（3）在 main.js 中引入部分组件：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Button, <span class="keyword">Select</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"></span><br><span class="line"> Vue.use(Button)</span><br><span class="line"> Vue.use(<span class="keyword">Select</span>)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-9、优化无限列表性能"><a href="#1-9、优化无限列表性能" class="headerlink" title="1.9、优化无限列表性能"></a>1.9、优化无限列表性能</h3><p>如果你的应用存在非常长或者无限滚动的列表，那么需要采用 窗口化 的技术来优化性能，只需要渲染少部分区域的内容，减少重新渲染组件和创建 dom 节点的时间。 你可以参考以下开源项目 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Ftangbc%2Fvue-virtual-scroll-list">vue-virtual-scroll-list</a> 和 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FAkryum%2Fvue-virtual-scroller">vue-virtual-scroller</a>  来优化这种无限列表的场景的。</p>
+<h3 id="1-10、服务端渲染-SSR-or-预渲染"><a href="#1-10、服务端渲染-SSR-or-预渲染" class="headerlink" title="1.10、服务端渲染 SSR or 预渲染"></a>1.10、服务端渲染 SSR or 预渲染</h3><p>服务端渲染是指 Vue 在客户端将标签渲染成的整个 html 片段的工作在服务端完成，服务端形成的 html 片段直接返回给客户端这个过程就叫做服务端渲染。</p>
+<p><strong>（1）服务端渲染的优点：</strong></p>
 <ul>
-<li>JS执行线程发起异步请求（浏览器会开启一个HTTP请求线程来执行请求，这时JS的任务完成，继续执行线程队列中剩下任务）</li>
-<li>然后在未来的某一时刻事件触发线程监视到之前的发起的HTTP请求已完成，它就会把完成事件插入到JS执行队列的尾部等待JS处理</li>
+<li>更好的 SEO： 因为 SPA 页面的内容是通过 Ajax 获取，而搜索引擎爬取工具并不会等待 Ajax 异步完成后再抓取页面内容，所以在 SPA 中是抓取不到页面通过 Ajax 获取到的内容；而 SSR 是直接由服务端返回已经渲染好的页面（数据已经包含在页面中），所以搜索引擎爬取工具可以抓取渲染好的页面；</li>
+<li>更快的内容到达时间（首屏加载更快）： SPA 会等待所有 Vue 编译后的 js 文件都下载完成后，才开始进行页面的渲染，文件下载等需要一定的时间等，所以首屏渲染需要一定的时间；SSR 直接由服务端渲染好页面直接返回显示，无需等待下载 js 文件及再去渲染等，所以 SSR 有更快的内容到达时间；</li>
 </ul>
-<p>再比如定时器触发(settimeout和setinterval) 是由<strong>「浏览器的定时器线程」</strong>执行的定时计数，然后在定时时间把定时处理函数的执行请求插入到JS执行队列的尾端（所以用这两个函数的时候，实际的执行时间是大于或等于指定时间的，不保证能准确定时的）。</p>
-<p>所以这么说，JS单线程与异步更多是浏览器行为，之间不冲突。</p>
-<h2 id="7-CSS加载会造成阻塞吗"><a href="#7-CSS加载会造成阻塞吗" class="headerlink" title="7. CSS加载会造成阻塞吗"></a>7. CSS加载会造成阻塞吗</h2><p>先给出结论</p>
+<p><strong>（2）服务端渲染的缺点：</strong></p>
 <ul>
-<li><code>CSS</code>不会阻塞<code>DOM</code>解析，但会阻塞<code>DOM</code>渲染。</li>
-<li><code>CSS</code>会阻塞JS执行，并不会阻塞JS文件下载</li>
+<li>更多的开发条件限制： 例如服务端渲染只支持 beforCreate 和 created 两个钩子函数，这会导致一些外部扩展库需要特殊处理，才能在服务端渲染应用程序中运行；并且与可以部署在任何静态文件服务器上的完全静态单页面应用程序 SPA 不同，服务端渲染应用程序，需要处于 Node.js server 运行环境；</li>
+<li>更多的服务器负载：在 Node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量占用CPU 资源，因此如果你预料在高流量环境下使用，请准备相应的服务器负载，并明智地采用缓存策略。</li>
 </ul>
-<p>先讲一讲CSSOM作用</p>
+<p>如果你的项目的 SEO 和 首屏渲染是评价项目的关键指标，那么你的项目就需要服务端渲染来帮助你实现最佳的初始加载性能和 SEO，具体的 Vue SSR 如何实现，可以参考作者的另一篇文章《<a href="https://juejin.cn/post/6844903824956588040">Vue SSR 踩坑之旅</a>》。如果你的 Vue 项目只需改善少数营销页面（例如  <code>/， /about， /contac</code>t 等）的 SEO，那么你可能需要<strong>预渲染</strong>，在构建时 (build time) 简单地生成针对特定路由的静态 HTML 文件。优点是设置预渲染更简单，并可以将你的前端作为一个完全静态的站点，具体你可以使用 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fchrisvfritz%2Fprerender-spa-plugin">prerender-spa-plugin</a> 就可以轻松地添加预渲染 。</p>
+<h2 id="二、Webpack-层面的优化"><a href="#二、Webpack-层面的优化" class="headerlink" title="二、Webpack 层面的优化"></a>二、Webpack 层面的优化</h2><h3 id="2-1、Webpack-对图片进行压缩"><a href="#2-1、Webpack-对图片进行压缩" class="headerlink" title="2.1、Webpack 对图片进行压缩"></a>2.1、Webpack 对图片进行压缩</h3><p>在 vue 项目中除了可以在 <code>webpack.base.conf.js</code> 中 url-loader 中设置 limit 大小来对图片处理，对小于 limit 的图片转化为 base64 格式，其余的不做操作。所以对有些较大的图片资源，在请求资源的时候，加载会很慢，我们可以用 <code>image-webpack-loader</code>来压缩图片：</p>
+<p>（1）首先，安装 image-webpack-loader  ：</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">npm install <span class="built_in">image</span>-webpack-loader --<span class="built_in">save</span>-dev</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>（2）然后，在 webpack.base.conf.js  中进行配置：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,</span><br><span class="line">  use:[</span><br><span class="line">    &#123;</span><br><span class="line">    loader: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">    options: &#123;</span><br><span class="line">      limit: <span class="number">10000</span>,</span><br><span class="line">      name: utils.<span class="built_in">assetsPath</span>(<span class="string">&#x27;img/[name].[hash:7].[ext]&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      loader: <span class="string">&#x27;image-webpack-loader&#x27;</span>,</span><br><span class="line">      options: &#123;</span><br><span class="line">        bypassOnDebug: true,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2、减少-ES6-转为-ES5-的冗余代码"><a href="#2-2、减少-ES6-转为-ES5-的冗余代码" class="headerlink" title="2.2、减少 ES6 转为 ES5 的冗余代码"></a>2.2、减少 ES6 转为 ES5 的冗余代码</h3><p>Babel 插件会在将 ES6 代码转换成 ES5 代码时会注入一些辅助函数，例如下面的 ES6 代码：</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWebpack</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;...&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>这段代码再被转换成能正常运行的 ES5 代码时需要以下两个辅助函数：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">babel-<span class="keyword">runtime</span><span class="regexp">/helpers/</span>createClass  <span class="comment">// 用于实现 class 语法</span></span><br><span class="line">babel-<span class="keyword">runtime</span><span class="regexp">/helpers/i</span>nherits  <span class="comment">// 用于实现 extends 语法    </span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>在默认情况下， Babel 会在每个输出文件中内嵌这些依赖的辅助函数代码，如果多个源代码文件都依赖这些辅助函数，那么这些辅助函数的代码将会出现很多次，造成代码冗余。为了不让这些辅助函数的代码重复出现，可以在依赖它们时通过 <code>require(&#39;babel-runtime/helpers/createClass&#39;)</code> 的方式导入，这样就能做到只让它们出现一次。<code>babel-plugin-transform-runtime</code> 插件就是用来实现这个作用的，将相关辅助函数进行替换成导入语句，从而减小 babel 编译出来的代码的文件大小。</p>
+<p>（1）首先，安装 <code>babel-plugin-transform-runtime</code> ：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">npm install babel-plugin-<span class="attribute">transform</span>-runtime <span class="attr">--save-dev</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>（2）然后，修改 .babelrc  配置文件为：</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;plugins&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;transform-runtime&quot;</span></span><br><span class="line">]</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>如果要看插件的更多详细内容，可以查看babel-plugin-transform-runtime 的 <a href="https://link.juejin.cn?target=https%3A%2F%2Fbabeljs.io%2Fdocs%2Fen%2Fbabel-plugin-transform-runtime">详细介绍</a>。</p>
+<h3 id="2-3、提取公共代码"><a href="#2-3、提取公共代码" class="headerlink" title="2.3、提取公共代码"></a>2.3、提取公共代码</h3><p>如果项目中没有去将每个页面的第三方库和公共模块提取出来，则项目会存在以下问题：</p>
 <ul>
-<li>第一个是提供给 JavaScript 操作样式表的能力</li>
-<li>第二个是为布局树的合成提供基础的样式信息</li>
-<li>这个 CSSOM 体现在 DOM 中就是document.styleSheets。</li>
+<li>相同的资源被重复加载，浪费用户的流量和服务器的成本。</li>
+<li>每个页面需要加载的资源太大，导致网页首屏加载缓慢，影响用户体验。</li>
 </ul>
-<p>由之前讲过的浏览器渲染流程我们可以看出：</p>
-<p>DOM 和 CSSOM通常是并行构建的，所以<strong>「CSS 加载不会阻塞 DOM 的解析」</strong>。</p>
-<p>然而由于Render Tree 是依赖DOM Tree和 CSSOM Tree的，所以它必须等到两者都加载完毕后，完成相应的构建，才开始渲染，因此，<strong>「CSS加载会阻塞DOM渲染」</strong>。</p>
-<p>由于 JavaScript 是可操纵 DOM 和 css 样式 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
-<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
-<p>有个需要注意的点就是：</p>
-<p><strong>「有时候JS需要等到CSS的下载，这是为什么呢？」</strong></p>
-<p>仔细思考一下，其实这样做是有道理的，如果脚本的内容是获取元素的样式，宽高等<code>CSS</code>控制的属性，浏览器是需要计算的，也就是依赖于<code>CSS</code>。浏览器也无法感知脚本内容到底是什么，为避免样式获取，因而只好等前面所有的样式下载完后，再执行<code>JS</code>。</p>
-<p>JS文件下载和CSS文件下载是并行的，有时候CSS文件很大，所以JS需要等待。</p>
-<p>因此,样式表会在后面的 js 执行前先加载执行完毕,所以<strong>「css 会阻塞后面 js 的执行」</strong>。</p>
-<h2 id="8-为什么JS会阻塞页面加载"><a href="#8-为什么JS会阻塞页面加载" class="headerlink" title="8. 为什么JS会阻塞页面加载"></a>8. 为什么JS会阻塞页面加载</h2><p>先给出结论</p>
+<p>所以我们需要将多个页面的公共代码抽离成单独的文件，来优化以上问题 。Webpack 内置了专门用于提取多个Chunk 中的公共部分的插件 CommonsChunkPlugin，我们在项目中 CommonsChunkPlugin 的配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 所有在 package.json 里面依赖的包，都会被打包进 vendor.js 这个文件中。</span></span><br><span class="line"><span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">CommonsChunkPlugin</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;vendor&#x27;</span>,</span><br><span class="line">  <span class="attr">minChunks</span>: <span class="keyword">function</span>(<span class="params"><span class="variable language_">module</span>, count</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="variable language_">module</span>.<span class="property">resource</span> &amp;&amp;</span><br><span class="line">      <span class="regexp">/\.js$/</span>.<span class="title function_">test</span>(<span class="variable language_">module</span>.<span class="property">resource</span>) &amp;&amp;</span><br><span class="line">      <span class="variable language_">module</span>.<span class="property">resource</span>.<span class="title function_">indexOf</span>(</span><br><span class="line">        path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;../node_modules&#x27;</span>)</span><br><span class="line">      ) === <span class="number">0</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;),</span><br><span class="line"><span class="comment">// 抽取出代码模块的映射关系</span></span><br><span class="line"><span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">CommonsChunkPlugin</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;manifest&#x27;</span>,</span><br><span class="line">  <span class="attr">chunks</span>: [<span class="string">&#x27;vendor&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>如果要看插件的更多详细内容，可以查看 CommonsChunkPlugin 的 <a href="https://link.juejin.cn?target=https%3A%2F%2Fwebpack.docschina.org%2Fplugins%2Fcommons-chunk-plugin%2F">详细介绍</a>。</p>
+<h3 id="2-4、模板预编译"><a href="#2-4、模板预编译" class="headerlink" title="2.4、模板预编译"></a>2.4、模板预编译</h3><p>当使用 DOM 内模板或 JavaScript 内的字符串模板时，模板会在运行时被编译为渲染函数。通常情况下这个过程已经足够快了，但对性能敏感的应用还是最好避免这种用法。</p>
+<p>预编译模板最简单的方式就是使用<a href="https://link.juejin.cn?target=https%3A%2F%2Fcn.vuejs.org%2Fv2%2Fguide%2Fsingle-file-components.html">单文件组件</a>——相关的构建设置会自动把预编译处理好，所以构建好的代码已经包含了编译出来的渲染函数而不是原始的模板字符串。</p>
+<p>如果你使用 webpack，并且喜欢分离 JavaScript 和模板文件，你可以使用 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fktsn%2Fvue-template-loader">vue-template-loader</a>，它也可以在构建过程中把模板文件转换成为 JavaScript 渲染函数。</p>
+<h3 id="2-5、提取组件的-CSS"><a href="#2-5、提取组件的-CSS" class="headerlink" title="2.5、提取组件的 CSS"></a>2.5、提取组件的 CSS</h3><p>当使用单文件组件时，组件内的 CSS 会以 style 标签的方式通过 JavaScript 动态注入。这有一些小小的运行时开销，如果你使用服务端渲染，这会导致一段 “无样式内容闪烁 (fouc) ” 。将所有组件的 CSS 提取到同一个文件可以避免这个问题，也会让 CSS 更好地进行压缩和缓存。</p>
+<p>查阅这个构建工具各自的文档来了解更多：</p>
 <ul>
-<li><strong>「JS阻塞DOM解析」</strong>，也就会阻塞页面</li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fvue-loader.vuejs.org%2Fzh-cn%2Fconfigurations%2Fextract-css.html">webpack + vue-loader</a> ( vue-cli 的 webpack 模板已经预先配置好)</li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fvuejs%2Fvueify%23css-extraction">Browserify + vueify</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fvuejs.github.io%2Frollup-plugin-vue%2F%23%2Fen%2F2.3%2F%3Fid%3Dcustom-handler">Rollup + rollup-plugin-vue</a></li>
 </ul>
-<p>这也是为什么说JS文件放在最下面的原因，那为什么会阻塞DOM解析呢</p>
-<p>你可以这样子理解：</p>
-<blockquote>
-<p>由于 JavaScript 是可操纵 DOM 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
-<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
-<p>当 JavaScript 引擎执行时 GUI 线程会被挂起,GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
-<p>当浏览器在执行 JavaScript 程序的时候,GUI 渲染线程会被保存在一个队列中,直到 JS 程序执行完成,才会接着执行。</p>
-<p>因此如果 JS 执行的时间过长,这样就会造成页面的渲染不连贯,导致页面渲染加载阻塞的感觉。</p>
-</blockquote>
-<p>另外，如果 JavaScript 文件中没有操作 DOM 相关代码，就可以将该 JavaScript 脚本设置为异步加载，通过 async 或 defer 来标记代码</p>
-<h2 id="9-defer-和-async-的区别"><a href="#9-defer-和-async-的区别" class="headerlink" title="9. defer 和 async 的区别 ?"></a>9. defer 和 async 的区别 ?</h2><ul>
-<li>两者都是异步去加载外部JS文件，不会阻塞DOM解析</li>
-<li>Async是在外部JS加载完成后，浏览器空闲时，Load事件触发前执行，标记为async的脚本并不保证按照指定他们的先后顺序执行，该属性对于内联脚本无作用 (即没有<strong>「src」</strong>属性的脚本）。</li>
-<li>defer是在JS加载完成后，整个文档解析完成后，触发 <code>DOMContentLoaded</code> 事件前执行，如果缺少 <code>src</code> 属性（即内嵌脚本），该属性不应被使用，因为这种情况下它不起作用</li>
-</ul>
-<h2 id="10-DOMContentLoaded-与-load-的区别"><a href="#10-DOMContentLoaded-与-load-的区别" class="headerlink" title="10. DOMContentLoaded 与 load 的区别 ?"></a>10. DOMContentLoaded 与 load 的区别 ?</h2><ul>
-<li>DOMContentLoaded事件触发时：仅当DOM解析完成后，不包括样式表，图片等资源。</li>
-<li>onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。</li>
-</ul>
-<p>那么也就是先DOMContentLoaded -&gt; load,那么在Jquery中，使用<img src="https://juejin.cn/equation?tex=(document).read(callback)%E7%9B%91%E5%90%AC%E7%9A%84%E5%B0%B1%E6%98%AFDOMContentLoaded%E4%BA%8B%E4%BB%B6%EF%BC%8C" alt="img">)(document).load(callback)监听的就是load事件。</p>
-<p>那我们可以聊一聊它们与async和defer区别</p>
-<blockquote>
-<p>带async的脚本一定会在load事件之前执行，可能会在DOMContentLoaded之前或之后执行。</p>
-</blockquote>
+<h3 id="2-6、优化-SourceMap"><a href="#2-6、优化-SourceMap" class="headerlink" title="2.6、优化 SourceMap"></a>2.6、优化 SourceMap</h3><p>我们在项目进行打包后，会将开发中的多个文件代码打包到一个文件中，并且经过压缩、去掉多余的空格、babel编译化后，最终将编译得到的代码会用于线上环境，那么这样处理后的代码和源代码会有很大的差别，当有 bug的时候，我们只能定位到压缩处理后的代码位置，无法定位到开发环境中的代码，对于开发来说不好调式定位问题，因此 sourceMap 出现了，它就是为了解决不好调式代码问题的。</p>
+<p>SourceMap 的可选值如下（+ 号越多，代表速度越快，- 号越多，代表速度越慢, o 代表中等速度 ）</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653d8000ec~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
+<p><strong>开发环境推荐： cheap-module-eval-source-map</strong></p>
+<p><strong>生产环境推荐： cheap-module-source-map</strong></p>
+<p>原因如下：</p>
 <ul>
-<li>情况1： HTML 还没有被解析完的时候，async脚本已经加载完了，那么 HTML 停止解析，去执行脚本，脚本执行完毕后触发DOMContentLoaded事件</li>
-<li>情况2： HTML 解析完了之后，async脚本才加载完，然后再执行脚本，那么在HTML解析完毕、async脚本还没加载完的时候就触发DOMContentLoaded事件</li>
+<li><strong>cheap</strong>： 源代码中的列信息是没有任何作用，因此我们打包后的文件不希望包含列相关信息，只有行信息能建立打包前后的依赖关系。因此不管是开发环境或生产环境，我们都希望添加 cheap 的基本类型来忽略打包前后的列信息；</li>
+<li><strong>module</strong> ：不管是开发环境还是正式环境，我们都希望能定位到bug的源代码具体的位置，比如说某个 Vue 文件报错了，我们希望能定位到具体的 Vue 文件，因此我们也需要 module 配置；</li>
+<li><strong>soure-map</strong> ：source-map 会为每一个打包后的模块生成独立的 soucemap 文件 ，因此我们需要增加source-map 属性；</li>
+<li><strong>eval-source-map</strong>：eval 打包代码的速度非常快，因为它不生成 map 文件，但是可以对 eval 组合使用 eval-source-map 使用会将 map 文件以 DataURL 的形式存在打包后的 js 文件中。在正式环境中不要使用 eval-source-map, 因为它会增加文件的大小，但是在开发环境中，可以试用下，因为他们打包的速度很快。</li>
 </ul>
-<blockquote>
-<p>如果 script 标签中包含 defer，那么这一块脚本将不会影响 HTML 文档的解析，而是等到HTML 解析完成后才会执行。而 DOMContentLoaded 只有在 defer 脚本执行结束后才会被触发。</p>
-</blockquote>
+<h3 id="2-7、构建结果输出分析"><a href="#2-7、构建结果输出分析" class="headerlink" title="2.7、构建结果输出分析"></a>2.7、构建结果输出分析</h3><p>Webpack 输出的代码可读性非常差而且文件非常大，让我们非常头疼。为了更简单、直观地分析输出结果，社区中出现了许多可视化分析工具。这些工具以图形的方式将结果更直观地展示出来，让我们快速了解问题所在。接下来讲解我们在 Vue 项目中用到的分析工具：<code>webpack-bundle-analyzer</code> 。</p>
+<p>我们在项目中 <code>webpack.prod.conf.js</code> 进行配置：</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">if (<span class="built_in">config</span>.<span class="keyword">build.bundleAnalyzerReport) </span>&#123;</span><br><span class="line">  var <span class="keyword">BundleAnalyzerPlugin </span>=   require(<span class="string">&#x27;webpack-bundle-analyzer&#x27;</span>).<span class="keyword">BundleAnalyzerPlugin;</span></span><br><span class="line"><span class="keyword"></span>  webpackConfig.plugins.push(new <span class="keyword">BundleAnalyzerPlugin());</span></span><br><span class="line"><span class="keyword"></span>&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>执行  <code>$ npm run build --report</code>  后生成分析报告如下：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653df09147~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
+<h3 id="2-8、Vue-项目的编译优化"><a href="#2-8、Vue-项目的编译优化" class="headerlink" title="2.8、Vue 项目的编译优化"></a>2.8、Vue 项目的编译优化</h3><p>如果你的 Vue 项目使用 Webpack 编译，需要你喝一杯咖啡的时间，那么也许你需要对项目的 Webpack 配置进行优化，提高 Webpack 的构建效率。具体如何进行 Vue 项目的 Webpack 构建优化，可以参考作者的另一篇文章<a href="https://juejin.cn/post/6844903745810104328">《 Vue 项目 Webpack 优化实践》</a></p>
+<h2 id="三、基础的-Web-技术优化"><a href="#三、基础的-Web-技术优化" class="headerlink" title="三、基础的 Web 技术优化"></a>三、基础的 Web 技术优化</h2><h3 id="3-1、开启-gzip-压缩"><a href="#3-1、开启-gzip-压缩" class="headerlink" title="3.1、开启 gzip 压缩"></a>3.1、开启 gzip 压缩</h3><p>gzip 是 GNUzip 的缩写，最早用于 UNIX 系统的文件压缩。HTTP 协议上的 gzip 编码是一种用来改进 web 应用程序性能的技术，web 服务器和客户端（浏览器）必须共同支持 gzip。目前主流的浏览器，Chrome，firefox，IE等都支持该协议。常见的服务器如 Apache，Nginx，IIS 同样支持，gzip 压缩效率非常高，通常可以达到 70% 的压缩率，也就是说，如果你的网页有 30K，压缩之后就变成了 9K 左右</p>
+<p>以下我们以服务端使用我们熟悉的 express 为例，开启 gzip 非常简单，相关步骤如下：</p>
 <ul>
-<li>情况1：HTML还没解析完成时，defer脚本已经加载完毕，那么defer脚本将等待HTML解析完成后再执行。defer脚本执行完毕后触发DOMContentLoaded事件</li>
-<li>情况2：HTML解析完成时，defer脚本还没加载完毕，那么defer脚本继续加载，加载完成后直接执行，执行完毕后触发DOMContentLoaded事件</li>
+<li>安装：</li>
 </ul>
-<h2 id="11-为什么CSS动画比JavaScript高效"><a href="#11-为什么CSS动画比JavaScript高效" class="headerlink" title="11. 为什么CSS动画比JavaScript高效"></a>11. 为什么CSS动画比JavaScript高效</h2><p>我觉得这个题目说法上可能就是行不通，不能这么说，如果了解的话，都知道will-change只是一个优化的手段，使用JS改变transform也可以享受这个属性带来的变化，所以这个说法上有点不妥。</p>
-<p>所以围绕这个问题展开话，更应该说建议推荐使用CSS动画，至于为什么呢，涉及的知识点大概就是重排重绘，合成，这方面的点，我在浏览器渲染流程中也提及了。</p>
-<p>尽可能的避免重排和重绘，具体是哪些操作呢，如果非要去操作JS实现动画的话，有哪些优化的手段呢？</p>
-<p>比如</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">npm install compression <span class="comment">--save</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>使用<code>createDocumentFragment</code>进行批量的 DOM 操作</li>
-<li>对于 resize、scroll 等进行防抖/节流处理。</li>
-<li>rAF优化等等</li>
+<li>添加代码逻辑：</li>
 </ul>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">var</span> <span class="variable">compression</span> = <span class="function"><span class="title">require</span>(<span class="string">&#x27;compression&#x27;</span>);</span></span><br><span class="line"><span class="function"><span class="variable">var</span> <span class="variable">app</span> = <span class="title">express</span>();</span></span><br><span class="line"><span class="function"><span class="variable">app.use</span>(<span class="title">compression</span>())</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启服务，观察网络面板里面的 response header，如果看到如下红圈里的字段则表明 gzip 开启成功 ：</li>
+</ul>
+<p>  <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653ef48d24~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
+<h3 id="3-2、浏览器缓存"><a href="#3-2、浏览器缓存" class="headerlink" title="3.2、浏览器缓存"></a>3.2、浏览器缓存</h3><p>为了提高用户加载页面的速度，对静态资源进行缓存是非常必要的，根据是否需要重新向服务器发起请求来分类，将 HTTP 缓存规则分为两大类（强制缓存，对比缓存），如果对缓存机制还不是了解很清楚的，可以参考作者写的关于 HTTP 缓存的文章<a href="https://juejin.cn/post/6844903801778864136">《深入理解HTTP缓存机制及原理》</a>，这里不再赘述。</p>
+<h3 id="3-3、CDN-的使用"><a href="#3-3、CDN-的使用" class="headerlink" title="3.3、CDN 的使用"></a>3.3、CDN 的使用</h3><p>浏览器从服务器上下载 CSS、js 和图片等文件时都要和服务器连接，而大部分服务器的带宽有限，如果超过限制，网页就半天反应不过来。而 CDN 可以通过不同的域名来加载文件，从而使下载文件的并发连接数大大增加，且CDN 具有更好的可用性，更低的网络延迟和丢包率 。</p>
+<h3 id="3-4、使用-Chrome-Performance-查找性能瓶颈"><a href="#3-4、使用-Chrome-Performance-查找性能瓶颈" class="headerlink" title="3.4、使用 Chrome Performance 查找性能瓶颈"></a>3.4、使用 Chrome Performance 查找性能瓶颈</h3><p>Chrome 的 Performance 面板可以录制一段时间内的 js 执行细节及时间。使用 Chrome 开发者工具分析页面性能的步骤如下。</p>
+<ol>
+<li>打开 Chrome 开发者工具，切换到 Performance 面板</li>
+<li>点击 Record 开始录制</li>
+<li>刷新页面或展开某个节点</li>
+<li>点击 Stop 停止录制</li>
+</ol>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/8/15/16c924653fbd6f8e~tplv-t2oaga2asx-watermark.awebp" alt="1.png"></p>
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</url>
+    <title>浏览器知识梳理</title>
+    <url>/2023/08/20/%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</url>
     <content><![CDATA[<h2 id="1-常见的浏览器内核有哪些"><a href="#1-常见的浏览器内核有哪些" class="headerlink" title="1. 常见的浏览器内核有哪些?"></a>1. 常见的浏览器内核有哪些?</h2><table>
 <thead>
 <tr>
@@ -2576,8 +2458,115 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/</url>
+    <title>前端面试总结</title>
+    <url>/2023/08/22/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, c</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="attr">AO</span>:&#123;	</span><br><span class="line">    <span class="attr">a</span>: <span class="literal">undefined</span>  <span class="number">1</span> <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">c</span>: <span class="literal">undefined</span>  <span class="number">2</span> <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></span><br><span class="line">    <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>预编译</p>
+<p>js的变量对象 AO对象，提供js引擎自己去访问</p>
+<p>四个步骤：</p>
+<p>1.创建AO对象</p>
+<p>2.找形参和变量声明作为AO对象的属性名，值为undefined</p>
+<p>3.实参和形参相统一</p>
+<p>4.找函数声明，会覆盖变量声明</p>
+<h2 id="2、浏览器渲染页面过程"><a href="#2、浏览器渲染页面过程" class="headerlink" title="2、浏览器渲染页面过程"></a>2、浏览器渲染页面过程</h2><p>用户输入URL地址</p>
+<p>浏览器解析URL解析出主机名</p>
+<p>浏览器将主机名转换成服务器ip地址（浏览器先查找本地DNS缓存列表 没有的话 再向浏览器默认的DNS服务器发送查询请求 同时缓存）</p>
+<p>浏览器将端口号从URL中解析出来</p>
+<p>浏览器建立一条与目标Web服务器的TCP连接（三次握手）</p>
+<p>浏览器向服务器发送一条HTTP请求报文</p>
+<p>服务器向浏览器返回一条HTTP响应报文</p>
+<p>关闭连接 浏览器解析文档</p>
+<h2 id="3-异步编程的方法"><a href="#3-异步编程的方法" class="headerlink" title="3.异步编程的方法"></a>3.异步编程的方法</h2><h2 id="4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别"><a href="#4-解释同步-异步、阻塞-非阻塞、并行-并发之间的区别" class="headerlink" title="4.解释同步\异步、阻塞\非阻塞、并行\并发之间的区别"></a>4.<strong>解释同步\异步、阻塞\非阻塞、并行\并发之间的区别</strong></h2><h2 id="5-js实现数值千分位"><a href="#5-js实现数值千分位" class="headerlink" title="5. js实现数值千分位"></a>5. <strong>js实现数值千分位</strong></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">number.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-为什么JavaScript是单线程的，与异步冲突吗"><a href="#6-为什么JavaScript是单线程的，与异步冲突吗" class="headerlink" title="6. 为什么JavaScript是单线程的，与异步冲突吗"></a>6. 为什么JavaScript是单线程的，与异步冲突吗</h2><p>补充：JS中其实是没有线程概念的，所谓的单线程也只是相对于多线程而言。JS的设计初衷就没有考虑这些，针对JS这种不具备并行任务处理的特性，我们称之为“单线程”。</p>
+<p>JS的单线程是指一个浏览器进程中只有一个JS的执行线程，同一时刻内只会有一段代码在执行。</p>
+<p>举个通俗例子，假设JS支持多线程操作的话，JS可以操作DOM，那么一个线程在删除DOM，另外一个线程就在获取DOM数据，这样子明显不合理，这算是证明之一。</p>
+<p>来看段代码👇</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">    setTimeout(( <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.<span class="built_in">log</span>( <span class="string">&#x27;second&#x27;</span> );</span><br><span class="line">    &#125;),<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>打印结果就是首先是很多个first,然后再是second。</p>
+<p>异步机制是浏览器的两个或以上常驻线程共同完成的，举个例子，比如异步请求由两个常驻线程，JS执行线程和事件触发线程共同完成的。</p>
+<ul>
+<li>JS执行线程发起异步请求（浏览器会开启一个HTTP请求线程来执行请求，这时JS的任务完成，继续执行线程队列中剩下任务）</li>
+<li>然后在未来的某一时刻事件触发线程监视到之前的发起的HTTP请求已完成，它就会把完成事件插入到JS执行队列的尾部等待JS处理</li>
+</ul>
+<p>再比如定时器触发(settimeout和setinterval) 是由<strong>「浏览器的定时器线程」</strong>执行的定时计数，然后在定时时间把定时处理函数的执行请求插入到JS执行队列的尾端（所以用这两个函数的时候，实际的执行时间是大于或等于指定时间的，不保证能准确定时的）。</p>
+<p>所以这么说，JS单线程与异步更多是浏览器行为，之间不冲突。</p>
+<h2 id="7-CSS加载会造成阻塞吗"><a href="#7-CSS加载会造成阻塞吗" class="headerlink" title="7. CSS加载会造成阻塞吗"></a>7. CSS加载会造成阻塞吗</h2><p>先给出结论</p>
+<ul>
+<li><code>CSS</code>不会阻塞<code>DOM</code>解析，但会阻塞<code>DOM</code>渲染。</li>
+<li><code>CSS</code>会阻塞JS执行，并不会阻塞JS文件下载</li>
+</ul>
+<p>先讲一讲CSSOM作用</p>
+<ul>
+<li>第一个是提供给 JavaScript 操作样式表的能力</li>
+<li>第二个是为布局树的合成提供基础的样式信息</li>
+<li>这个 CSSOM 体现在 DOM 中就是document.styleSheets。</li>
+</ul>
+<p>由之前讲过的浏览器渲染流程我们可以看出：</p>
+<p>DOM 和 CSSOM通常是并行构建的，所以<strong>「CSS 加载不会阻塞 DOM 的解析」</strong>。</p>
+<p>然而由于Render Tree 是依赖DOM Tree和 CSSOM Tree的，所以它必须等到两者都加载完毕后，完成相应的构建，才开始渲染，因此，<strong>「CSS加载会阻塞DOM渲染」</strong>。</p>
+<p>由于 JavaScript 是可操纵 DOM 和 css 样式 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
+<p>有个需要注意的点就是：</p>
+<p><strong>「有时候JS需要等到CSS的下载，这是为什么呢？」</strong></p>
+<p>仔细思考一下，其实这样做是有道理的，如果脚本的内容是获取元素的样式，宽高等<code>CSS</code>控制的属性，浏览器是需要计算的，也就是依赖于<code>CSS</code>。浏览器也无法感知脚本内容到底是什么，为避免样式获取，因而只好等前面所有的样式下载完后，再执行<code>JS</code>。</p>
+<p>JS文件下载和CSS文件下载是并行的，有时候CSS文件很大，所以JS需要等待。</p>
+<p>因此,样式表会在后面的 js 执行前先加载执行完毕,所以<strong>「css 会阻塞后面 js 的执行」</strong>。</p>
+<h2 id="8-为什么JS会阻塞页面加载"><a href="#8-为什么JS会阻塞页面加载" class="headerlink" title="8. 为什么JS会阻塞页面加载"></a>8. 为什么JS会阻塞页面加载</h2><p>先给出结论</p>
+<ul>
+<li><strong>「JS阻塞DOM解析」</strong>，也就会阻塞页面</li>
+</ul>
+<p>这也是为什么说JS文件放在最下面的原因，那为什么会阻塞DOM解析呢</p>
+<p>你可以这样子理解：</p>
+<blockquote>
+<p>由于 JavaScript 是可操纵 DOM 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
+<p>当 JavaScript 引擎执行时 GUI 线程会被挂起,GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
+<p>当浏览器在执行 JavaScript 程序的时候,GUI 渲染线程会被保存在一个队列中,直到 JS 程序执行完成,才会接着执行。</p>
+<p>因此如果 JS 执行的时间过长,这样就会造成页面的渲染不连贯,导致页面渲染加载阻塞的感觉。</p>
+</blockquote>
+<p>另外，如果 JavaScript 文件中没有操作 DOM 相关代码，就可以将该 JavaScript 脚本设置为异步加载，通过 async 或 defer 来标记代码</p>
+<h2 id="9-defer-和-async-的区别"><a href="#9-defer-和-async-的区别" class="headerlink" title="9. defer 和 async 的区别 ?"></a>9. defer 和 async 的区别 ?</h2><ul>
+<li>两者都是异步去加载外部JS文件，不会阻塞DOM解析</li>
+<li>Async是在外部JS加载完成后，浏览器空闲时，Load事件触发前执行，标记为async的脚本并不保证按照指定他们的先后顺序执行，该属性对于内联脚本无作用 (即没有<strong>「src」</strong>属性的脚本）。</li>
+<li>defer是在JS加载完成后，整个文档解析完成后，触发 <code>DOMContentLoaded</code> 事件前执行，如果缺少 <code>src</code> 属性（即内嵌脚本），该属性不应被使用，因为这种情况下它不起作用</li>
+</ul>
+<h2 id="10-DOMContentLoaded-与-load-的区别"><a href="#10-DOMContentLoaded-与-load-的区别" class="headerlink" title="10. DOMContentLoaded 与 load 的区别 ?"></a>10. DOMContentLoaded 与 load 的区别 ?</h2><ul>
+<li>DOMContentLoaded事件触发时：仅当DOM解析完成后，不包括样式表，图片等资源。</li>
+<li>onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。</li>
+</ul>
+<p>那么也就是先DOMContentLoaded -&gt; load,那么在Jquery中，使用<img src="https://juejin.cn/equation?tex=(document).read(callback)%E7%9B%91%E5%90%AC%E7%9A%84%E5%B0%B1%E6%98%AFDOMContentLoaded%E4%BA%8B%E4%BB%B6%EF%BC%8C" alt="img">)(document).load(callback)监听的就是load事件。</p>
+<p>那我们可以聊一聊它们与async和defer区别</p>
+<blockquote>
+<p>带async的脚本一定会在load事件之前执行，可能会在DOMContentLoaded之前或之后执行。</p>
+</blockquote>
+<ul>
+<li>情况1： HTML 还没有被解析完的时候，async脚本已经加载完了，那么 HTML 停止解析，去执行脚本，脚本执行完毕后触发DOMContentLoaded事件</li>
+<li>情况2： HTML 解析完了之后，async脚本才加载完，然后再执行脚本，那么在HTML解析完毕、async脚本还没加载完的时候就触发DOMContentLoaded事件</li>
+</ul>
+<blockquote>
+<p>如果 script 标签中包含 defer，那么这一块脚本将不会影响 HTML 文档的解析，而是等到HTML 解析完成后才会执行。而 DOMContentLoaded 只有在 defer 脚本执行结束后才会被触发。</p>
+</blockquote>
+<ul>
+<li>情况1：HTML还没解析完成时，defer脚本已经加载完毕，那么defer脚本将等待HTML解析完成后再执行。defer脚本执行完毕后触发DOMContentLoaded事件</li>
+<li>情况2：HTML解析完成时，defer脚本还没加载完毕，那么defer脚本继续加载，加载完成后直接执行，执行完毕后触发DOMContentLoaded事件</li>
+</ul>
+<h2 id="11-为什么CSS动画比JavaScript高效"><a href="#11-为什么CSS动画比JavaScript高效" class="headerlink" title="11. 为什么CSS动画比JavaScript高效"></a>11. 为什么CSS动画比JavaScript高效</h2><p>我觉得这个题目说法上可能就是行不通，不能这么说，如果了解的话，都知道will-change只是一个优化的手段，使用JS改变transform也可以享受这个属性带来的变化，所以这个说法上有点不妥。</p>
+<p>所以围绕这个问题展开话，更应该说建议推荐使用CSS动画，至于为什么呢，涉及的知识点大概就是重排重绘，合成，这方面的点，我在浏览器渲染流程中也提及了。</p>
+<p>尽可能的避免重排和重绘，具体是哪些操作呢，如果非要去操作JS实现动画的话，有哪些优化的手段呢？</p>
+<p>比如</p>
+<ul>
+<li>使用<code>createDocumentFragment</code>进行批量的 DOM 操作</li>
+<li>对于 resize、scroll 等进行防抖/节流处理。</li>
+<li>rAF优化等等</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>CSS变幻</title>
+    <url>/2020/08/30/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h2 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h2><p>弹性布局是为了弥补流式布局下在移动端布局的不方便而产生的一种新的布局方式 ，它主要是通过<strong>弹性盒子</strong>这个特性来完成了</p>
 <h3 id="弹性盒子属性"><a href="#弹性盒子属性" class="headerlink" title="弹性盒子属性"></a>弹性盒子属性</h3><ol>
 <li><p><code>display:flex</code>这个属性将一个盒子转换成弹性盒子</p>
@@ -2696,8 +2685,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
+    <title>移动端布局注意事项</title>
+    <url>/2021/03/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
     <content><![CDATA[<h2 id="移动端布局注意事项"><a href="#移动端布局注意事项" class="headerlink" title="移动端布局注意事项"></a>移动端布局注意事项</h2><h3 id="手机屏的横向与纵向"><a href="#手机屏的横向与纵向" class="headerlink" title="手机屏的横向与纵向"></a>手机屏的横向与纵向</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*手机横向*/</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">orientation</span>:landscape ) &#123;</span><br><span class="line">    <span class="comment">/*css代码*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*手机纵向*/</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">orientation</span>:portrait ) &#123;</span><br><span class="line">	<span class="comment">/*css代码*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2770,8 +2759,8 @@
 <h3 id="禁用IOS文本输入框默认内阴影"><a href="#禁用IOS文本输入框默认内阴影" class="headerlink" title="禁用IOS文本输入框默认内阴影"></a>禁用IOS文本输入框默认内阴影</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/</url>
+    <title>移动端基础布局</title>
+    <url>/2021/03/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="移动端布局基础"><a href="#移动端布局基础" class="headerlink" title="移动端布局基础"></a>移动端布局基础</h2><h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>一个页面针对不同的设备不同的<strong>宽度</strong>做出的不同样式布局响应</p>
 <p>在整个移动端布局里面，我们都需添加如下的网页头</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
