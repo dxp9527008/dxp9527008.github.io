@@ -130,6 +130,150 @@
   </entry>
   <entry>
     <title></title>
+    <url>/2024/03/18/CSS%E6%B8%90%E5%8F%98/</url>
+    <content><![CDATA[<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS里面的渐变指的是背景的渐变，它主要存在两种形式，一种是线性渐变，一种是径向渐变</p>
+<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><h4 id="基本线性渐变"><a href="#基本线性渐变" class="headerlink" title="基本线性渐变"></a>基本线性渐变</h4><hr>
+<blockquote>
+<p>沿着某一条直线进行颜色的改变，使用的CSS属性为<code>linear-gradient</code></p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="comment">/*标准定法*/</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to 方向,颜色一,颜色二.......);</span><br><span class="line">    <span class="comment">/*兼容写法*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,颜色二,颜色一);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在兼容语法里面，有两点需要注意</p>
+<ol>
+<li>添加各种浏览器特定的前缀-webkit-,-moz-等</li>
+<li>在方向前面去掉<code>to</code>关键字，颜色反着来</li>
+</ol>
+</blockquote>
+<p>在线性渐变里面，它的第一个参数代表的是方向，这个方向可以指一个方向，也可以指两个关键的组合</p>
+<p>如左上角to left top,右上角 to right top,左下角 to left bottom,右下角  to right bottom</p>
+<p>后面接的是颜色值</p>
+<h4 id="设置渐变色的尺寸"><a href="#设置渐变色的尺寸" class="headerlink" title="设置渐变色的尺寸"></a>设置渐变色的尺寸</h4><p>当我们在设置渐变的时候，可以在某一个特殊颜色上面设置它的间距，这个间距叫渐变色的颜色尺寸</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div5</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    在下面的代码里面，我们可以看到蓝色会呈现50%的效果</span></span><br><span class="line"><span class="comment">    50%到70%为黄色</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,blue <span class="number">50%</span>,yellow <span class="number">70%</span>,red,orange <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/ff6b6315c0a5c0e28147298a5548c438" alt="1563343435308.png"></p>
+<blockquote>
+<p><strong>注意事项：</strong> </p>
+<p>在这里，它的尺寸最终不能大于100%，每个颜色使用逗号来进行隔开，然后颜色的后面可以跟百分比的值</p>
+</blockquote>
+<p>我们的线性渐变除了使用某一个方向做为颜色的改变方向，还可以使用角度来进行</p>
+<h3 id="角度线性线变"><a href="#角度线性线变" class="headerlink" title="角度线性线变"></a>角度线性线变</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div6</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    在第一个参数上面，我们已经不再写具体的方法了，转而可以使用一个角度来替代</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">0deg</span>,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>0deg代表上面</p>
+<p>90deg代表右边 </p>
+<p>180deg代表下边 </p>
+<p>270deg代表左边  </p>
+<p>角度线性渐变就弥补我们之前在基本的线性渐变方向单一的问题，它可以通过角度直接指定某一个方向</p>
+<h3 id="渐变与图片结合使用"><a href="#渐变与图片结合使用" class="headerlink" title="渐变与图片结合使用"></a>渐变与图片结合使用</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">1200px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*background-image: url(img/1.jpg);*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right bottom,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.1</span>)), <span class="built_in">url</span>(<span class="string">img/1.jpg</span>);</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的效果的<strong>核心思路</strong>其实就是把之前的多个背景图片设置，它产先从右向左加载，先加载了背景图片，再加载了渐变色，效果图如下</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/61bce9382fd3edf254c7526c78eb41c4" alt="1563344605888.png"></p>
+<h3 id="重复线性渐变"><a href="#重复线性渐变" class="headerlink" title="重复线性渐变"></a>重复线性渐变</h3><p>当设置某一个区域渐变颜色的时候，我们可以重复的这些渐变色填充</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(to right,blue <span class="number">10%</span>,red <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/6d183663bbfd8e20dfff3590a64bffa0" alt="1563344926021.png"></p>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>径向渐变指提的是由内向外的一种扩散渐变方式，使用的属性名是<code>radial-gradient</code></p>
+<p>径向渐变的语法格式是</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*径向渐变第一个参数是存在的，但是一般可以省略</span></span><br><span class="line"><span class="comment">      它的第一个参数是ellipse椭圆或circle圆</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(可选参数,颜色一,颜色二.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们在设置径向渐变的时候，如果这个元素它不是正方形，那么径向渐变默认会成为一个椭圆，如果这个时候还想设置成圆，那么，我们就添加第一个参数为<code>circle</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red,blue);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/b1277ffa421133960c6596b1835949fa" alt="1563345223395.png"></p>
+<p>径向渐变与线性渐变很相似，它也可以设置百分比的值，也可以设置多个颜色值</p>
+<h3 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h3><p>与之前讲过的重复的线性渐变相似</p>
+<p><code>repeating-radial-gradient</code>是重复径向渐变的属性名，设置方式与重复线性渐变一样</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(red <span class="number">10%</span>,blue <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>题外话</strong></p>
+<p>虽然渐变是一个颜色，但是我们不能通过<code>background-color</code>来设置，背景色的渐变其关把它当成了一个图片，所以，我们要使用background-image这个属性或background属性</p>
+<p>在之前的时候，我们讲过背景background-image可以设置多个图片，所以下面的代码它是成立的</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*下面是两个渐变叠加在了一起*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>)),<span class="built_in">radial-gradient</span>(deeppink,white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>之前，我们讲过背景颜色<code>background-color</code>,背景图片<code>background-image</code>等与背景相关的属性，现在，我们可以统一简写成<code>background</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="comment">/*background:red;*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">imgb/logo.png</span>) no-repeat right bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>url代表设置backround-image属性,no-repeat代表设置background-repeat,right bottom代表设置background-position属性</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2024/03/18/CSS%E8%BF%87%E6%B8%A1/</url>
+    <content><![CDATA[<h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
+<p>过渡由以下几个属性来构成</p>
+<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
+<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
+</li>
+<li><p>transition-duration指的是过渡持续的时间</p>
+</li>
+<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
+<ul>
+<li><p>linear这个代表匀速直线</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
+</li>
+<li><p>ease属性值</p>
+<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
+</li>
+<li><p>ease-in属性值</p>
+<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
+</li>
+<li><p>ease-out属性值</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
+</li>
+<li><p>ease-in-out属性值</p>
+<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
+</li>
+</ul>
+<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
+</li>
+<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
+</li>
+</ol>
+<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
+<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
+<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
+<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
+<ol>
+<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
+<p>还包含国内360，qq，搜狗,世界之窗</p>
+<p>更包含android平台内置的浏览器</p>
+</li>
+<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
+</li>
+<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
+</li>
+<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
+<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
+</li>
+<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
+</li>
+</ol>
+<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
+<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
+<ol>
+<li>display:block/none的过渡</li>
+<li>z-index不能执行过渡</li>
+<li>float不能执行过渡</li>
+<li>visibility 不能执行过渡</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2024/03/18/CSS%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="CSS基础"><a href="#CSS基础" class="headerlink" title="CSS基础"></a>CSS基础</h2><h3 id="为什么需要CSS"><a href="#为什么需要CSS" class="headerlink" title="为什么需要CSS"></a>为什么需要CSS</h3><p>当我们在设计网页的时候，我们经常需要对网页当中的元素进行一些样式设置，通常在没有CSS的情况下，我们都是通过元素的属性来进行设置的，如下所示</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">text</span>=<span class="string">&quot;red&quot;</span> <span class="attr">bgcolor</span>=<span class="string">&quot;green&quot;</span>&gt;</span></span><br><span class="line">    我爱北京天安门，天安门上太阳升</span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>第一项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>第二项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>第三项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--font的bgcolor没有效果 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span> <span class="attr">bgcolor</span>=<span class="string">&quot;red&quot;</span>&gt;</span>床前明月光<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -913,146 +1057,32 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2024/03/18/CSS%E6%B8%90%E5%8F%98/</url>
-    <content><![CDATA[<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>CSS里面的渐变指的是背景的渐变，它主要存在两种形式，一种是线性渐变，一种是径向渐变</p>
-<h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><h4 id="基本线性渐变"><a href="#基本线性渐变" class="headerlink" title="基本线性渐变"></a>基本线性渐变</h4><hr>
-<blockquote>
-<p>沿着某一条直线进行颜色的改变，使用的CSS属性为<code>linear-gradient</code></p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="comment">/*标准定法*/</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to 方向,颜色一,颜色二.......);</span><br><span class="line">    <span class="comment">/*兼容写法*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,颜色二,颜色一);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <url>/2024/03/18/Flutter%E9%9D%A2%E8%AF%95/</url>
+    <content><![CDATA[<h3 id="flutter-面试"><a href="#flutter-面试" class="headerlink" title="flutter 面试"></a>flutter 面试</h3><p>1.dart 的作用域</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">dart 里面默认是公开的，私有变量使用下划线开头</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>在兼容语法里面，有两点需要注意</p>
-<ol>
-<li>添加各种浏览器特定的前缀-webkit-,-moz-等</li>
-<li>在方向前面去掉<code>to</code>关键字，颜色反着来</li>
-</ol>
-</blockquote>
-<p>在线性渐变里面，它的第一个参数代表的是方向，这个方向可以指一个方向，也可以指两个关键的组合</p>
-<p>如左上角to left top,右上角 to right top,左下角 to left bottom,右下角  to right bottom</p>
-<p>后面接的是颜色值</p>
-<h4 id="设置渐变色的尺寸"><a href="#设置渐变色的尺寸" class="headerlink" title="设置渐变色的尺寸"></a>设置渐变色的尺寸</h4><p>当我们在设置渐变的时候，可以在某一个特殊颜色上面设置它的间距，这个间距叫渐变色的颜色尺寸</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div5</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    在下面的代码里面，我们可以看到蓝色会呈现50%的效果</span></span><br><span class="line"><span class="comment">    50%到70%为黄色</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,blue <span class="number">50%</span>,yellow <span class="number">70%</span>,red,orange <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/ff6b6315c0a5c0e28147298a5548c438" alt="1563343435308.png"></p>
-<blockquote>
-<p><strong>注意事项：</strong> </p>
-<p>在这里，它的尺寸最终不能大于100%，每个颜色使用逗号来进行隔开，然后颜色的后面可以跟百分比的值</p>
-</blockquote>
-<p>我们的线性渐变除了使用某一个方向做为颜色的改变方向，还可以使用角度来进行</p>
-<h3 id="角度线性线变"><a href="#角度线性线变" class="headerlink" title="角度线性线变"></a>角度线性线变</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div6</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    在第一个参数上面，我们已经不再写具体的方法了，转而可以使用一个角度来替代</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">0deg</span>,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.dart是不是单线程？如何运行的？</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">(<span class="number">1</span>)dart是单线程</span><br><span class="line">(<span class="number">2</span>)dart在单线程中是以消息循环机制来运行的，其中包括两个任务队列，</span><br><span class="line">一个是“微任务队列”microtask queue, 另一个叫做“事件队列”event queue</span><br><span class="line"></span><br><span class="line">入口函数 <span class="built_in">mian</span>()函数运行后，消息循环机制便启动了，首先会按照先进先出的</span><br><span class="line">顺序逐个执行微任务队列中的任务，当所有微任务队列中的任务执行完之后便开</span><br><span class="line">始执行事件队列的任务，事件队列中的任务执行完之后再去执行微任务队列中的</span><br><span class="line">任务，如此循环往复，生生不息。</span><br><span class="line">在Dart中，所有的外部事件任务都在事件队列中，如IO、计时器、点击、以及绘</span><br><span class="line">制事件等，而微任务通常来源于Dart内部，并且微任务非常少，之所以如此，是</span><br><span class="line">因为微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任</span><br><span class="line">务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡，所以必须得保证</span><br><span class="line">微任务队列不会太长。值得注意的是，我们可以通过Future<span class="selector-class">.microtask</span>(…)方法</span><br><span class="line">向微任务队列插入一个任务。</span><br></pre></td></tr></table></figure>
 
-<p>0deg代表上面</p>
-<p>90deg代表右边 </p>
-<p>180deg代表下边 </p>
-<p>270deg代表左边  </p>
-<p>角度线性渐变就弥补我们之前在基本的线性渐变方向单一的问题，它可以通过角度直接指定某一个方向</p>
-<h3 id="渐变与图片结合使用"><a href="#渐变与图片结合使用" class="headerlink" title="渐变与图片结合使用"></a>渐变与图片结合使用</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">1200px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*background-image: url(img/1.jpg);*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right bottom,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.1</span>)), <span class="built_in">url</span>(<span class="string">img/1.jpg</span>);</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.dart 多任务是如何并行的?他们之间是如何交互的？</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">(<span class="number">1</span>)dart不存在多线程，dart 提供另一个类似新线程，但是不共享内存独立运行</span><br><span class="line">的worker-<span class="built_in">isolate</span></span><br><span class="line">(<span class="number">2</span>)两个<span class="built_in">isolate</span>之间通过SendPort相互发送消息，通过ReceiveProt接受消息</span><br></pre></td></tr></table></figure>
 
-<p>上面的效果的<strong>核心思路</strong>其实就是把之前的多个背景图片设置，它产先从右向左加载，先加载了背景图片，再加载了渐变色，效果图如下</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/61bce9382fd3edf254c7526c78eb41c4" alt="1563344605888.png"></p>
-<h3 id="重复线性渐变"><a href="#重复线性渐变" class="headerlink" title="重复线性渐变"></a>重复线性渐变</h3><p>当设置某一个区域渐变颜色的时候，我们可以重复的这些渐变色填充</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(to right,blue <span class="number">10%</span>,red <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.说一下dart异步编程中Future关键字</p>
+<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">在dart中通常使用<span class="keyword">Future</span>来执行异步或者延时操作</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/6d183663bbfd8e20dfff3590a64bffa0" alt="1563344926021.png"></p>
-<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p>径向渐变指提的是由内向外的一种扩散渐变方式，使用的属性名是<code>radial-gradient</code></p>
-<p>径向渐变的语法格式是</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*径向渐变第一个参数是存在的，但是一般可以省略</span></span><br><span class="line"><span class="comment">      它的第一个参数是ellipse椭圆或circle圆</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(可选参数,颜色一,颜色二.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.说一下Dart异步编程中的 Stream数据流？ </p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">dart中<span class="built_in">Stream</span> 和Future 都是解决异步的工具， 不同是<span class="built_in">Stream</span>可以接受多个异步</span><br><span class="line">的结果，而Future只能接受一个异步结果。<span class="number">0</span></span><br><span class="line"><span class="built_in">Stream</span> 的创建可以使用 <span class="built_in">Stream</span>.fromFuture，也可以使用 StreamController </span><br><span class="line">来创建和控制。还有一个注意点是：普通的 <span class="built_in">Stream</span> 只可以有一个订阅者，如果想</span><br><span class="line">要多订阅的话，要使用 <span class="built_in">asBroadcastStream</span>()。</span><br></pre></td></tr></table></figure>
 
-<p>当我们在设置径向渐变的时候，如果这个元素它不是正方形，那么径向渐变默认会成为一个椭圆，如果这个时候还想设置成圆，那么，我们就添加第一个参数为<code>circle</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle,red,blue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.Stream 有哪两种订阅模式？分别是怎么调用的？</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Stream</span> 有两种订阅模式：单订阅(single) 和 多订阅（broadcast）。单订阅就</span><br><span class="line">是只能有一个订阅者，而广播是可以有多个订阅者。这就有点类似于消息服务（Message</span><br><span class="line">Service）的处理模式。单订阅类似于点对点，在订阅者出现之前会持有数据，在</span><br><span class="line">订阅者出现之后就才转交给它。而广播类似于发布订阅模式，可以同时有多个订阅者，</span><br><span class="line">当有数据时就会传递给所有的订阅者，而不管当前是否已有订阅者存在。</span><br><span class="line"><span class="built_in">Stream</span> 默认处于单订阅模式，所以同一个 stream 上的 listen 和其它大多数方法</span><br><span class="line">只能调用一次，调用第二次就会报错。但 <span class="built_in">Stream</span> 可以通过 <span class="built_in">transform</span>() 方法（返回</span><br><span class="line">另一个 <span class="built_in">Stream</span>）进行连续调用。通过 <span class="built_in">Stream</span>.<span class="built_in">asBroadcastStream</span>() 可以将一个单</span><br><span class="line">订阅模式的 <span class="built_in">Stream</span> 转换成一个多订阅模式的 <span class="built_in">Stream</span>，isBroadcast 属性可以判断</span><br><span class="line">当前 <span class="built_in">Stream</span> 所处的模式。</span><br></pre></td></tr></table></figure>
 
-<p><strong>案例</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red,blue);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/b1277ffa421133960c6596b1835949fa" alt="1563345223395.png"></p>
-<p>径向渐变与线性渐变很相似，它也可以设置百分比的值，也可以设置多个颜色值</p>
-<h3 id="重复的径向渐变"><a href="#重复的径向渐变" class="headerlink" title="重复的径向渐变"></a>重复的径向渐变</h3><p>与之前讲过的重复的线性渐变相似</p>
-<p><code>repeating-radial-gradient</code>是重复径向渐变的属性名，设置方式与重复线性渐变一样</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">repeating-radial-gradient</span>(red <span class="number">10%</span>,blue <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>题外话</strong></p>
-<p>虽然渐变是一个颜色，但是我们不能通过<code>background-color</code>来设置，背景色的渐变其关把它当成了一个图片，所以，我们要使用background-image这个属性或background属性</p>
-<p>在之前的时候，我们讲过背景background-image可以设置多个图片，所以下面的代码它是成立的</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*下面是两个渐变叠加在了一起*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,<span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">0.5</span>),<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>)),<span class="built_in">radial-gradient</span>(deeppink,white);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7.说一下mixin机制？</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mixin</span> 是Dart <span class="number">2.1</span> 加入的特性，以前版本通常使用<span class="keyword">abstract</span> <span class="keyword">class</span>代替。简单来说，</span><br><span class="line"><span class="symbol">mixin</span>是为了解决继承方面的问题而引入的机制，<span class="symbol">Dart</span>为了支持多重继承，引入了<span class="symbol">mixin</span></span><br><span class="line">关键字，它最大的特殊处在于：<span class="symbol">mixin</span>定义的类不能有构造方法，这样可以避免继承多个</span><br><span class="line">类而产生的父类构造方法冲突。</span><br><span class="line"><span class="symbol">mixins</span>的对象是类，<span class="symbol">mixins</span>绝不是继承，也不是接口，而是一种全新的特性，可以<span class="symbol">mixins</span></span><br><span class="line">多个类，<span class="symbol">mixins</span>的使用需要满足一定条件。</span><br></pre></td></tr></table></figure>
 
 
 
-<p>之前，我们讲过背景颜色<code>background-color</code>,背景图片<code>background-image</code>等与背景相关的属性，现在，我们可以统一简写成<code>background</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="comment">/*background:red;*/</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">imgb/logo.png</span>) no-repeat right bottom;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>url代表设置backround-image属性,no-repeat代表设置background-repeat,right bottom代表设置background-position属性</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/CSS%E8%BF%87%E6%B8%A1/</url>
-    <content><![CDATA[<h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
-<p>过渡由以下几个属性来构成</p>
-<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
-<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
-</li>
-<li><p>transition-duration指的是过渡持续的时间</p>
-</li>
-<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
-<ul>
-<li><p>linear这个代表匀速直线</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
-</li>
-<li><p>ease属性值</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
-</li>
-<li><p>ease-in属性值</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
-</li>
-<li><p>ease-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
-</li>
-<li><p>ease-in-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
-</li>
-</ul>
-<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
-</li>
-<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
-</li>
-</ol>
-<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
-<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
-<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
-<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
-<ol>
-<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
-<p>还包含国内360，qq，搜狗,世界之窗</p>
-<p>更包含android平台内置的浏览器</p>
-</li>
-<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
-</li>
-<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
-</li>
-<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
-<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
-</li>
-<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
-</li>
-</ol>
-<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
-<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
-<ol>
-<li>display:block/none的过渡</li>
-<li>z-index不能执行过渡</li>
-<li>float不能执行过渡</li>
-<li>visibility 不能执行过渡</li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -1287,42 +1317,6 @@
 
 
 
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/Flutter%E9%9D%A2%E8%AF%95/</url>
-    <content><![CDATA[<h3 id="flutter-面试"><a href="#flutter-面试" class="headerlink" title="flutter 面试"></a>flutter 面试</h3><p>1.dart 的作用域</p>
-<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">dart 里面默认是公开的，私有变量使用下划线开头</span><br></pre></td></tr></table></figure>
-
-<p>2.dart是不是单线程？如何运行的？</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line">(<span class="number">1</span>)dart是单线程</span><br><span class="line">(<span class="number">2</span>)dart在单线程中是以消息循环机制来运行的，其中包括两个任务队列，</span><br><span class="line">一个是“微任务队列”microtask queue, 另一个叫做“事件队列”event queue</span><br><span class="line"></span><br><span class="line">入口函数 <span class="built_in">mian</span>()函数运行后，消息循环机制便启动了，首先会按照先进先出的</span><br><span class="line">顺序逐个执行微任务队列中的任务，当所有微任务队列中的任务执行完之后便开</span><br><span class="line">始执行事件队列的任务，事件队列中的任务执行完之后再去执行微任务队列中的</span><br><span class="line">任务，如此循环往复，生生不息。</span><br><span class="line">在Dart中，所有的外部事件任务都在事件队列中，如IO、计时器、点击、以及绘</span><br><span class="line">制事件等，而微任务通常来源于Dart内部，并且微任务非常少，之所以如此，是</span><br><span class="line">因为微任务队列优先级高，如果微任务太多，执行时间总和就越久，事件队列任</span><br><span class="line">务的延迟也就越久，对于GUI应用来说最直观的表现就是比较卡，所以必须得保证</span><br><span class="line">微任务队列不会太长。值得注意的是，我们可以通过Future<span class="selector-class">.microtask</span>(…)方法</span><br><span class="line">向微任务队列插入一个任务。</span><br></pre></td></tr></table></figure>
-
-<p>3.dart 多任务是如何并行的?他们之间是如何交互的？</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">(<span class="number">1</span>)dart不存在多线程，dart 提供另一个类似新线程，但是不共享内存独立运行</span><br><span class="line">的worker-<span class="built_in">isolate</span></span><br><span class="line">(<span class="number">2</span>)两个<span class="built_in">isolate</span>之间通过SendPort相互发送消息，通过ReceiveProt接受消息</span><br></pre></td></tr></table></figure>
-
-<p>4.说一下dart异步编程中Future关键字</p>
-<figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">在dart中通常使用<span class="keyword">Future</span>来执行异步或者延时操作</span><br></pre></td></tr></table></figure>
-
-<p>5.说一下Dart异步编程中的 Stream数据流？ </p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">dart中<span class="built_in">Stream</span> 和Future 都是解决异步的工具， 不同是<span class="built_in">Stream</span>可以接受多个异步</span><br><span class="line">的结果，而Future只能接受一个异步结果。<span class="number">0</span></span><br><span class="line"><span class="built_in">Stream</span> 的创建可以使用 <span class="built_in">Stream</span>.fromFuture，也可以使用 StreamController </span><br><span class="line">来创建和控制。还有一个注意点是：普通的 <span class="built_in">Stream</span> 只可以有一个订阅者，如果想</span><br><span class="line">要多订阅的话，要使用 <span class="built_in">asBroadcastStream</span>()。</span><br></pre></td></tr></table></figure>
-
-<p>6.Stream 有哪两种订阅模式？分别是怎么调用的？</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Stream</span> 有两种订阅模式：单订阅(single) 和 多订阅（broadcast）。单订阅就</span><br><span class="line">是只能有一个订阅者，而广播是可以有多个订阅者。这就有点类似于消息服务（Message</span><br><span class="line">Service）的处理模式。单订阅类似于点对点，在订阅者出现之前会持有数据，在</span><br><span class="line">订阅者出现之后就才转交给它。而广播类似于发布订阅模式，可以同时有多个订阅者，</span><br><span class="line">当有数据时就会传递给所有的订阅者，而不管当前是否已有订阅者存在。</span><br><span class="line"><span class="built_in">Stream</span> 默认处于单订阅模式，所以同一个 stream 上的 listen 和其它大多数方法</span><br><span class="line">只能调用一次，调用第二次就会报错。但 <span class="built_in">Stream</span> 可以通过 <span class="built_in">transform</span>() 方法（返回</span><br><span class="line">另一个 <span class="built_in">Stream</span>）进行连续调用。通过 <span class="built_in">Stream</span>.<span class="built_in">asBroadcastStream</span>() 可以将一个单</span><br><span class="line">订阅模式的 <span class="built_in">Stream</span> 转换成一个多订阅模式的 <span class="built_in">Stream</span>，isBroadcast 属性可以判断</span><br><span class="line">当前 <span class="built_in">Stream</span> 所处的模式。</span><br></pre></td></tr></table></figure>
-
-<p>7.说一下mixin机制？</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mixin</span> 是Dart <span class="number">2.1</span> 加入的特性，以前版本通常使用<span class="keyword">abstract</span> <span class="keyword">class</span>代替。简单来说，</span><br><span class="line"><span class="symbol">mixin</span>是为了解决继承方面的问题而引入的机制，<span class="symbol">Dart</span>为了支持多重继承，引入了<span class="symbol">mixin</span></span><br><span class="line">关键字，它最大的特殊处在于：<span class="symbol">mixin</span>定义的类不能有构造方法，这样可以避免继承多个</span><br><span class="line">类而产生的父类构造方法冲突。</span><br><span class="line"><span class="symbol">mixins</span>的对象是类，<span class="symbol">mixins</span>绝不是继承，也不是接口，而是一种全新的特性，可以<span class="symbol">mixins</span></span><br><span class="line">多个类，<span class="symbol">mixins</span>的使用需要满足一定条件。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/React%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="React基础"><a href="#React基础" class="headerlink" title="React基础"></a>React基础</h2><p>学个鸡儿999</p>
 ]]></content>
   </entry>
   <entry>
@@ -1649,208 +1643,14 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2024/03/18/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h2>]]></content>
+    <url>/2024/03/18/React%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="React基础"><a href="#React基础" class="headerlink" title="React基础"></a>React基础</h2><p>学个鸡儿999</p>
+]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>/2024/03/18/%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</url>
-    <content><![CDATA[<h2 id="1-常见的浏览器内核有哪些"><a href="#1-常见的浏览器内核有哪些" class="headerlink" title="1. 常见的浏览器内核有哪些?"></a>1. 常见的浏览器内核有哪些?</h2><table>
-<thead>
-<tr>
-<th>浏览器 / RunTime</th>
-<th>内核（渲染引擎）</th>
-<th>JavaScript 引擎</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Chrome</td>
-<td>webkit-&gt;blink</td>
-<td>V8</td>
-</tr>
-<tr>
-<td>FireFox</td>
-<td>Gecko</td>
-<td>SpiderMonkey</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>Webkit</td>
-<td>JavaScriptCore</td>
-</tr>
-<tr>
-<td>Edge</td>
-<td>EdgeHTML</td>
-<td>Chakra(for JavaScript)</td>
-</tr>
-<tr>
-<td>IE</td>
-<td>Trident</td>
-<td>JScript（IE3.0-IE8.0）</td>
-</tr>
-<tr>
-<td>Opera</td>
-<td>Presto-&gt;blink</td>
-<td>Linear A（4.0-6.1）/ Linear B（7.0-9.2）/ Futhark（9.5-10.2）/ Carakan（10.5-）</td>
-</tr>
-<tr>
-<td>Node.js</td>
-<td>-</td>
-<td>V8</td>
-</tr>
-</tbody></table>
-<h2 id="2-浏览器的主要组成部分是什么？"><a href="#2-浏览器的主要组成部分是什么？" class="headerlink" title="2. 浏览器的主要组成部分是什么？"></a>2. 浏览器的主要组成部分是什么？</h2><ol>
-<li><strong>「用户界面」</strong> - 包括地址栏、前进/后退按钮、书签菜单等。</li>
-<li><strong>「浏览器引擎」</strong> - 在用户界面和呈现引擎之间传送指令。</li>
-<li><strong>「呈现引擎」</strong> - 负责显示请求的内容。如果请求的内容是 HTML，它就负责解析 HTML 和 CSS 内容，并将解析后的内容显示在屏幕上。</li>
-<li><strong>「网络」</strong> - 用于网络调用，比如 HTTP 请求。</li>
-<li><strong>「用户界面后端」</strong> -用于绘制基本的窗口小部件，比如组合框和窗口。</li>
-<li><strong>「JavaScript 解释器」</strong>- 用于解析和执行 JavaScript 代码。</li>
-<li><strong>「数据存储」</strong> - 这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库。</li>
-</ol>
-<p>值得注意的是，和大多数浏览器不同，Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。</p>
-<h2 id="3-强缓存"><a href="#3-强缓存" class="headerlink" title="3. 强缓存"></a>3. 强缓存</h2><p>强缓存是当我们访问URL的时候，不会向服务器发送请求，直接从缓存中读取资源，但是会返回200的状态码。</p>
-<p><strong>如何设置强缓存？</strong></p>
-<p>我们第一次进入页面，请求服务器，然后服务器进行应答，浏览器会根据response Header来判断是否对资源进行缓存，如果响应头中expires、pragma或者cache-control字段，代表这是强缓存，浏览器就会把资源缓存在memory cache 或 disk cache中。</p>
-<p>第二次请求时，浏览器判断请求参数，如果符合强缓存条件就直接返回状态码200，从本地缓存中拿数据。否则把响应参数存在request header请求头中，看是否符合协商缓存，符合则返回状态码304，不符合则服务器会返回全新资源。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca00bff3081e4cfd993a8f252f4fa23a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<h3 id="expires"><a href="#expires" class="headerlink" title="expires"></a>expires</h3><p>是HTTP1.0控制网页缓存的字段，值为一个时间戳，准确来讲是格林尼治时间，服务器返回该请求结果缓存的到期时间，意思是，再次发送请求时，如果未超过过期时间，直接使用该缓存，如果过期了则重新请求。</p>
-<p>有个缺点，就是它判断是否过期是用本地时间来判断的，本地时间是可以自己修改的。</p>
-<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>是HTTP1.1中控制网页缓存的字段，当Cache-Control都存在时，Cache-Control优先级更高，主要取值为：</p>
-<p>public：资源客户端和服务器都可以缓存。</p>
-<p>privite：资源只有客户端可以缓存。</p>
-<p>no-cache：客户端缓存资源，但是是否缓存需要经过协商缓存来验证。</p>
-<p>no-store：不使用缓存。</p>
-<p>max-age：缓存保质期。</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f169e913e244d52a44ff1e4185cb9ce~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>Cache-Control使用了max-age相对时间，解决了expires的问题。</p>
-<h3 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a>pragma</h3><p>这个是HTTP1.0中禁用网页缓存的字段，其取值为no-cache，和Cache-Control的no-cache效果一样。</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c82d0049c3f4f57bf66d8effcb25ed5~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<h2 id="4-缓存位置"><a href="#4-缓存位置" class="headerlink" title="4. 缓存位置"></a>4. 缓存位置</h2><p>上面我们说，强缓存我们会把资源房放到memory cache 和 disk cache中，那什么资源放在memory cache，什么资源放在disk cache中？</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c6020dcbb114111a8e0a09f52d39ab7~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>存存储图像和网页等资源主要缓存在disk cache，操作系统缓存文件等资源大部分都会缓存在memory cache中。具体操作浏览器自动分配，看谁的资源利用率不高就分给谁。</p>
-<p>可以看到memory cache请求时间都是0ms，这个是不是太神奇了，这方面我来梳理下。</p>
-<p>查找浏览器缓存时会按顺序查找: Service Worker–&gt;Memory Cache–&gt;Disk Cache–&gt;Push Cache。</p>
-<h3 id="1-Service-Worker"><a href="#1-Service-Worker" class="headerlink" title="1. Service Worker"></a>1. Service Worker</h3><p>是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。</p>
-<h3 id="2-Memory-Cache"><a href="#2-Memory-Cache" class="headerlink" title="2. Memory Cache"></a>2. Memory Cache</h3><p>内存中的缓存，主要包含的是当前中页面中已经抓取到的资源，例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快，内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。</p>
-<h3 id="3-Disk-Cache"><a href="#3-Disk-Cache" class="headerlink" title="3. Disk Cache"></a>3. Disk Cache</h3><p>存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。</p>
-<p>在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache。</p>
-<p>memory cache 要比 disk cache 快的多。举个例子：从远程 web 服务器直接提取访问文件可能需要500毫秒(半秒)，那么磁盘访问可能需要10-20毫秒，而内存访问只需要100纳秒，更高级的还有 L1缓存访问(最快和最小的 CPU 缓存)只需要0.5纳秒。</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6216b57ad4cb480884c2b69d0f0ffe26~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>很神奇的，我们又看到了一个prefetch cache，这个又是什么呢?</p>
-<p><strong>prefetch cache(预取缓存)</strong></p>
-<p>link标签上带了prefetch，再次加载会出现。</p>
-<p>prefetch是预加载的一种方式，被标记为prefetch的资源，将会被浏览器在空闲时间加载。</p>
-<h3 id="4-Push-Cache"><a href="#4-Push-Cache" class="headerlink" title="4. Push Cache"></a>4. Push Cache</h3><p>Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。</p>
-<h3 id="5-CPU、内存、硬盘"><a href="#5-CPU、内存、硬盘" class="headerlink" title="5. CPU、内存、硬盘"></a>5. CPU、内存、硬盘</h3><p>这里提到了硬盘，内存，可能有些小伙伴对硬盘，内存没什么直观的概念。</p>
-<p>CPU、内存、硬盘都是计算机的主要组成部分。</p>
-<p>CPU：中央处理单元(CntralPocessingUit)的缩写，也叫处理器，是计算机的运算核心和控制核心。电脑靠CPU来运算、控制。让电脑的各个部件顺利工作，起到协调和控制作用。</p>
-<p>硬盘：存储资料和软件等数据的设备，有容量大，断电数据不丢失的特点。</p>
-<p>内存：负责硬盘等硬件上的数据与CPU之间数据交换处理。特点是体积小，速度快，有电可存，无电清空，即电脑在开机状态时内存中可存储数据，关机后将自动清空其中的所有数据。</p>
-<h2 id="5-协商缓存"><a href="#5-协商缓存" class="headerlink" title="5. 协商缓存"></a>5. 协商缓存</h2><p>协商缓存就是强缓存失效后，浏览器携带缓存标识向服务器发送请求，由服务器根据缓存标识来决定是否使用缓存的过程。</p>
-<p>主要有以下两种情况：</p>
-<p>协商缓存生效，返回304</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f26ab979fcd4df6906a2e9d5e28f56a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>协商缓存失效，返回200和请求结果</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449a56554c1e4f0c949e139081a9db4c~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p><strong>如何设置协商缓存？</strong></p>
-<h5 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h5><p>Last-Modified是服务器响应请求时，返回该资源文件在服务器最后被修改的时间。</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6c3aabbfd9a43ab81c97dd519da3b9f~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>If-Modified-Since则是客户端再次发起该请求时，携带上次请求返回的Last-Modified值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有If-Modified-Since字段，则会根据If-Modified-Since的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于If-Modified-Since的字段值，则重新返回资源，状态码为200；否则则返回304，代表资源无更新，可继续使用缓存文件。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa2eae3bc57d48e39a871c8e659bf97d~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<h5 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag / If-None-Match"></a>Etag / If-None-Match</h5><p>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0da637ef7fa64aef8b1f932c3dd0297b~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<p>If-None-Match是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有If-None-Match，则会根据If-None-Match的字段值与该资源在服务器的Etag值做对比，一致则返回304，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为200。</p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9d32690cdf45b498e5dcabd4c12f71~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
-<blockquote>
-<p>Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效。</p>
-<h4 id="两者对比"><a href="#两者对比" class="headerlink" title="两者对比"></a>两者对比</h4><ul>
-<li><p>性能上，<code>Last-Modified</code>优于<code>ETag</code>，<code>Last-Modified</code>记录的是时间点，而<code>Etag</code>需要根据文件的MD5算法生成对应的hash值。</p>
-</li>
-<li><p>精度上，</p>
-</li>
-</ul>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
-
-<p>优于</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
-
-<p>。</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
-
-<p>按照内容给资源带上标识，能准确感知资源变化，</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
-
-<p>在某些场景并不能准确感知变化，比如👇 </p>
-<ul>
-<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
-<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
-</ul>
-<p>最后，<strong>「如果两种方式都支持的话，服务器会优先考虑<code>ETag</code>」</strong>。</p>
-</blockquote>
-<p>目前的项目大多使用这种缓存方案的：</p>
-<ul>
-<li>HTML: 协商缓存；</li>
-<li>css、js、图片：强缓存，文件名带上hash。</li>
-</ul>
-<h2 id="7-强缓存与协商缓存的区别"><a href="#7-强缓存与协商缓存的区别" class="headerlink" title="7. 强缓存与协商缓存的区别"></a>7. 强缓存与协商缓存的区别</h2><ol>
-<li><p>强缓存不发请求到服务器，所以有时候资源更新了浏览器还不知道，但是协商缓存会发请求到服务器，所以资源是否更新，服务器肯定知道。</p>
-</li>
-<li><p>大部分web服务器都默认开启协商缓存。</p>
-</li>
-</ol>
-<h2 id="8-刷新对于强缓存和协商缓存的影响"><a href="#8-刷新对于强缓存和协商缓存的影响" class="headerlink" title="8. 刷新对于强缓存和协商缓存的影响"></a>8. 刷新对于强缓存和协商缓存的影响</h2><ol>
-<li><p>当ctrl+f5强制刷新网页时，直接从服务器加载，跳过强缓存和协商缓存。</p>
-</li>
-<li><p>当f5刷新网页时，跳过强缓存，但是会检查协商缓存。</p>
-</li>
-<li><p>浏览器地址栏中写入URL，回车 浏览器发现缓存中有这个文件了，不用继续请求了，直接去缓存拿。（最快）</p>
-</li>
-</ol>
-<h2 id="9-什么是浏览器同源策略？"><a href="#9-什么是浏览器同源策略？" class="headerlink" title="9.什么是浏览器同源策略？"></a>9.什么是浏览器同源策略？</h2><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
-<p>同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
-<p>下表给出了相对<a href="http://store.company.com/dir/page.html同源检测的示例">http://store.company.com/dir/page.html同源检测的示例</a>:</p>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123996dc1e~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-23-10-25-28"></p>
-<p>浏览器中的大部分内容都是受同源策略限制的，但是以下三个标签可以不受限制：</p>
-<ul>
-<li>img</li>
-<li>link</li>
-<li>script</li>
-</ul>
-<h2 id="10-如何实现跨域？"><a href="#10-如何实现跨域？" class="headerlink" title="10.如何实现跨域？"></a>10.如何实现跨域？</h2><h3 id="最经典的跨域方案jsonp"><a href="#最经典的跨域方案jsonp" class="headerlink" title="最经典的跨域方案jsonp"></a>最经典的跨域方案jsonp</h3><p>jsonp本质上是一个Hack，它利用``标签不受同源策略限制的特性进行跨域操作。</p>
-<p>jsonp优点：</p>
-<ul>
-<li>实现简单</li>
-<li>兼容性非常好</li>
-</ul>
-<p>jsonp的缺点：</p>
-<ul>
-<li>只支持get请求（因为``标签只能get）</li>
-<li>有安全性问题，容易遭受xss攻击</li>
-<li>需要服务端配合jsonp进行一定程度的改造</li>
-</ul>
-<p>jsonp的实现：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">JSONP</span>(<span class="params">&#123;  </span></span><br><span class="line"><span class="params">  url,</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">  callbackKey,</span></span><br><span class="line"><span class="params">  callback</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 在参数里制定 callback 的名字</span></span><br><span class="line">  params = params || &#123;&#125;</span><br><span class="line">  params[callbackKey] = <span class="string">&#x27;jsonpCallback&#x27;</span></span><br><span class="line">    <span class="comment">// 预留 callback</span></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = callback</span><br><span class="line">    <span class="comment">// 拼接参数字符串</span></span><br><span class="line">  <span class="keyword">const</span> paramKeys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(params)</span><br><span class="line">  <span class="keyword">const</span> paramString = paramKeys</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function"><span class="params">key</span> =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;params[key]&#125;</span>`</span>)</span><br><span class="line">    .<span class="title function_">join</span>(<span class="string">&#x27;&amp;&#x27;</span>)</span><br><span class="line">    <span class="comment">// 插入 DOM 元素</span></span><br><span class="line">  <span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">  script.<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;paramString&#125;</span>`</span>)</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">JSON</span>P(&#123;  </span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;http://s.weibo.com/ajax/jsonp/suggestion&#x27;</span>,</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">key</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">callbackKey</span>: <span class="string">&#x27;_cb&#x27;</span>,</span><br><span class="line">  <span class="title function_">callback</span>(<span class="params">result</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">data</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="最流行的跨域方案cors"><a href="#最流行的跨域方案cors" class="headerlink" title="最流行的跨域方案cors"></a>最流行的跨域方案cors</h3><p>cors是目前主流的跨域解决方案，跨域资源共享(CORS) 是一种机制，它使用额外的 HTTP 头来告诉浏览器  让运行在一个 origin (domain) 上的Web应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
-<p>如果你用express，可以这样在后端设置</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//CORS middleware</span></span><br><span class="line"><span class="keyword">var</span> allowCrossDomain = <span class="keyword">function</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;http://example.com&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;GET,PUT,POST,DELETE&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Content-Type&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">app.<span class="title function_">configure</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">bodyParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">cookieParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">session</span>(&#123; <span class="attr">secret</span>: <span class="string">&#x27;cool beans&#x27;</span> &#125;));</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">methodOverride</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(allowCrossDomain);</span><br><span class="line">    app.<span class="title function_">use</span>(app.<span class="property">router</span>);</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(__dirname + <span class="string">&#x27;/public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>在生产环境中建议用成熟的开源中间件解决问题。</p>
-<h3 id="最方便的跨域方案Nginx"><a href="#最方便的跨域方案Nginx" class="headerlink" title="最方便的跨域方案Nginx"></a>最方便的跨域方案Nginx</h3><p>nginx是一款极其强大的web服务器，其优点就是轻量级、启动快、高并发。</p>
-<p>现在的新项目中nginx几乎是首选，我们用node或者java开发的服务通常都需要经过nginx的反向代理。</p>
-<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123c354a18~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-24-10-19-34"></p>
-<p>反向代理的原理很简单，即所有客户端的请求都必须先经过nginx的处理，nginx作为代理服务器再讲请求转发给node或者java服务，这样就规避了同源策略。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">#进程, 可更具cpu数量调整</span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    #连接数</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.<span class="property">types</span>;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接超时时间，服务器会在这个时间过后关闭连接。</span></span><br><span class="line">    keepalive_timeout  <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gizp压缩</span></span><br><span class="line">    gzip  on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 直接请求nginx也是会报跨域错误的这里设置允许跨域</span></span><br><span class="line">    <span class="comment">// 如果代理地址已经允许跨域则不需要这些, 否则报错(虽然这样nginx跨域就没意义了)</span></span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span> *;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Headers</span> X-<span class="title class_">Requested</span>-<span class="title class_">With</span>;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Methods</span> <span class="variable constant_">GET</span>,<span class="variable constant_">POST</span>,<span class="variable constant_">OPTIONS</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// srever模块配置是http模块中的一个子模块，用来定义一个虚拟访问主机</span></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 根路径指到index.html</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// localhost/api 的请求会被转发到192.168.0.103:8080</span></span><br><span class="line">        location /api &#123;</span><br><span class="line">            rewrite ^<span class="regexp">/b/</span>(.*)$ /$1 <span class="keyword">break</span>; <span class="comment">// 去除本地接口/api前缀, 否则会出现404</span></span><br><span class="line">            proxy_set_header <span class="title class_">Host</span> $host;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Real</span>-<span class="variable constant_">IP</span> $remote_addr;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Forwarded</span>-<span class="title class_">For</span> $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass <span class="attr">http</span>:<span class="comment">//192.168.0.103:8080; # 转发地址</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 重定向错误页面到/50x.html</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.<span class="property">html</span>;</span><br><span class="line">        location = /50x.<span class="property">html</span> &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="其它跨域方案"><a href="#其它跨域方案" class="headerlink" title="其它跨域方案"></a>其它跨域方案</h3><ol>
-<li>HTML5 XMLHttpRequest 有一个API，postMessage()方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。</li>
-<li>WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关了，因此可以跨域。</li>
-<li>window.name + iframe：window.name属性值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值，我们可以利用这个特点进行跨域。</li>
-<li>location.hash + iframe：a.html欲与c.html跨域相互通信，通过中间页b.html来实现。 三个页面，不同域之间利用iframe的location.hash传值，相同域之间直接js访问来通信。</li>
-<li>document.domain + iframe： 该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式，我们只需要给页面添加 document.domain =’test.com’ 表示二级域名都相同就可以实现跨域，两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</li>
-</ol>
-]]></content>
+    <url>/2024/03/18/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h2>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -2470,6 +2270,206 @@
   </entry>
   <entry>
     <title></title>
+    <url>/2024/03/18/%E5%89%8D%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</url>
+    <content><![CDATA[<h2 id="1-常见的浏览器内核有哪些"><a href="#1-常见的浏览器内核有哪些" class="headerlink" title="1. 常见的浏览器内核有哪些?"></a>1. 常见的浏览器内核有哪些?</h2><table>
+<thead>
+<tr>
+<th>浏览器 / RunTime</th>
+<th>内核（渲染引擎）</th>
+<th>JavaScript 引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>webkit-&gt;blink</td>
+<td>V8</td>
+</tr>
+<tr>
+<td>FireFox</td>
+<td>Gecko</td>
+<td>SpiderMonkey</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Webkit</td>
+<td>JavaScriptCore</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>EdgeHTML</td>
+<td>Chakra(for JavaScript)</td>
+</tr>
+<tr>
+<td>IE</td>
+<td>Trident</td>
+<td>JScript（IE3.0-IE8.0）</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Presto-&gt;blink</td>
+<td>Linear A（4.0-6.1）/ Linear B（7.0-9.2）/ Futhark（9.5-10.2）/ Carakan（10.5-）</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>-</td>
+<td>V8</td>
+</tr>
+</tbody></table>
+<h2 id="2-浏览器的主要组成部分是什么？"><a href="#2-浏览器的主要组成部分是什么？" class="headerlink" title="2. 浏览器的主要组成部分是什么？"></a>2. 浏览器的主要组成部分是什么？</h2><ol>
+<li><strong>「用户界面」</strong> - 包括地址栏、前进/后退按钮、书签菜单等。</li>
+<li><strong>「浏览器引擎」</strong> - 在用户界面和呈现引擎之间传送指令。</li>
+<li><strong>「呈现引擎」</strong> - 负责显示请求的内容。如果请求的内容是 HTML，它就负责解析 HTML 和 CSS 内容，并将解析后的内容显示在屏幕上。</li>
+<li><strong>「网络」</strong> - 用于网络调用，比如 HTTP 请求。</li>
+<li><strong>「用户界面后端」</strong> -用于绘制基本的窗口小部件，比如组合框和窗口。</li>
+<li><strong>「JavaScript 解释器」</strong>- 用于解析和执行 JavaScript 代码。</li>
+<li><strong>「数据存储」</strong> - 这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库。</li>
+</ol>
+<p>值得注意的是，和大多数浏览器不同，Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。</p>
+<h2 id="3-强缓存"><a href="#3-强缓存" class="headerlink" title="3. 强缓存"></a>3. 强缓存</h2><p>强缓存是当我们访问URL的时候，不会向服务器发送请求，直接从缓存中读取资源，但是会返回200的状态码。</p>
+<p><strong>如何设置强缓存？</strong></p>
+<p>我们第一次进入页面，请求服务器，然后服务器进行应答，浏览器会根据response Header来判断是否对资源进行缓存，如果响应头中expires、pragma或者cache-control字段，代表这是强缓存，浏览器就会把资源缓存在memory cache 或 disk cache中。</p>
+<p>第二次请求时，浏览器判断请求参数，如果符合强缓存条件就直接返回状态码200，从本地缓存中拿数据。否则把响应参数存在request header请求头中，看是否符合协商缓存，符合则返回状态码304，不符合则服务器会返回全新资源。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca00bff3081e4cfd993a8f252f4fa23a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h3 id="expires"><a href="#expires" class="headerlink" title="expires"></a>expires</h3><p>是HTTP1.0控制网页缓存的字段，值为一个时间戳，准确来讲是格林尼治时间，服务器返回该请求结果缓存的到期时间，意思是，再次发送请求时，如果未超过过期时间，直接使用该缓存，如果过期了则重新请求。</p>
+<p>有个缺点，就是它判断是否过期是用本地时间来判断的，本地时间是可以自己修改的。</p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>是HTTP1.1中控制网页缓存的字段，当Cache-Control都存在时，Cache-Control优先级更高，主要取值为：</p>
+<p>public：资源客户端和服务器都可以缓存。</p>
+<p>privite：资源只有客户端可以缓存。</p>
+<p>no-cache：客户端缓存资源，但是是否缓存需要经过协商缓存来验证。</p>
+<p>no-store：不使用缓存。</p>
+<p>max-age：缓存保质期。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f169e913e244d52a44ff1e4185cb9ce~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>Cache-Control使用了max-age相对时间，解决了expires的问题。</p>
+<h3 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a>pragma</h3><p>这个是HTTP1.0中禁用网页缓存的字段，其取值为no-cache，和Cache-Control的no-cache效果一样。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c82d0049c3f4f57bf66d8effcb25ed5~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h2 id="4-缓存位置"><a href="#4-缓存位置" class="headerlink" title="4. 缓存位置"></a>4. 缓存位置</h2><p>上面我们说，强缓存我们会把资源房放到memory cache 和 disk cache中，那什么资源放在memory cache，什么资源放在disk cache中？</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c6020dcbb114111a8e0a09f52d39ab7~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>存存储图像和网页等资源主要缓存在disk cache，操作系统缓存文件等资源大部分都会缓存在memory cache中。具体操作浏览器自动分配，看谁的资源利用率不高就分给谁。</p>
+<p>可以看到memory cache请求时间都是0ms，这个是不是太神奇了，这方面我来梳理下。</p>
+<p>查找浏览器缓存时会按顺序查找: Service Worker–&gt;Memory Cache–&gt;Disk Cache–&gt;Push Cache。</p>
+<h3 id="1-Service-Worker"><a href="#1-Service-Worker" class="headerlink" title="1. Service Worker"></a>1. Service Worker</h3><p>是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。</p>
+<h3 id="2-Memory-Cache"><a href="#2-Memory-Cache" class="headerlink" title="2. Memory Cache"></a>2. Memory Cache</h3><p>内存中的缓存，主要包含的是当前中页面中已经抓取到的资源，例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快，内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。</p>
+<h3 id="3-Disk-Cache"><a href="#3-Disk-Cache" class="headerlink" title="3. Disk Cache"></a>3. Disk Cache</h3><p>存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。</p>
+<p>在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache。</p>
+<p>memory cache 要比 disk cache 快的多。举个例子：从远程 web 服务器直接提取访问文件可能需要500毫秒(半秒)，那么磁盘访问可能需要10-20毫秒，而内存访问只需要100纳秒，更高级的还有 L1缓存访问(最快和最小的 CPU 缓存)只需要0.5纳秒。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6216b57ad4cb480884c2b69d0f0ffe26~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>很神奇的，我们又看到了一个prefetch cache，这个又是什么呢?</p>
+<p><strong>prefetch cache(预取缓存)</strong></p>
+<p>link标签上带了prefetch，再次加载会出现。</p>
+<p>prefetch是预加载的一种方式，被标记为prefetch的资源，将会被浏览器在空闲时间加载。</p>
+<h3 id="4-Push-Cache"><a href="#4-Push-Cache" class="headerlink" title="4. Push Cache"></a>4. Push Cache</h3><p>Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令。</p>
+<h3 id="5-CPU、内存、硬盘"><a href="#5-CPU、内存、硬盘" class="headerlink" title="5. CPU、内存、硬盘"></a>5. CPU、内存、硬盘</h3><p>这里提到了硬盘，内存，可能有些小伙伴对硬盘，内存没什么直观的概念。</p>
+<p>CPU、内存、硬盘都是计算机的主要组成部分。</p>
+<p>CPU：中央处理单元(CntralPocessingUit)的缩写，也叫处理器，是计算机的运算核心和控制核心。电脑靠CPU来运算、控制。让电脑的各个部件顺利工作，起到协调和控制作用。</p>
+<p>硬盘：存储资料和软件等数据的设备，有容量大，断电数据不丢失的特点。</p>
+<p>内存：负责硬盘等硬件上的数据与CPU之间数据交换处理。特点是体积小，速度快，有电可存，无电清空，即电脑在开机状态时内存中可存储数据，关机后将自动清空其中的所有数据。</p>
+<h2 id="5-协商缓存"><a href="#5-协商缓存" class="headerlink" title="5. 协商缓存"></a>5. 协商缓存</h2><p>协商缓存就是强缓存失效后，浏览器携带缓存标识向服务器发送请求，由服务器根据缓存标识来决定是否使用缓存的过程。</p>
+<p>主要有以下两种情况：</p>
+<p>协商缓存生效，返回304</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f26ab979fcd4df6906a2e9d5e28f56a~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>协商缓存失效，返回200和请求结果</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449a56554c1e4f0c949e139081a9db4c~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p><strong>如何设置协商缓存？</strong></p>
+<h5 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h5><p>Last-Modified是服务器响应请求时，返回该资源文件在服务器最后被修改的时间。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6c3aabbfd9a43ab81c97dd519da3b9f~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>If-Modified-Since则是客户端再次发起该请求时，携带上次请求返回的Last-Modified值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有If-Modified-Since字段，则会根据If-Modified-Since的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于If-Modified-Since的字段值，则重新返回资源，状态码为200；否则则返回304，代表资源无更新，可继续使用缓存文件。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa2eae3bc57d48e39a871c8e659bf97d~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<h5 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag / If-None-Match"></a>Etag / If-None-Match</h5><p>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0da637ef7fa64aef8b1f932c3dd0297b~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<p>If-None-Match是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有If-None-Match，则会根据If-None-Match的字段值与该资源在服务器的Etag值做对比，一致则返回304，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为200。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9d32690cdf45b498e5dcabd4c12f71~tplv-k3u1fbpfcp-watermark.awebp" alt="img"></p>
+<blockquote>
+<p>Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效。</p>
+<h4 id="两者对比"><a href="#两者对比" class="headerlink" title="两者对比"></a>两者对比</h4><ul>
+<li><p>性能上，<code>Last-Modified</code>优于<code>ETag</code>，<code>Last-Modified</code>记录的是时间点，而<code>Etag</code>需要根据文件的MD5算法生成对应的hash值。</p>
+</li>
+<li><p>精度上，</p>
+</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
+
+<p>优于</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
+
+<p>。</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ETag</span></span><br></pre></td></tr></table></figure>
+
+<p>按照内容给资源带上标识，能准确感知资源变化，</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Last-Modified</span></span><br></pre></td></tr></table></figure>
+
+<p>在某些场景并不能准确感知变化，比如👇 </p>
+<ul>
+<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
+<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
+</ul>
+<p>最后，<strong>「如果两种方式都支持的话，服务器会优先考虑<code>ETag</code>」</strong>。</p>
+</blockquote>
+<p>目前的项目大多使用这种缓存方案的：</p>
+<ul>
+<li>HTML: 协商缓存；</li>
+<li>css、js、图片：强缓存，文件名带上hash。</li>
+</ul>
+<h2 id="7-强缓存与协商缓存的区别"><a href="#7-强缓存与协商缓存的区别" class="headerlink" title="7. 强缓存与协商缓存的区别"></a>7. 强缓存与协商缓存的区别</h2><ol>
+<li><p>强缓存不发请求到服务器，所以有时候资源更新了浏览器还不知道，但是协商缓存会发请求到服务器，所以资源是否更新，服务器肯定知道。</p>
+</li>
+<li><p>大部分web服务器都默认开启协商缓存。</p>
+</li>
+</ol>
+<h2 id="8-刷新对于强缓存和协商缓存的影响"><a href="#8-刷新对于强缓存和协商缓存的影响" class="headerlink" title="8. 刷新对于强缓存和协商缓存的影响"></a>8. 刷新对于强缓存和协商缓存的影响</h2><ol>
+<li><p>当ctrl+f5强制刷新网页时，直接从服务器加载，跳过强缓存和协商缓存。</p>
+</li>
+<li><p>当f5刷新网页时，跳过强缓存，但是会检查协商缓存。</p>
+</li>
+<li><p>浏览器地址栏中写入URL，回车 浏览器发现缓存中有这个文件了，不用继续请求了，直接去缓存拿。（最快）</p>
+</li>
+</ol>
+<h2 id="9-什么是浏览器同源策略？"><a href="#9-什么是浏览器同源策略？" class="headerlink" title="9.什么是浏览器同源策略？"></a>9.什么是浏览器同源策略？</h2><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
+<p>同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+<p>下表给出了相对<a href="http://store.company.com/dir/page.html同源检测的示例">http://store.company.com/dir/page.html同源检测的示例</a>:</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123996dc1e~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-23-10-25-28"></p>
+<p>浏览器中的大部分内容都是受同源策略限制的，但是以下三个标签可以不受限制：</p>
+<ul>
+<li>img</li>
+<li>link</li>
+<li>script</li>
+</ul>
+<h2 id="10-如何实现跨域？"><a href="#10-如何实现跨域？" class="headerlink" title="10.如何实现跨域？"></a>10.如何实现跨域？</h2><h3 id="最经典的跨域方案jsonp"><a href="#最经典的跨域方案jsonp" class="headerlink" title="最经典的跨域方案jsonp"></a>最经典的跨域方案jsonp</h3><p>jsonp本质上是一个Hack，它利用``标签不受同源策略限制的特性进行跨域操作。</p>
+<p>jsonp优点：</p>
+<ul>
+<li>实现简单</li>
+<li>兼容性非常好</li>
+</ul>
+<p>jsonp的缺点：</p>
+<ul>
+<li>只支持get请求（因为``标签只能get）</li>
+<li>有安全性问题，容易遭受xss攻击</li>
+<li>需要服务端配合jsonp进行一定程度的改造</li>
+</ul>
+<p>jsonp的实现：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">JSONP</span>(<span class="params">&#123;  </span></span><br><span class="line"><span class="params">  url,</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">  callbackKey,</span></span><br><span class="line"><span class="params">  callback</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 在参数里制定 callback 的名字</span></span><br><span class="line">  params = params || &#123;&#125;</span><br><span class="line">  params[callbackKey] = <span class="string">&#x27;jsonpCallback&#x27;</span></span><br><span class="line">    <span class="comment">// 预留 callback</span></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = callback</span><br><span class="line">    <span class="comment">// 拼接参数字符串</span></span><br><span class="line">  <span class="keyword">const</span> paramKeys = <span class="title class_">Object</span>.<span class="title function_">keys</span>(params)</span><br><span class="line">  <span class="keyword">const</span> paramString = paramKeys</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function"><span class="params">key</span> =&gt;</span> <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;params[key]&#125;</span>`</span>)</span><br><span class="line">    .<span class="title function_">join</span>(<span class="string">&#x27;&amp;&#x27;</span>)</span><br><span class="line">    <span class="comment">// 插入 DOM 元素</span></span><br><span class="line">  <span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">  script.<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;paramString&#125;</span>`</span>)</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">JSON</span>P(&#123;  </span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;http://s.weibo.com/ajax/jsonp/suggestion&#x27;</span>,</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">key</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">callbackKey</span>: <span class="string">&#x27;_cb&#x27;</span>,</span><br><span class="line">  <span class="title function_">callback</span>(<span class="params">result</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">data</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="最流行的跨域方案cors"><a href="#最流行的跨域方案cors" class="headerlink" title="最流行的跨域方案cors"></a>最流行的跨域方案cors</h3><p>cors是目前主流的跨域解决方案，跨域资源共享(CORS) 是一种机制，它使用额外的 HTTP 头来告诉浏览器  让运行在一个 origin (domain) 上的Web应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域 HTTP 请求。</p>
+<p>如果你用express，可以这样在后端设置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//CORS middleware</span></span><br><span class="line"><span class="keyword">var</span> allowCrossDomain = <span class="keyword">function</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;http://example.com&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;GET,PUT,POST,DELETE&#x27;</span>);</span><br><span class="line">    res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Content-Type&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">app.<span class="title function_">configure</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">bodyParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">cookieParser</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">session</span>(&#123; <span class="attr">secret</span>: <span class="string">&#x27;cool beans&#x27;</span> &#125;));</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">methodOverride</span>());</span><br><span class="line">    app.<span class="title function_">use</span>(allowCrossDomain);</span><br><span class="line">    app.<span class="title function_">use</span>(app.<span class="property">router</span>);</span><br><span class="line">    app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(__dirname + <span class="string">&#x27;/public&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>在生产环境中建议用成熟的开源中间件解决问题。</p>
+<h3 id="最方便的跨域方案Nginx"><a href="#最方便的跨域方案Nginx" class="headerlink" title="最方便的跨域方案Nginx"></a>最方便的跨域方案Nginx</h3><p>nginx是一款极其强大的web服务器，其优点就是轻量级、启动快、高并发。</p>
+<p>现在的新项目中nginx几乎是首选，我们用node或者java开发的服务通常都需要经过nginx的反向代理。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/24/16d610123c354a18~tplv-t2oaga2asx-watermark.awebp" alt="2019-06-24-10-19-34"></p>
+<p>反向代理的原理很简单，即所有客户端的请求都必须先经过nginx的处理，nginx作为代理服务器再讲请求转发给node或者java服务，这样就规避了同源策略。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">#进程, 可更具cpu数量调整</span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    #连接数</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.<span class="property">types</span>;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接超时时间，服务器会在这个时间过后关闭连接。</span></span><br><span class="line">    keepalive_timeout  <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// gizp压缩</span></span><br><span class="line">    gzip  on;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 直接请求nginx也是会报跨域错误的这里设置允许跨域</span></span><br><span class="line">    <span class="comment">// 如果代理地址已经允许跨域则不需要这些, 否则报错(虽然这样nginx跨域就没意义了)</span></span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span> *;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Headers</span> X-<span class="title class_">Requested</span>-<span class="title class_">With</span>;</span><br><span class="line">    add_header <span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Methods</span> <span class="variable constant_">GET</span>,<span class="variable constant_">POST</span>,<span class="variable constant_">OPTIONS</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// srever模块配置是http模块中的一个子模块，用来定义一个虚拟访问主机</span></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 根路径指到index.html</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// localhost/api 的请求会被转发到192.168.0.103:8080</span></span><br><span class="line">        location /api &#123;</span><br><span class="line">            rewrite ^<span class="regexp">/b/</span>(.*)$ /$1 <span class="keyword">break</span>; <span class="comment">// 去除本地接口/api前缀, 否则会出现404</span></span><br><span class="line">            proxy_set_header <span class="title class_">Host</span> $host;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Real</span>-<span class="variable constant_">IP</span> $remote_addr;</span><br><span class="line">            proxy_set_header X-<span class="title class_">Forwarded</span>-<span class="title class_">For</span> $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass <span class="attr">http</span>:<span class="comment">//192.168.0.103:8080; # 转发地址</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 重定向错误页面到/50x.html</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.<span class="property">html</span>;</span><br><span class="line">        location = /50x.<span class="property">html</span> &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="其它跨域方案"><a href="#其它跨域方案" class="headerlink" title="其它跨域方案"></a>其它跨域方案</h3><ol>
+<li>HTML5 XMLHttpRequest 有一个API，postMessage()方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。</li>
+<li>WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关了，因此可以跨域。</li>
+<li>window.name + iframe：window.name属性值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值，我们可以利用这个特点进行跨域。</li>
+<li>location.hash + iframe：a.html欲与c.html跨域相互通信，通过中间页b.html来实现。 三个页面，不同域之间利用iframe的location.hash传值，相同域之间直接js访问来通信。</li>
+<li>document.domain + iframe： 该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式，我们只需要给页面添加 document.domain =’test.com’ 表示二级域名都相同就可以实现跨域，两个页面都通过js强制设置document.domain为基础主域，就实现了同域。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2024/03/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="1、预编译理解"><a href="#1、预编译理解" class="headerlink" title="1、预编译理解"></a>1、预编译理解</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, c</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 打印结果：function a()&#123;&#125;                        </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a)  <span class="comment">// 打印结果：123 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">1</span> &gt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> d = <span class="number">666</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：undefined</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="keyword">function</span> (<span class="params"></span>)&#123;&#125; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 打印结果：function ()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 打印结果：function c ()&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="attr">AO</span>:&#123;	</span><br><span class="line">    <span class="attr">a</span>: <span class="literal">undefined</span>  <span class="number">1</span> <span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">c</span>: <span class="literal">undefined</span>  <span class="number">2</span> <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></span><br><span class="line">    <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -2577,6 +2577,55 @@
   </entry>
   <entry>
     <title></title>
+    <url>/2024/03/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="移动端布局基础"><a href="#移动端布局基础" class="headerlink" title="移动端布局基础"></a>移动端布局基础</h2><h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>一个页面针对不同的设备不同的<strong>宽度</strong>做出的不同样式布局响应</p>
+<p>在整个移动端布局里面，我们都需添加如下的网页头</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么现在我们就可以根据网页的宽度来进行响应了</p>
+<h3 id="响应式布局实现原理"><a href="#响应式布局实现原理" class="headerlink" title="响应式布局实现原理"></a>响应式布局实现原理</h3><hr>
+<p>它的原理主要是对CSS里面的一个命令来完成，这个命令叫<strong>媒体查询</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">            </span></span><br><span class="line"><span class="language-css">            <span class="comment">/*当屏幕设备在0~500px之间的时候，所使用的CSS样式*/</span></span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">500px</span>) <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">0px</span>)&#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			今天天气真热，感觉要下雨了</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--要求：我希望这个网页如果在屏幕大于500px的时候里面的字体就显示为红色 ，否则就显示会蓝色--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面的CSS里面，我们可以看到有一个新的CSS命令<code>@media only screen</code>在这里是查询屏幕设备，后面的<code>and (max-width:500px) and (min-width:0px)</code>指这个地方的限制范围</p>
+<p>后面的<code>and (min-width:0px)</code>我们可以省略掉</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">500px</span> ) &#123;</span><br><span class="line">    <span class="selector-class">.div1</span>&#123;</span><br><span class="line">        <span class="attribute">color</span>: green;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个时候，我们指定了最大值，但是没有指定最小值，那么，最小值默认就是0px</p>
+</blockquote>
+<h4 id="屏幕的划分"><a href="#屏幕的划分" class="headerlink" title="屏幕的划分"></a>屏幕的划分</h4><ul>
+<li>手机（0px~768px）</li>
+<li>平板（769px~990px）</li>
+<li>PC（991px~1200px)</li>
+<li>大型PC（投影仪，高分屏显示器）(1201px以上的)</li>
+</ul>
+<h4 id="文字响应式"><a href="#文字响应式" class="headerlink" title="文字响应式"></a>文字响应式</h4><p>请看下面案例</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>文字响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1201px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">991px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1200px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">769px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">990px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">768px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	我希望上面的文字在下面的四种设置下面设置不同的字体大小</span></span><br><span class="line"><span class="comment">	- 手机（0px~768px）                              			12px</span></span><br><span class="line"><span class="comment">	- 平板（769px~990px）						20px</span></span><br><span class="line"><span class="comment">	- PC（991px~1200px)						30px</span></span><br><span class="line"><span class="comment">	- 大型PC（投影仪，高分屏显示器）(1201px以上的)	40px</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 通过上面的案例，我们可以看到文字在不同的设备下面实现了不同的响应效果，但是仍然有不足</p>
+<p>我们可以通过上面的方式设置一个盒子里面的文字效果，但是如果整个网页都需要实现这样的标准怎么办呢？</p>
+<hr>
+<p> 我们之前在学习<code>font-size</code>的属性的时候，学过一个属性值叫<code>rem</code>, 这个是响应式单位</p>
+<p>rem指的是root element网页的根元素html ,而html网页默认的字体大小是16px</p>
+<p>默认1rem=16px，我们可以通过一个像这样的特性来完成响应式网页的字体的设置</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>文字响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">font-size</span>: <span class="number">2.5rem</span>;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1201px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">16px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">991px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1200px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">769px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">990px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">8px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">768px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">4.8px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div4</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">font-size</span>: <span class="number">26px</span>;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式123123213</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div3&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式aaaaaa</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div4&quot;</span>&gt;</span></span><br><span class="line">			我不希望实现文字响应</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	我希望上面的文字在下面的四种设置下面设置不同的字体大小</span></span><br><span class="line"><span class="comment">	- 手机（0px~768px）                              			12px</span></span><br><span class="line"><span class="comment">	- 平板（769px~990px）						20px</span></span><br><span class="line"><span class="comment">	- PC（991px~1200px)						30px</span></span><br><span class="line"><span class="comment">	- 大型PC（投影仪，高分屏显示器）(1201px以上的)	40px</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果一段文字没有限范围的改变，只是需要让它随着设备变大变小，那么，我们可以使用另一种单位，叫<code>vw</code>或<code>vh</code></p>
+<p> vw: viewport width，1vw 代表设备宽度的1%</p>
+<p>这一种情况不需要借助于媒体查询，因为它没有限定范围</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>字体响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*如果现在我想设置12px*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">font-size</span>: <span class="number">3.2vw</span>;</span></span><br><span class="line"><span class="language-css">                <span class="comment">/*以iphone6为标准</span></span></span><br><span class="line"><span class="comment"><span class="language-css">                12px/375(iphon6的宽度)*100=3.2</span></span></span><br><span class="line"><span class="comment"><span class="language-css">                */</span></span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			我要随着页面改变字体大小</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="图片响应式处理"><a href="#图片响应式处理" class="headerlink" title="图片响应式处理"></a>图片响应式处理</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>字体响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			*&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">margin</span>: <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">padding</span>: <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">list-style-type</span>: none;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">max-width</span>: <span class="number">1600px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">margin</span>: auto;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="comment">/*第一步*/</span></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">25%</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="comment">/*第二步*/</span></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&gt;<span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*由宽度自动的撑开高度*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: auto;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">991px</span> ) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">width</span>: <span class="number">25%</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">990px</span> ) <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">769px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">width</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">768px</span> ) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">				&#125;	</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1 clearfix&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item1.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item2.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item3.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item4.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	放四张图片，</span></span><br><span class="line"><span class="comment">	在PC，一排四个</span></span><br><span class="line"><span class="comment">	在平板，一排两个</span></span><br><span class="line"><span class="comment">	在手机，一排</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>原理：div限定图片宽度，图片自已再撑开高度height:auto,再通过这个高度反向的再撑开外边的div的高度。然后再通过媒体查询去确定最终这个div在不同设备的width</p>
+</blockquote>
+<h3 id="自适应布局"><a href="#自适应布局" class="headerlink" title="自适应布局"></a>自适应布局</h3>]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2024/03/18/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h2 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h2><p>弹性布局是为了弥补流式布局下在移动端布局的不方便而产生的一种新的布局方式 ，它主要是通过<strong>弹性盒子</strong>这个特性来完成了</p>
 <h3 id="弹性盒子属性"><a href="#弹性盒子属性" class="headerlink" title="弹性盒子属性"></a>弹性盒子属性</h3><ol>
@@ -2651,53 +2700,49 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/03/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="移动端布局基础"><a href="#移动端布局基础" class="headerlink" title="移动端布局基础"></a>移动端布局基础</h2><h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>一个页面针对不同的设备不同的<strong>宽度</strong>做出的不同样式布局响应</p>
-<p>在整个移动端布局里面，我们都需添加如下的网页头</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>那么现在我们就可以根据网页的宽度来进行响应了</p>
-<h3 id="响应式布局实现原理"><a href="#响应式布局实现原理" class="headerlink" title="响应式布局实现原理"></a>响应式布局实现原理</h3><hr>
-<p>它的原理主要是对CSS里面的一个命令来完成，这个命令叫<strong>媒体查询</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">            </span></span><br><span class="line"><span class="language-css">            <span class="comment">/*当屏幕设备在0~500px之间的时候，所使用的CSS样式*/</span></span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">500px</span>) <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">0px</span>)&#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			今天天气真热，感觉要下雨了</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--要求：我希望这个网页如果在屏幕大于500px的时候里面的字体就显示为红色 ，否则就显示会蓝色--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在上面的CSS里面，我们可以看到有一个新的CSS命令<code>@media only screen</code>在这里是查询屏幕设备，后面的<code>and (max-width:500px) and (min-width:0px)</code>指这个地方的限制范围</p>
-<p>后面的<code>and (min-width:0px)</code>我们可以省略掉</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">500px</span> ) &#123;</span><br><span class="line">    <span class="selector-class">.div1</span>&#123;</span><br><span class="line">        <span class="attribute">color</span>: green;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这个时候，我们指定了最大值，但是没有指定最小值，那么，最小值默认就是0px</p>
-</blockquote>
-<h4 id="屏幕的划分"><a href="#屏幕的划分" class="headerlink" title="屏幕的划分"></a>屏幕的划分</h4><ul>
-<li>手机（0px~768px）</li>
-<li>平板（769px~990px）</li>
-<li>PC（991px~1200px)</li>
-<li>大型PC（投影仪，高分屏显示器）(1201px以上的)</li>
+    <title>事件循环</title>
+    <url>/2024/03/20/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p> 浏览器的进程模型    </p>
+<h4 id="什么是进程？"><a href="#什么是进程？" class="headerlink" title="什么是进程？"></a>什么是进程？</h4><p>​    程序运行需要自己的专属的内存空间，可以把这个内存空间简单理解成进程。</p>
+<p>每个应用至少有一个进程，每个进程相互独立，即使要通信，也要双方同意。</p>
+<h4 id="什么是线程？"><a href="#什么是线程？" class="headerlink" title="什么是线程？"></a>什么是线程？</h4><p>有了进程之后，就可以运行程序的代码。</p>
+<p>运行代码的“人” 称之为 线程。</p>
+<p>一个进程至少有一个线程，所以进程开启后会自动创建一个线程来运行代码，该线程称为主线程。</p>
+<p>如果程序要同事执行多块代码，主线程就会启动更多的线程来执行代码，所以一个进程中可以包含多个线程。</p>
+<h4 id="浏览器有哪些进程和线程"><a href="#浏览器有哪些进程和线程" class="headerlink" title="浏览器有哪些进程和线程?"></a>浏览器有哪些进程和线程?</h4><pre><code>浏览器是一个多进程多线程的应用程序。</code></pre><p>​    为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。 </p>
+<p>最主要的进程有：</p>
+<p>​    1.<strong>浏览器进程</strong>：主要负责页面显示，用户交互，子进程管理（比如网络进程和渲染进程都是这个进程启动的）等。 浏览器进程内部会启动多个线程处理不同的任务。</p>
+<pre><code>2**.网络进程**：负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</code></pre><p>​    3.<strong>渲染进程</strong>（重点）：渲染进程启动后，会开启一个<strong>渲染主线程</strong>，负责执行HTML、CSS、JS代码。默认情况下浏览器会给<strong>每个标签页开启一个新的渲染进程</strong>，保证不同标签页之间不相互影响。将来可能改成一个站点一个进程。</p>
+<h4 id="渲染主线程是如何工作的？"><a href="#渲染主线程是如何工作的？" class="headerlink" title="渲染主线程是如何工作的？"></a>渲染主线程是如何工作的？</h4><pre><code>* 解析html
+* 解析css
+* 计算样式
+* 布局
+* 处理图层
+* 每秒把页面画 60 次
+* 执行全局 js 代码
+* 执行时间处理函数
+* 执行计时器的回调函数
+* ......</code></pre><ol>
+<li>在最开始 的时候，渲染主线程会进入一个无限循环。</li>
+<li>每一次循环都会检查消息队列中是否有任务存在，如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。</li>
+</ol>
+<p>​    3.其他所有线程（包括其他进程的线程）可以随时消息队列中添加任务。新任务会加到队列的末尾。</p>
+<p><strong>这整个过程被称为事件循环（消息循环）。</strong></p>
+<h4 id="何为异步？"><a href="#何为异步？" class="headerlink" title="何为异步？"></a>何为异步？</h4><p>​    代码在执行的过程中，会遇到一些无法立即处理的任务。比如：</p>
+<ul>
+<li>计时完成后需要执行的任务  –  <code>setTimeout</code> 、<code>setInterval</code></li>
+<li>网络通信完成后需要执行的任务 – <code>XHR</code>  、 <code>Fetch</code></li>
+<li>用户操作后需要执行的任务 – <code>addEventListentener</code></li>
 </ul>
-<h4 id="文字响应式"><a href="#文字响应式" class="headerlink" title="文字响应式"></a>文字响应式</h4><p>请看下面案例</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>文字响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1201px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">991px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1200px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">769px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">990px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">768px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	我希望上面的文字在下面的四种设置下面设置不同的字体大小</span></span><br><span class="line"><span class="comment">	- 手机（0px~768px）                              			12px</span></span><br><span class="line"><span class="comment">	- 平板（769px~990px）						20px</span></span><br><span class="line"><span class="comment">	- PC（991px~1200px)						30px</span></span><br><span class="line"><span class="comment">	- 大型PC（投影仪，高分屏显示器）(1201px以上的)	40px</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p> 通过上面的案例，我们可以看到文字在不同的设备下面实现了不同的响应效果，但是仍然有不足</p>
-<p>我们可以通过上面的方式设置一个盒子里面的文字效果，但是如果整个网页都需要实现这样的标准怎么办呢？</p>
-<hr>
-<p> 我们之前在学习<code>font-size</code>的属性的时候，学过一个属性值叫<code>rem</code>, 这个是响应式单位</p>
-<p>rem指的是root element网页的根元素html ,而html网页默认的字体大小是16px</p>
-<p>默认1rem=16px，我们可以通过一个像这样的特性来完成响应式网页的字体的设置</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>文字响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">font-size</span>: <span class="number">2.5rem</span>;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1201px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">16px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">991px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1200px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">769px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">990px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">8px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">768px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">font-size</span>: <span class="number">4.8px</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div4</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">font-size</span>: <span class="number">26px</span>;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式123123213</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div3&quot;</span>&gt;</span></span><br><span class="line">			我要实现文字响应式aaaaaa</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div4&quot;</span>&gt;</span></span><br><span class="line">			我不希望实现文字响应</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	我希望上面的文字在下面的四种设置下面设置不同的字体大小</span></span><br><span class="line"><span class="comment">	- 手机（0px~768px）                              			12px</span></span><br><span class="line"><span class="comment">	- 平板（769px~990px）						20px</span></span><br><span class="line"><span class="comment">	- PC（991px~1200px)						30px</span></span><br><span class="line"><span class="comment">	- 大型PC（投影仪，高分屏显示器）(1201px以上的)	40px</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>如果一段文字没有限范围的改变，只是需要让它随着设备变大变小，那么，我们可以使用另一种单位，叫<code>vw</code>或<code>vh</code></p>
-<p> vw: viewport width，1vw 代表设备宽度的1%</p>
-<p>这一种情况不需要借助于媒体查询，因为它没有限定范围</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>字体响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*如果现在我想设置12px*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">font-size</span>: <span class="number">3.2vw</span>;</span></span><br><span class="line"><span class="language-css">                <span class="comment">/*以iphone6为标准</span></span></span><br><span class="line"><span class="comment"><span class="language-css">                12px/375(iphon6的宽度)*100=3.2</span></span></span><br><span class="line"><span class="comment"><span class="language-css">                */</span></span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">			我要随着页面改变字体大小</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="图片响应式处理"><a href="#图片响应式处理" class="headerlink" title="图片响应式处理"></a>图片响应式处理</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>字体响应式<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">			*&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">margin</span>: <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">padding</span>: <span class="number">0px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">list-style-type</span>: none;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">clear</span>: both;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">max-width</span>: <span class="number">1600px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">margin</span>: auto;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="comment">/*第一步*/</span></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">25%</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="comment">/*第二步*/</span></span></span><br><span class="line"><span class="language-css">			<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&gt;<span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">				<span class="comment">/*由宽度自动的撑开高度*/</span></span></span><br><span class="line"><span class="language-css">				<span class="attribute">height</span>: auto;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="language-css">				<span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">991px</span> ) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">width</span>: <span class="number">25%</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">990px</span> ) <span class="keyword">and</span> (<span class="attribute">min-width</span>:<span class="number">769px</span>) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">width</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">				&#125;</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">			<span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">768px</span> ) &#123;</span></span><br><span class="line"><span class="language-css">				<span class="selector-class">.div1</span>&gt;<span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">					<span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">				&#125;	</span></span><br><span class="line"><span class="language-css">			&#125;</span></span><br><span class="line"><span class="language-css">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1 clearfix&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item1.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item2.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item3.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;img/item4.jpg&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	放四张图片，</span></span><br><span class="line"><span class="comment">	在PC，一排四个</span></span><br><span class="line"><span class="comment">	在平板，一排两个</span></span><br><span class="line"><span class="comment">	在手机，一排</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>原理：div限定图片宽度，图片自已再撑开高度height:auto,再通过这个高度反向的再撑开外边的div的高度。然后再通过媒体查询去确定最终这个div在不同设备的width</p>
+<p>面试题：如何理解JS的异步？</p>
+<p>答案： JS是一门单线程的语言，这是<strong>因为它运行在浏览器的渲染主线程中</strong>，而渲染主线程只有一个。 而渲染主线程有很多任务，渲染页面，执行JS都在其中。如果使用同步的方式，极有可能导致主线程阻塞，从而导致消息队列中有很多其他任务无法得到执行。所以浏览器采用异步的方式来避免。具体的做法是 当某些任务发生时，比如计时器，网络，事件监听，主线程会将任务交给其他线程去处理，自身则立即结束任务的执行，转而执行后续的代码。当其他线程完成时，<strong>会把事先传递的回调函数包装成任务</strong>，加入到消息队列中的末尾排队，等待主线程的调度执行。在这种模式下浏览器永不阻塞，从而最大保证了单线程的流畅运行。</p>
 </blockquote>
-<h3 id="自适应布局"><a href="#自适应布局" class="headerlink" title="自适应布局"></a>自适应布局</h3>]]></content>
+<pre><code>#### JS为何会阻塞渲染？</code></pre><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> h1 = doucument.<span class="title function_">querySelector</span>(<span class="string">&#x27;h1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 死循环指定时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">while</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration) &#123;&#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">		h1.<span class="property">textContent</span> = <span class="string">&#x27;你好&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">delay</span>(<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这段代码的现象： 点击按钮后，页面等待3秒才会更新渲染。</p>
+<p>原因：因为渲染和js的执行都在渲染主线程中，当代码执行 <code>h1.textContent = &#39;你好&#39;</code> 后会创建一个渲染任务进入消息队列等待执行。只有等主线程执行完，才会执行接下来的渲染任务。</p>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -2772,50 +2817,5 @@
 <p><strong>说明</strong>：手机页面通常在第一次加载后会进行缓存，然后每次刷新会使用缓存而不是去重新向服务器发送请求。如果不希望使用缓存可以设置<code>no-cache</code>。 </p>
 </blockquote>
 <h3 id="禁用IOS文本输入框默认内阴影"><a href="#禁用IOS文本输入框默认内阴影" class="headerlink" title="禁用IOS文本输入框默认内阴影"></a>禁用IOS文本输入框默认内阴影</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/20/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p> 浏览器的进程模型    </p>
-<h4 id="什么是进程？"><a href="#什么是进程？" class="headerlink" title="什么是进程？"></a>什么是进程？</h4><p>​    程序运行需要自己的专属的内存空间，可以把这个内存空间简单理解成进程。</p>
-<p>每个应用至少有一个进程，每个进程相互独立，即使要通信，也要双方同意。</p>
-<h4 id="什么是线程？"><a href="#什么是线程？" class="headerlink" title="什么是线程？"></a>什么是线程？</h4><p>有了进程之后，就可以运行程序的代码。</p>
-<p>运行代码的“人” 称之为 线程。</p>
-<p>一个进程至少有一个线程，所以进程开启后会自动创建一个线程来运行代码，该线程称为主线程。</p>
-<p>如果程序要同事执行多块代码，主线程就会启动更多的线程来执行代码，所以一个进程中可以包含多个线程。</p>
-<h4 id="浏览器有哪些进程和线程"><a href="#浏览器有哪些进程和线程" class="headerlink" title="浏览器有哪些进程和线程?"></a>浏览器有哪些进程和线程?</h4><pre><code>浏览器是一个多进程多线程的应用程序。</code></pre><p>​    为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。 </p>
-<p>最主要的进程有：</p>
-<p>​    1.<strong>浏览器进程</strong>：主要负责页面显示，用户交互，子进程管理（比如网络进程和渲染进程都是这个进程启动的）等。 浏览器进程内部会启动多个线程处理不同的任务。</p>
-<pre><code>2**.网络进程**：负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</code></pre><p>​    3.<strong>渲染进程</strong>（重点）：渲染进程启动后，会开启一个<strong>渲染主线程</strong>，负责执行HTML、CSS、JS代码。默认情况下浏览器会给<strong>每个标签页开启一个新的渲染进程</strong>，保证不同标签页之间不相互影响。将来可能改成一个站点一个进程。</p>
-<h4 id="渲染主线程是如何工作的？"><a href="#渲染主线程是如何工作的？" class="headerlink" title="渲染主线程是如何工作的？"></a>渲染主线程是如何工作的？</h4><pre><code>* 解析html
-* 解析css
-* 计算样式
-* 布局
-* 处理图层
-* 每秒把页面画 60 次
-* 执行全局 js 代码
-* 执行时间处理函数
-* 执行计时器的回调函数
-* ......</code></pre><ol>
-<li>在最开始 的时候，渲染主线程会进入一个无限循环。</li>
-<li>每一次循环都会检查消息队列中是否有任务存在，如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。</li>
-</ol>
-<p>​    3.其他所有线程（包括其他进程的线程）可以随时消息队列中添加任务。新任务会加到队列的末尾。</p>
-<p><strong>这整个过程被称为事件循环（消息循环）。</strong></p>
-<h4 id="何为异步？"><a href="#何为异步？" class="headerlink" title="何为异步？"></a>何为异步？</h4><p>​    代码在执行的过程中，会遇到一些无法立即处理的任务。比如：</p>
-<ul>
-<li>计时完成后需要执行的任务  –  <code>setTimeout</code> 、<code>setInterval</code></li>
-<li>网络通信完成后需要执行的任务 – <code>XHR</code>  、 <code>Fetch</code></li>
-<li>用户操作后需要执行的任务 – <code>addEventListentener</code></li>
-</ul>
-<blockquote>
-<p>面试题：如何理解JS的异步？</p>
-<p>答案： JS是一门单线程的语言，这是<strong>因为它运行在浏览器的渲染主线程中</strong>，而渲染主线程只有一个。 而渲染主线程有很多任务，渲染页面，执行JS都在其中。如果使用同步的方式，极有可能导致主线程阻塞，从而导致消息队列中有很多其他任务无法得到执行。所以浏览器采用异步的方式来避免。具体的做法是 当某些任务发生时，比如计时器，网络，事件监听，主线程会将任务交给其他线程去处理，自身则立即结束任务的执行，转而执行后续的代码。当其他线程完成时，<strong>会把事先传递的回调函数包装成任务</strong>，加入到消息队列中的末尾排队，等待主线程的调度执行。在这种模式下浏览器永不阻塞，从而最大保证了单线程的流畅运行。</p>
-</blockquote>
-<pre><code>#### JS为何会阻塞渲染？</code></pre><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> h1 = doucument.<span class="title function_">querySelector</span>(<span class="string">&#x27;h1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 死循环指定时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">delay</span>(<span class="params">duration</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> start = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">while</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() - start &lt; duration) &#123;&#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">		h1.<span class="property">textContent</span> = <span class="string">&#x27;你好&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">delay</span>(<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这段代码的现象： 点击按钮后，页面等待3秒才会更新渲染。</p>
-<p>原因：因为渲染和js的执行都在渲染主线程中，当代码执行 <code>h1.textContent = &#39;你好&#39;</code> 后会创建一个渲染任务进入消息队列等待执行。只有等主线程执行完，才会执行接下来的渲染任务。</p>
-]]></content>
   </entry>
 </search>
