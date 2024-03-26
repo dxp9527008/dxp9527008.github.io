@@ -77,6 +77,95 @@
     
     
     
+    <article id="post-浏览器渲染原理" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="2024/03/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/"
+    >浏览器渲染原理</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="2024/03/22/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" class="article-date">
+  <time datetime="2024-03-21T16:00:00.000Z" itemprop="datePublished">2024-03-22</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">313</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="浏览器是如何渲染页面的"><a href="#浏览器是如何渲染页面的" class="headerlink" title="浏览器是如何渲染页面的?"></a>浏览器是如何渲染页面的?</h4><p>当网络线程收到HTML文档后，会产生一个渲染任务，并将其传递给渲染主线程的消息队列。在事件循环的机制下，渲染主线程取出队列中的渲染任务，开启渲染的流程。</p>
+<p>整个过程分为很多阶段：HTML解析、样式计算、布局、分层、绘制、分块、光栅化、画每个阶段都有明确的输入输出，上一个阶段的输出就成为下一个阶段的输入。这样，整个渲染流程就形成了一套组织严密的生产流水线。</p>
+<p>渲染的第一步就是解析<code>HTML</code> 。</p>
+<p>解析过程中遇到CSS解析CSS，遇到JS执行。为了提高解析效率，浏览器会在开始解析前，会启动一个预解析的线程。率先下载HTML中的外部CSS文件和JS文件。</p>
+<p>如果主线程解析到<code>link</code> 位置，此时外部的CSS文件还没有下载解析好，主线程不会等待，继续解析后续的HTML。这是因为下载和解析CSS的工作是在与解析线程中进行的。这就是CSS不会阻塞HTML解析的根本原因。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-浏览器事件循环-原理" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -142,7 +231,8 @@
 <h4 id="浏览器有哪些进程和线程"><a href="#浏览器有哪些进程和线程" class="headerlink" title="浏览器有哪些进程和线程?"></a>浏览器有哪些进程和线程?</h4><pre><code>浏览器是一个多进程多线程的应用程序。</code></pre><p>​    为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。 </p>
 <p>最主要的进程有：</p>
 <p>​    1.<strong>浏览器进程</strong>：主要负责页面显示，用户交互，子进程管理（比如网络进程和渲染进程都是这个进程启动的）等。 浏览器进程内部会启动多个线程处理不同的任务。</p>
-<pre><code>2**.网络进程**：负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</code></pre><p>​    3.<strong>渲染进程</strong>（重点）：渲染进程启动后，会开启一个<strong>渲染主线程</strong>，负责执行HTML、CSS、JS代码。默认情况下浏览器会给<strong>每个标签页开启一个新的渲染进程</strong>，保证不同标签页之间不相互影响。将来可能改成一个站点一个进程。</p>
+<p> 2<strong>网络进程</strong>：负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</p>
+<p>​    3.<strong>渲染进程</strong>（重点）：渲染进程启动后，会开启一个<strong>渲染主线程</strong>，负责执行HTML、CSS、JS代码。默认情况下浏览器会给<strong>每个标签页开启一个新的渲染进程</strong>，保证不同标签页之间不相互影响。将来可能改成一个站点一个进程。</p>
 <h4 id="渲染主线程是如何工作的？"><a href="#渲染主线程是如何工作的？" class="headerlink" title="渲染主线程是如何工作的？"></a>渲染主线程是如何工作的？</h4><pre><code>* 解析html
 * 解析css
 * 计算样式
@@ -203,7 +293,7 @@
 <p>事件循环又叫消息循环，是浏览器主线程的工作方式。</p>
 <p>在Chrome的源码中， 它开启了一个 不会结束的for循环，每次循环都会从消息队列中取出第一个任务执行，而其他线程只需要在合适的时候将任务加入到队列末尾即可。</p>
 <p>过去吧消息队列简单分为宏队列和微队列，这种说法目前无法满足复杂的浏览器环境，取而代之的是一个更加灵活多变的处理方式。</p>
-<p>根据w3c的官方解释，每个任务有不同的类型，同类的任务必须在同一个队列中，不同任务可以属于不同的队列。不同的任务队列有不同的优先级，在一次事件循环中，由浏览器自行决定取哪一个队列的任务。但浏览器必须有一个微队列，微队列的任务一定具有最高优先级，必须优先调度执行。</p>
+<p>根据w3c的官方解释，每个任务有不同的类型，同类的任务必须在同一个队列中，不同的任务队列有不同的优先级，在一次事件循环中，由浏览器自行决定取哪一个队列的任务。但浏览器必须有一个微队列，微队列的任务一定具有最高优先级，必须优先调度执行。</p>
 </blockquote>
 <h4 id="JS中计时器能做到精确计时吗？"><a href="#JS中计时器能做到精确计时吗？" class="headerlink" title="JS中计时器能做到精确计时吗？"></a>JS中计时器能做到精确计时吗？</h4><blockquote>
 <p>不能，因为：</p>
@@ -2186,154 +2276,6 @@
 
 </article>
     
-    <article id="post-CSS过渡" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="2020/09/03/CSS%E8%BF%87%E6%B8%A1/"
-    >CSS过渡</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="2020/09/03/CSS%E8%BF%87%E6%B8%A1/" class="article-date">
-  <time datetime="2020-09-02T16:00:00.000Z" itemprop="datePublished">2020-09-03</time>
-</a>
-      
-      
-      
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">929</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
-        </span>
-    </span>
-</div>
-
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="CSS过渡"><a href="#CSS过渡" class="headerlink" title="CSS过渡"></a>CSS过渡</h2><p>过渡指一个元素由一个状态转变一另一个状态过程，主要指的是CSS里面的一个属性<code>transition</code></p>
-<p>过渡由以下几个属性来构成</p>
-<h3 id="过渡的基本属性"><a href="#过渡的基本属性" class="headerlink" title="过渡的基本属性"></a>过渡的基本属性</h3><ol>
-<li><p>transition-property指的是过渡的属性，它面如果接了多个属性可以用空格来隔开</p>
-</li>
-<li><p>transition-duration指的是过渡持续的时间</p>
-</li>
-<li><p>transition-timing-function指属性在变化的时候的过程，它常用属性如下</p>
-<ul>
-<li><p>linear这个代表匀速直线</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/2d1ed502301ee4075b1062b1f7a50850" alt="1563244750196.png"></p>
-</li>
-<li><p>ease属性值</p>
-<p><img src="https://img02.sogoucdn.com/app/a/100520146/e33d1d98ba2a6ec20e47e4b784f68dcb" alt="1563244775277.png"></p>
-</li>
-<li><p>ease-in属性值</p>
-<p><img src="https://img04.sogoucdn.com/app/a/100520146/5b0ccde3995f21e072959f6865cda906" alt="1563244841399.png"></p>
-</li>
-<li><p>ease-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/960a99bbc6e837721e44dc51b7cbb71e" alt="1563244872226.png"></p>
-</li>
-<li><p>ease-in-out属性值</p>
-<p><img src="https://img03.sogoucdn.com/app/a/100520146/e9accfe4da512f88c95d9a57ae6bbee1" alt="1563244914478.png"></p>
-</li>
-</ul>
-<p>除了通过刚刚几种方式设置它的属性值以外，我们还可以直接在页面上面拖出它的效果，得到属性值</p>
-</li>
-<li><p>transition-delay:5s指的是过渡延时，它可以在这里让过渡的变化等待多长时间</p>
-</li>
-</ol>
-<p>上面的四个属性是过渡的基本属性，我们在使用的过程当中，我们可以把它连起来一起写，这样方便快捷一些</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div1</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*需要过渡的属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*linear匀速直线*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    当我们把鼠标放到 div1上面的时候，元素由一个状态变成了另一个状态</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    但是这个状态 的切换是一瞬间就完成的，我们希望有一个变化的过程</span></span></span><br><span class="line"><span class="comment"><span class="language-css">    * */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        先出现的时间是过渡时间，后出现的时间是延时等待时间</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        * */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: width <span class="number">0.5s</span> linear <span class="number">5s</span>; </span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div2</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="多个属性的过渡"><a href="#多个属性的过渡" class="headerlink" title="多个属性的过渡"></a>多个属性的过渡</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我现在希望宽度与高度都实现过渡 怎么办*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-property</span>: width height;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/*我们可以在在这个属性后面接多个属性*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-duration</span>: <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-timing-function</span>: linear;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition-delay</span>: <span class="number">1s</span> ;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.div1</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果要执行多属性的过渡，我们可以使用transition-propery:属性1 属性2</p>
-<p>如果所有的属性都要执行过渡，则使用all这个属性值  <code>transition-propery:all</code></p>
-<h3 id="过渡的兼容性处理"><a href="#过渡的兼容性处理" class="headerlink" title="过渡的兼容性处理"></a>过渡的兼容性处理</h3><p>transition这个属性它是一个CSS3的属性，它在不同的浏览器下面都有不同的兼容性，怎么处理这个兼容性呢</p>
-<p>W3C为了保证各个浏览器的兼容性，在使用CSS3的时候，需要加上一个特殊的前缀</p>
-<ol>
-<li><p>以谷歌为<strong>核心</strong>的浏览器      -webkit-       例-webkit-transition</p>
-<p>还包含国内360，qq，搜狗,世界之窗</p>
-<p>更包含android平台内置的浏览器</p>
-</li>
-<li><p>以IE为标准的浏览器          -ms-              例-ms-transition</p>
-</li>
-<li><p>以火狐为标准的浏览器     -moz-             例-moz-transition</p>
-</li>
-<li><p>以苹果公司<strong>平台</strong>的safari为核心的浏览器   -webkit-   例-webkit-transition</p>
-<p>它指苹果的PC端浏览器，也指IOS的手机浏览器</p>
-</li>
-<li><p>以欧鹏为核心的浏览器     -o-                  例-o-transition</p>
-</li>
-</ol>
-<p>我们在开发的时候，一般情况下，是不加前缀的，因为我们开发的时候是以谷歌浏览器在测试，而谷歌浏览器是完全遵守W3C的标准的</p>
-<h3 id="不能执行过渡的属性"><a href="#不能执行过渡的属性" class="headerlink" title="不能执行过渡的属性"></a>不能执行过渡的属性</h3><p>transition可以执行80%以上的属性过渡，但是仍然会有一些属性无法执行过渡，现在列举一些</p>
-<ol>
-<li>display:block/none的过渡</li>
-<li>z-index不能执行过渡</li>
-<li>float不能执行过渡</li>
-<li>visibility 不能执行过渡</li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
   </article>
   
 
@@ -2691,7 +2633,7 @@
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
-        src="//music.163.com/outchain/player?type=2&id=2137141820&auto=1&height=66"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=2100337917&auto=1&height=66"></iframe>
 </div>
 
 <style>
